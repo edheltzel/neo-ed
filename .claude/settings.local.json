@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__context7__resolve-library-id",
+      "WebSearch",
+      "Bash(codebook-lsp:*)",
+      "WebFetch(domain:github.com)",
+      "mcp__context7__get-library-docs"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
