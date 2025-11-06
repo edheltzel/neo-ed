@@ -7,6 +7,7 @@
 -- <leader> = space
 -- <S> = shift
 -- <CR> = carriage return
+-- <D> = super/cmd
 
 local set = vim.keymap.set
 -- local del = vim.keymap.del
@@ -37,8 +38,6 @@ set("n", "<C-a>", "ggVG", { noremap = true, silent = true, desc = "Select all" }
 ---- Multiword/Cursors
 set({ "n" }, "<C-n>", "*Ncgn", { noremap = true, silent = true, desc = "MultiWord editing use . to repeat" })
 
-set("i", "jk", "<Esc>", { noremap = true, silent = true, desc = "Exit INSERT mode with jk" }) -- ESCAPE INSERT MODE
-set("i", "jj", "<Esc>", { noremap = true, silent = true, desc = "Exit INSERT mode with jj" }) -- ESCAPE INSERT MODE
 set("t", "<Esc>", "<C-\\><C-n>", opts) -- ESCAPE TERMINAL MODE
 
 -- duplicate lines up/down
@@ -104,3 +103,7 @@ set("n", "<C-l>", "<C-w>l", { noremap = true, silent = true, desc = "switch wind
 set("n", "<leader>gg", function()
   Snacks.lazygit({ "lazygit" }, { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false, border = "none" })
 end, { noremap = true, silent = true, desc = "Lazygit (root dir)" })
+
+-- AI Agents/Calude Code -------------------------------------------------------------------------------
+
+wk.add({ { "<leader>a", group = "AI", icon = " " } })
