@@ -36,7 +36,7 @@ return {
               end,
             },
             { icon = "⊙ ", key = "d", desc = "DOTFILES", action = ":cd ~/.dotfiles | :e ." },
-            { icon = " ", key = "v", desc = "NOE.ED", action = ":cd ~/.dotfiles/nvim/.config/nvim | :e ." },
+            { icon = " ", key = "v", desc = "NOE.ED", action = ":cd ~/Developer/nvim/.config/nvim | :e ." },
             { icon = " ", key = "x", desc = "Lazy Extras", action = ":LazyExtras" },
             { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy" },
             { icon = "󰩈 ", key = "q", desc = "Quit", action = ":qa" },
