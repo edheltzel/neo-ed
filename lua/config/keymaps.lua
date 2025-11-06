@@ -75,7 +75,7 @@ set("n", "<leader>sr", ":GrugFar<CR>", { noremap = true, silent = true, desc = "
 set("n", "<leader>fs", ":w<CR>", { noremap = true, silent = true, desc = "Save file" })
 ---
 ---- flash
-wk.add({ { "<leader>j", group = { group = "Flash Leap", color = "orange" }, icon = { icon = "⚡︎", color = "orange" } } })
+wk.add({ { "<leader>j", group = "Flash Leap", color = "orange", icon = { icon = "⚡︎", color = "orange" } } })
 set({ "n", "x", "o" }, "<leader>jj", function()
   require("flash").jump()
 end, { noremap = true, silent = true, desc = "Jump to character" })

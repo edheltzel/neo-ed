@@ -1,3 +1,5 @@
+---- See ./neoed.lua for customizations
+--
 local colors = require("eldritch.colors").setup()
 local config = require("eldritch.config").options
 

@@ -1,5 +1,4 @@
--- Custom neoEd theme for lualine
--- Based on eldritch theme with custom color modifications
+---- This is NEO.ED a lualine theme - based on Eldritch
 
 local M = {}
 
