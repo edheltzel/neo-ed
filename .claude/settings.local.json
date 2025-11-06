@@ -7,7 +7,9 @@
       "WebFetch(domain:github.com)",
       "mcp__context7__get-library-docs",
       "Bash(tree:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(awk:*)",
+      "Bash(lua/config/keymaps.lua.tmp)"
     ],
     "deny": [],
     "ask": []
