@@ -3,9 +3,10 @@
 -- Add any additional options here
 --
 local opt = vim.opt
+local g = vim.g
 
-vim.g.codeium_os = "Darwin"
-vim.g.codeium_arch = "arm64"
+g.codeium_os = "Darwin"
+g.codeium_arch = "arm64"
 
 opt.cursorline = true
 opt.cursorcolumn = true
