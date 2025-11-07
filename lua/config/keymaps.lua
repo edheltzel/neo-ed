@@ -31,6 +31,7 @@ set({ "n", "v" }, "<leader>d", "d", { noremap = true, silent = true, desc = "Del
 -- delete word by alt+backspace macos style
 set({ "i", "c" }, "<A-BD>", "<C-w>", { noremap = true })
 set("n", "<A-BS>", "db", { noremap = true })
+
 -- redo with shift+u (U)
 set("n", "U", "<C-r>", { noremap = true, silent = true, desc = "Redo" })
 set("n", "<C-a>", "ggVG", { noremap = true, silent = true, desc = "Select all" })
@@ -45,6 +46,9 @@ set("v", "<A-C-Up>", "y`>p`<", opts)
 set("n", "<A-C-Up>", "Vy`>p`<", opts)
 set("v", "<A-C-Down>", "y`<kp`>", opts)
 set("n", "<A-C-Down>", "Vy`<p`>", opts)
+
+set("v", "<A-C-d>", "y`<kp`>", opts)
+set("n", "<A-C-d>", "Vy`<p`>", opts)
 
 -- JUMP to BOL/EOL
 set("n", "gh", "^", { noremap = true, silent = true, desc = "Jump beginning of line" })
@@ -67,19 +71,20 @@ set("n", "<A-k>", ":m .-2<CR>==", { noremap = true, silent = true, desc = "Move 
 set("v", "<A-up>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true, desc = "Move selection up" })
 set("v", "<A-k>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true, desc = "Move selection up" })
 
--- fixes search/replace keybinding - ripgrep issue ¯\_(ツ)_/¯
+-- FIX: look into why ripgrep is not working with deafult keymap
 set("n", "<leader>sr", ":GrugFar<CR>", { noremap = true, silent = true, desc = "Search & Replace" })
 
--- VSpaceCode-ish -------------------------------------------------------------------------------
+---- VSpaceCode-ish -----------------------------------------------------------------------------
+
 ---- save file
 set("n", "<leader>fs", ":w<CR>", { noremap = true, silent = true, desc = "Save file" })
----
+
 ---- flash
 wk.add({ { "<leader>j", group = "Flash Leap", icon = { icon = "⚡︎", color = "orange" } } })
 set({ "n", "x", "o" }, "<leader>jj", function()
   require("flash").jump()
 end, { noremap = true, silent = true, desc = "Jump to character" })
----
+
 ---- code folding
 set("n", "<ENTER>", "za", { noremap = true, silent = true, desc = "Code Folding" })
 
@@ -88,7 +93,7 @@ set({ "n", "t" }, "<C-`>", function()
   Util.terminal(nil, { border = "none" })
 end, { noremap = true, silent = true, desc = "Toggle terminal" })
 
--- Move around splits
+---- Move around splits
 set("n", "<leader>wj", "<C-w>j", { noremap = true, silent = true, desc = "switch window right" })
 set("n", "<leader>wk", "<C-w>k", { noremap = true, silent = true, desc = "switch window up" })
 set("n", "<leader>wl", "<C-w>l", { noremap = true, silent = true, desc = "switch window down" })

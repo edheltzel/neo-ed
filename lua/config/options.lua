@@ -7,8 +7,13 @@ local opt = vim.opt
 vim.g.codeium_os = "Darwin"
 vim.g.codeium_arch = "arm64"
 
+opt.cursorline = true
+opt.cursorcolumn = true
+
 opt.wrap = true
+
 opt.swapfile = false
 opt.backup = false
+
 opt.undodir = os.getenv("HOME") .. "/.local/state/nvim/undo"
 opt.undofile = true
