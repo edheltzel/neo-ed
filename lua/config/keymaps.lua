@@ -78,6 +78,7 @@ set("n", "<leader>sr", ":GrugFar<CR>", { noremap = true, silent = true, desc = "
 
 ---- save file
 set("n", "<leader>fs", ":w<CR>", { noremap = true, silent = true, desc = "Save file" })
+set("n", "<leader>fS", ":noautocmd w<CR>", { noremap = true, silent = true, desc = "Save without formatting" })
 
 ---- flash
 wk.add({ { "<leader>j", group = "Flash Leap", icon = { icon = "⚡︎", color = "orange" } } })
@@ -94,9 +95,10 @@ set({ "n", "t" }, "<C-`>", function()
 end, { noremap = true, silent = true, desc = "Toggle terminal" })
 
 ---- Move around splits
-set("n", "<leader>wj", "<C-w>j", { noremap = true, silent = true, desc = "switch window right" })
+set("n", "<leader>wh", "<C-w>h", { noremap = true, silent = true, desc = "switch window right" })
+set("n", "<leader>wj", "<C-w>j", { noremap = true, silent = true, desc = "switch window down" })
 set("n", "<leader>wk", "<C-w>k", { noremap = true, silent = true, desc = "switch window up" })
-set("n", "<leader>wl", "<C-w>l", { noremap = true, silent = true, desc = "switch window down" })
+set("n", "<leader>wl", "<C-w>l", { noremap = true, silent = true, desc = "switch window left" })
 
 ---- with Ctrl
 set("n", "<C-h>", "<C-w>h", { noremap = true, silent = true, desc = "switch window left" })
