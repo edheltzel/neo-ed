@@ -8,6 +8,9 @@ local g = vim.g
 g.codeium_os = "Darwin"
 g.codeium_arch = "arm64"
 
+-- Set CARGO_TARGET_DIR for Mason LSP installations
+vim.fn.setenv("CARGO_TARGET_DIR", vim.fn.stdpath("cache") .. "/cargo-target")
+
 opt.cursorline = true
 opt.cursorcolumn = true
 
@@ -18,3 +21,6 @@ opt.backup = false
 
 opt.undodir = os.getenv("HOME") .. "/.local/state/nvim/undo"
 opt.undofile = true
+
+opt.spell = true
+opt.spelllang = "en_us"
