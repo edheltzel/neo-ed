@@ -40,3 +40,10 @@ config
 lua
 github
 https
+backhaul
+flashEthernet
+luanchctl
+Spotify
+killws
+MacOS
+dotfiles
