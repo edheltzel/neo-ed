@@ -1,53 +1,32 @@
 # NOE.ED
 
-**my personal Neovim configuration**
+This is a my personal Neovim configuration. At its core is [LazyVim](https://github.com/LazyVim/LazyVim), with a few additional plugins, my theme of choice, a customized Lualine setup and my mediocre keybindings to try and match my Zed and VSCode setups. If you're curious about those, you can find them in my [dotfiles](https://github.com/edheltzel/dotfiles) - check it or not, get inspired use what you want leave the rest.
 
-A modern, feature-rich Neovim configuration built on top of [LazyVim](https://github.com/LazyVim/LazyVim) with extensive language support, AI integrations, and an opinioned keymap system.
+## TODO
 
-## Highlights
-
-Includes:
-
-- **AI Arsenal**: Claude Code + OpenCode + Supermaven working together
-- **Always-on Git Blame**: See commit context for every line without lifting a finger
-- **macOS Native Feel**: Delete words with Alt+Backspace, familiar shortcuts
-- **Borderless Aesthetics**: LazyGit and terminals with clean, border-free interfaces
-
-## Features
-
-- **Modern Plugin Management**: Powered by [lazy.nvim](https://github.com/folke/lazy.nvim) with automatic plugin updates
-- **AI Integration**: Triple AI support with Claude Code, OpenCode, and Supermaven
-- **Extensive Language Support**: Pre-configured for Go, Python, Rust, TypeScript, PHP, Vue, Svelte, Astro, Tailwind, Twig, and more
-- **Custom Keybindings**: Ergonomic keymaps with VSCode-like shortcuts and modal editing enhancements
-- **Beautiful UI**: Eldritch colorscheme with custom lualine statusline and custom dashboard
-- **Development Tools**: Integrated LazyGit with blame, debugging (DAP), REST client, and GitHub CLI
-- **Smart File Navigation**: Snacks picker/explorer with hidden file support and mini-files
-- **Code Formatting**: Biome formatter with language-specific configurations
-- **Git Integration**: Gitsigns with current line blame and inline diff signs
+- [ ] better AI tooling
+- [ ] consider dropping snacks explorer for Yazi
+- [ ] port more vscode/zed keybindings
+- [ ] Add more language support for web development
+- [ ] Improve UI and theme customizations
+- [ ] Research more autocmds and filetype definitions
+- [ ] Raycast integration (for MacOS)
+- [ ] consider support for Omarchy (for hipster in me)
+- [ ] improve on flash keybindings
 
 ## Prerequisites
 
 Before installing NOE.ED, ensure you have the following:
 
-- **Neovim** >= 0.9.0 (Recommended: latest stable version)
-
-- **Git** >= 2.19.0
-- **A Nerd Font** (e.g., [JetBrainsMono Nerd Font](https://www.nerdfonts.com/)) installed and configured in your terminal
-- **ripgrep** (for telescope fuzzy finding): `brew install ripgrep` (macOS) or equivalent
-- **fd** (for faster file finding): `brew install fd` (macOS) or equivalent
+- **Neovim** >= 0.11.0 (Recommended: latest stable version)
+- **Git** >= 2.5.0
+- **A Nerd Font** (e.g., [Nerd Font](https://www.nerdfonts.com/)) installed and configured in your terminal
+- **ripgrep** (for telescope fuzzy finding): `brew install ripgrep` (MacOS) or equivalent
+- **fd** (for faster file finding): `brew install fd` (MacOS) or equivalent
 - **Node.js** >= 18.x (for LSP servers and tools)
-- **Clipboard tool**: `pbcopy` (macOS), `xclip` or `wl-clipboard` (Linux)
-
-### Optional but Recommended
-
+- **Clipboard tool**: `pbcopy` (MacOS), `xclip` or `wl-clipboard` (Linux)
 - **Lazygit** (for Git integration): `brew install lazygit`
-- **Language-specific tools**:
-  - Go: `go`, `gopls`, `gofumpt`
-  - Python: `python`, `pyright` or `basedpyright`
-  - Rust: `rustc`, `rust-analyzer`
-  - Javascript/TypeScript: `node`, `typescript`, `typescript-language-server`
-  - PHP: `php`, `intelephense`
-  - Tailwind CSS: `tailwindcss-language-server`
+- **Yazi** (for Explorer): `brew install yazi` (optional)
 
 ## Installation
 
@@ -116,9 +95,9 @@ Before installing NOE.ED, ensure you have the following:
 ### Getting Started
 
 - **Leader key**: `Space`
-- **Exit Insert mode**: `jj` or `jk`
 - **Save file**: `<leader>fs` or `:w`
-- **Quit**: `<leader>q` or `:q`
+- **Yazi**: `<leader>qq` or `:q`
+- **Quit**: `<leader>qq` or `:q`
 
 ### Custom Dashboard
 
@@ -129,8 +108,8 @@ NOE.ED features a custom Snacks dashboard (lua/plugins/snacks.lua:27) with quick
 - `f` - Find file
 - `g` - Find text (live grep)
 - `o` - Find session
-- `d` - Open DOTFILES directory
-- `v` - Open NOE.ED config
+- `d` - Open DOTFILES directory (update this path snacks.lua)
+- `v` - Open NOE.ED config (update this path see snacks.lua)
 - `x` - LazyExtras menu
 - `l` - Lazy plugin manager
 - `q` - Quit
@@ -141,13 +120,12 @@ NOE.ED features a custom Snacks dashboard (lua/plugins/snacks.lua:27) with quick
 
 | Key | Mode | Description |
 |-----|------|-------------|
-| `jj` or `jk` | Insert | Exit Insert mode |
 | `U` | Normal | Redo |
 | `<C-a>` | Normal | Select all |
 | `gh` / `gl` | Normal | Jump to beginning/end of line |
 | `<Alt-j/k>` or `<Alt-up/down>` | Normal/Visual | Move lines up/down |
 | `<Alt-Ctrl-Up>` or `<Alt-Ctrl-d>` | Normal/Visual | Duplicate lines |
-| `<Alt-Backspace>` | Insert/Command/Normal | Delete word (macOS style) |
+| `<Alt-Backspace>` | Insert/Command/Normal | Delete word (MacOS style) |
 | `<Enter>` | Normal | Toggle code folding |
 | `>` / `<` | Visual | Indent right/left and reselect |
 
@@ -236,28 +214,56 @@ NOE.ED features a custom Snacks dashboard (lua/plugins/snacks.lua:27) with quick
 
 | Key | Mode | Description |
 |-----|------|-------------|
-| `<leader>jj` | Normal | Flash jump (leap to character) |
 | `gd` | Normal | Go to definition |
 | `gr` | Normal | Find references |
 | `K` | Normal | Hover documentation |
 
 ### Configuration Structure
 
+So the plugin directory is structured, to match the LazyVim docs.
+
 ```
 ~/.config/nvim/
 ├── init.lua              # Entry point
 ├── lua/
 │   ├── config/
-│   │   ├── lazy.lua     # Plugin manager setup
-│   │   ├── options.lua  # Vim options
-│   │   ├── keymaps.lua  # Custom keybindings
-│   │   └── autocmds.lua # Autocommands
+│   │   ├── lazy.lua      # Plugin manager setup
+│   │   ├── options.lua   # Vim options
+│   │   ├── keymaps.lua   # Custom keybindings
+│   │   ├── autocmds.lua  # Autocommands
+│   │   └── filetypes.lua # Custom filetype definitions
 │   └── plugins/
-│       ├── languages/   # Language-specific configs
-│       ├── themes/      # Theme customizations
-│       └── *.lua        # Plugin configurations
-├── lazyvim.json         # LazyVim extras configuration
-└── lazy-lock.json       # Plugin version lockfile
+│       ├── ai/           # AI tool configurations
+│       │   ├── claudecode.lua
+│       │   ├── opencode.lua
+│       │   └── supermaven.lua
+│       ├── coding/       # Coding utilities
+│       │   └── surround.lua
+│       ├── editor/       # Editor enhancements
+│       │   ├── explorer.lua
+│       │   ├── neotree.lua
+│       │   └── search.lua
+│       ├── formatting/   # Code formatting
+│       │   └── conform.lua
+│       ├── languages/    # Language-specific configs
+│       │   ├── go.lua
+│       │   └── jinja.lua
+│       ├── ui/           # UI and theme customizations
+│       │   ├── colorscheme.lua
+│       │   ├── eldritch.lua
+│       │   ├── lualine.lua
+│       │   └── lualine/
+│       │       ├── eldritch.lua
+│       │       └── neoed.lua
+│       ├── utils/        # Utility plugins
+│       │   └── snacks.lua
+│       └── disabled.lua  # Disabled plugins
+├── .neoconf.json         # Neoconf settings
+├── codebook.toml         # Codebook dictionary
+├── lazyvim.json          # LazyVim extras configuration
+├── lazy-lock.json        # Plugin version lockfile
+├── stylua.toml           # Lua formatter config
+└── CLAUDE.md             # Claude Code instructions
 ```
 
 ### Enabled LazyVim Extras
@@ -273,12 +279,14 @@ This configuration includes the following LazyVim extras (from lazyvim.json:1):
 
 **Languages:**
 
-- Astro, Docker, Go, Helm, JSON, Markdown
-- PHP, Python, Rust, Svelte, Tailwind CSS, Twig
-- TypeScript, Vue, YAML, TOML
+- PHP, Python, Go, Rust, Helm
+- Docker, Fish
+- Tailwind CSS, Astro, Svelte, Vue, Nunjucks/Twig/Jinja/Django
+- JavaScript/TypeScript, YAML, TOML, JSON, Markdown
 
 **Editor & Utilities:**
 
+- Yazi file manager
 - Mini-files file manager
 - Snacks explorer & picker
 - Biome formatting
@@ -288,28 +296,7 @@ This configuration includes the following LazyVim extras (from lazyvim.json:1):
 
 ## Customization
 
-### Adding Plugins
-
-Create a new file in `lua/plugins/`:
-
-```lua
--- lua/plugins/my-plugin.lua
-return {
-  "author/plugin-name",
-  opts = {
-    -- plugin options
-  }
-}
-```
-
-### Modifying Keybindings
-
-Edit `lua/config/keymaps.lua`:
-
-```lua
-local set = vim.keymap.set
-set("n", "<leader>custom", ":MyCommand<CR>", { desc = "My custom command" })
-```
+See [LazyVim documentation](https://lazyvim.github.io/configuration/#plugins) for more information.
 
 ### Changing Colorscheme
 
@@ -352,51 +339,11 @@ return {
 - Diff preview and acceptance workflow
 - Model selection support
 
-**OpenCode** (lua/plugins/ai.lua:51): Alternative AI coding assistant
-
-- Auto-reload support
-- Context-aware prompts with `@this`
-- Quick action execution
-
 **Supermaven** (lua/plugins/ai.lua:2): AI-powered code completion
 
 - Custom keybindings for suggestion management
 - Configurable inline completion
 - Filetype ignoring support
-
-### Git Integration
-
-**Gitsigns** (lua/plugins/git.lua:1):
-
-- Current line blame always visible
-- Toggle-able change signs
-- Inline diff viewing
-
-### File Navigation
-
-**Snacks** (lua/plugins/snacks.lua:1):
-
-- Custom NOE.ED branded dashboard
-- Hidden file support in picker/explorer
-- Session persistence (always save)
-- Image preview support (max width: 100)
-
-## Updating
-
-### Update All Plugins
-
-```vim
-:Lazy sync
-```
-
-### Update Neovim Configuration
-
-```bash
-cd ~/.config/nvim
-git pull
-```
-
-Then restart Neovim and run `:Lazy sync`.
 
 ## Troubleshooting
 
@@ -448,10 +395,6 @@ Ensure you're in the correct mode (Normal, Insert, Visual). Check which-key for 
 - [LazyVim Documentation](https://lazyvim.github.io/)
 - [Neovim Documentation](https://neovim.io/doc/)
 - [lazy.nvim](https://github.com/folke/lazy.nvim)
-
-## License
-
-This configuration is licensed under the [Apache License 2.0](LICENSE).
 
 ## Acknowledgments
 

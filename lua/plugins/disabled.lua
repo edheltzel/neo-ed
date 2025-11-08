@@ -1,3 +1,4 @@
 return {
-  -- { "folke/persistence.nvim", enabled = false },
+  { "NickvanDyke/opencode.nvim", enabled = false },
+  { "nvim-neo-tree/neo-tree.nvim", enabled = false },
 }

@@ -1,6 +1,6 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
-  enabled = false, -- DISABLED
+  -- enabled = false, -- see disabled.lua
   opts = {
     window = {
       position = "right",
