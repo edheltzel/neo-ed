@@ -60,7 +60,7 @@ function M.setup()
   neoEd.fg = colors.fg
   neoEd.gray = colors.gray
   neoEd.dark = colors.darker
-  neoEd.bgRecord = neoEd.insert.a.bg
+
   return neoEd
 end
 
