@@ -2,12 +2,16 @@
 vim.filetype.add({
   extension = {
     njk = "htmldjango",
-    config = "sh",
+    webc = "htmldjango",
+    conf = "sh",
   },
   filename = {
     [".*%.env%.*%"] = "sh",
+    ["_redirects"] = "plaintext",
   },
   pattern = {
-    -- Example: [".*%.blade%.php"] = "blade",
+    -- [".*%.blade%.php"] = "blade",
+    ["*.svg"] = "html",
+    ["*.h"] = "c",
   },
 })
