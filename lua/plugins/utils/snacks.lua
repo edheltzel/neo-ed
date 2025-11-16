@@ -10,6 +10,7 @@ return {
         need = 0, -- always save
       },
       picker = {
+        layout = "default",
         sources = {
           files = {
             hidden = true,

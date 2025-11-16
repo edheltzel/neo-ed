@@ -99,6 +99,8 @@ Before installing NOE.ED, ensure you have the following:
 - **Yazi**: `<leader>qq` or `:q`
 - **Quit**: `<leader>qq` or `:q`
 
+### Color Schemes
+
 ### Custom Dashboard
 
 NOE.ED features a custom Snacks dashboard (lua/plugins/snacks.lua:27) with quick access shortcuts:
@@ -187,7 +189,6 @@ NOE.ED features a custom Snacks dashboard (lua/plugins/snacks.lua:27) with quick
 |-----|------|-------------|
 | `<leader>sr` | Normal | Search & Replace (GrugFar) |
 | `<leader>nh` | Normal | Clear search highlights |
-| `<C-n>` | Normal | Multi-word editing (use `.` to repeat) |
 
 #### Git
 
@@ -241,7 +242,7 @@ So the plugin directory is structured, to match the LazyVim docs.
 │       │   └── surround.lua
 │       ├── editor/       # Editor enhancements
 │       │   ├── explorer.lua
-│       │   ├── neotree.lua
+│       │   ├── neotree.lua - disabled
 │       │   └── search.lua
 │       ├── formatting/   # Code formatting
 │       │   └── conform.lua
@@ -313,7 +314,8 @@ return {
 }
 ```
 
-The current colorscheme is **Eldritch** with custom configuration (lua/plugins/themes/eldritch.lua:1):
+The current colorscheme is **Eldritch** with a custom Lualine configuration, called `neoed.lua` in `lua/plugins/ui/lualine/neoed.lua:1`:
+I do swap out Eldritch for Rose Pine and Tokyo Night themes on the regular.
 
 - Dim inactive windows enabled
 - Dark sidebars and floats
