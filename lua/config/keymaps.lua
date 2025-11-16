@@ -86,9 +86,6 @@ set("n", "<C-l>", "<C-w>l", { noremap = true, silent = true, desc = "switch wind
 set("n", "U", "<C-r>", { noremap = true, silent = true, desc = "Redo" })
 set("n", "<C-a>", "ggVG", { noremap = true, silent = true, desc = "Select all" })
 
----- Multi-word/Cursors
-set({ "n" }, "<C-n>", "*Ncgn", { noremap = true, silent = true, desc = "MultiWord editing use . to repeat" })
-
 -- ESCAPE TERMINAL MODE
 set("t", "<Esc>", "<C-\\><C-n>", opts)
 
