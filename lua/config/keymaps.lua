@@ -14,6 +14,7 @@ local del = vim.keymap.del
 local opts = { noremap = true, silent = true }
 local wk = require("which-key")
 local Util = require("lazyvim.util")
+local Snacks = require("snacks")
 
 local set_keymap = vim.api.nvim_set_keymap
 
@@ -107,11 +108,13 @@ set("v", ">", ">gv", { noremap = true, silent = true, desc = "Indent right and r
 -- shift+,
 set("n", "<", "<<", { noremap = true, silent = true, desc = "Indent left" })
 set("v", "<", "<gv", { noremap = true, silent = true, desc = "Indent left and reselect" })
+
 -- vscode like indenting
 set("n", "<C-]>", ">>", { noremap = true, silent = true, desc = "Indent right" })
 set("n", "<C-[>", "<<", { noremap = true, silent = true, desc = "Indent left" })
 set("v", "<C-]>", ">gv", { noremap = true, silent = true, desc = "Indent right and reselect" })
 set("v", "<C-[>", "<gv", { noremap = true, silent = true, desc = "Indent left and reselect" })
+
 -- vscode like Line Bubbling - Move lines up/down
 set("n", "<A-up>", ":m .-2<CR>==", { noremap = true, silent = true, desc = "Move line up" })
 set("v", "<A-up>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true, desc = "Move selection up" })
@@ -128,6 +131,11 @@ end, { noremap = true, silent = true, desc = "Jump to character" })
 set("n", "<leader>fs", ":w<CR>", { noremap = true, silent = true, desc = "Save file" })
 set("n", "<leader>fS", ":noautocmd w<CR>", { noremap = true, silent = true, desc = "Save without formatting" })
 
+-- toggle inlay hints
+set("n", "<leader>h", function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+  vim.notify(vim.lsp.inlay_hint.is_enabled() and "Inlay Hints Enabled" or "Inlay Hints Disabled")
+end)
 ---- UI --------------------------------------------------------------------
 set("n", "<leader>nh", ":nohl<CR>", { noremap = true, silent = true, desc = "Clear search highlights" })
 
