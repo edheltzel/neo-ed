@@ -1,27 +1,8 @@
 return {
-  -- Claude Code
-  {
-    "coder/claudecode.nvim",
-    dependencies = { "folke/snacks.nvim" },
-    config = true,
-    keys = {
-      { "<leader>acD", "<cmd>ClaudeCode --dangerously-skip-permissions<cr>", desc = "Toggle Claude Dangerously" },
-      { "<leader>acc", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
-      { "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
-      { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
-      { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
-      { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
-      { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
-      { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
-      {
-        "<leader>as",
-        "<cmd>ClaudeCodeTreeAdd<cr>",
-        desc = "Add file",
-        ft = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" },
-      },
-      -- Diff management
-      { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
-      { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
-    },
+  "code/claudecode.nvim",
+  dependencies = { "folke/snacks.nvim" },
+  config = true,
+  keys = {
+    { "<leader>aD", "<cmd>ClaudeCode --dangerously-skip-permissions<cr>", desc = "Run Dangerously" },
   },
 }
