@@ -1,5 +1,4 @@
 ---- This is NEO.ED a lualine theme - based on Eldritch
-
 local M = {}
 
 function M.setup()
