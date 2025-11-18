@@ -6,42 +6,45 @@
 --
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
+--
+local api = vim.api
 
--- YAML front-matter highlighting for Nunjucks/Jinja templates
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "htmldjango", "jinja" },
+api.nvim_create_autocmd("FileType", {
+  pattern = { "htmldjango", "jinja", "htmldjango", "njk", "nunjucks", "twig", "liquid" },
   callback = function()
-    -- Add YAML syntax highlighting for front-matter regions
     vim.cmd([[
-      syntax include @YAML syntax/yaml.vim
-      syntax region yamlFrontmatter start=/\%^---$/ end=/^---$/ keepend contains=@YAML
+    syntax include @YAML syntax/yaml.vim
+    syntax region yamlFrontmatter start=/^---$/ end=/^---$/ keepend contains=@YAML
     ]])
   end,
 })
 
----- found these gems youtube - https://youtu.be/v36vLiFVOXY?si=1SygS6SK6TGDa9UT
--- open help in a vertical split
-vim.api.nvim_create_autocmd("FileType", {
+-- -----------------------------------------------------
+-- found these niftty nuggest on youtube
+-- https://youtu.be/v36vLiFVOXY?si=1SygS6SK6TGDa9UT
+-- -----------------------------------------------------
+
+api.nvim_create_autocmd("FileType", {
   pattern = "help",
   command = "wincmd L",
 })
 
 -- resize splits automatically when terminal window is resized
-vim.api.nvim_create_autocmd("VimResized", {
+api.nvim_create_autocmd("VimResized", {
   command = "wincmd =",
 })
 
 -- disables auto comment on new line
-vim.api.nvim_create_autocmd("FileType", {
-  group = vim.api.nvim_create_augroup("no_auto_comment", {}),
+api.nvim_create_autocmd("FileType", {
+  group = api.nvim_create_augroup("no_auto_comment", {}),
   callback = function()
     vim.opt_local.formatoptions:remove({ "c", "r", "o" })
   end,
 })
 
 -- dotenv syntax highlighting
-vim.api.nvim_create_autocmd("BufRead", {
-  group = vim.api.nvim_create_augroup("dotenv_ft", { clear = true }),
+api.nvim_create_autocmd("BufRead", {
+  group = api.nvim_create_augroup("dotenv_ft", { clear = true }),
   pattern = { ".env", ".env.*" },
   callback = function()
     vim.bo.filetype = "dosini"
