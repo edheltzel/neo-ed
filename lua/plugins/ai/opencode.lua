@@ -1,5 +1,6 @@
 return {
   "NickvanDyke/opencode.nvim",
+  event = "VeryLazy",
   dependencies = {
     -- Recommended for `ask()`, and required for `toggle()` — otherwise optional
     { "folke/snacks.nvim", opts = { input = { enabled = true } } },
