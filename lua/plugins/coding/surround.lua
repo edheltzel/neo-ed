@@ -1,5 +1,6 @@
 return {
   "nvim-mini/mini.surround",
+  event = "VeryLazy",
   opts = {
     mappings = {
       add = "gsa",
