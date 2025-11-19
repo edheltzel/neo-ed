@@ -16,7 +16,7 @@ return {
     -- Recommended/example keymaps
     vim.keymap.set("n", "<leader>aot", function()
       require("opencode").toggle()
-    end, { desc = "Toggle embedded" })
+    end, { desc = "Toggle OpenCode" })
     vim.keymap.set("n", "<leader>aoa", function()
       require("opencode").ask("@cursor: ")
     end, { desc = "Ask OpenCode about this" })
