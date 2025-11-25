@@ -5,7 +5,6 @@ local api = vim.api
 local set = vim.keymap.set
 local del = vim.keymap.del
 local wk = require("which-key")
-local Util = require("lazyvim.util")
 local Snacks = require("snacks")
 local set_keymap = api.nvim_set_keymap
 
@@ -54,7 +53,7 @@ set("v", "<A-up>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true, desc = "
 set("v", "<A-k>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true, desc = "Move selection up" })
 -- toggle terminal
 set({ "n", "t" }, "<C-`>", function()
-  Util.terminal(nil, { border = "none" })
+  Snacks.terminal(nil, { border = "none" })
 end, { noremap = true, silent = true, desc = "Toggle terminal" })
 
 ---- move around splits
@@ -102,5 +101,5 @@ wk.add({ { "<leader>a", group = "Claude Code", icon = { icon = "🤖", color = "
 
 -- borderless lazygit
 set("n", "<leader>gg", function()
-  Snacks.lazygit({ "lazygit" }, { cwd = Util.root(), esc_esc = false, ctrl_hjkl = false, border = "none" })
+  Snacks.lazygit({ cwd = vim.fn.getcwd(), esc_esc = false, ctrl_hjkl = false, border = "none" })
 end, { noremap = true, silent = true, desc = "Lazygit (root dir)" })
