@@ -1,17 +1,14 @@
-local supported = {
-  "css",
-  "graphql",
+-- Hybrid Biome + Prettier configuration
+-- Biome is the primary formatter (enabled via LazyVim extra: lazyvim.plugins.extras.formatting.biome)
+-- Prettier is fallback for filetypes Biome doesn't support (HTML, YAML, Markdown, etc.)
+
+-- Filetypes that need Prettier (not supported by Biome)
+local prettier_only = {
   "handlebars",
   "html",
-  "javascript",
-  "javascriptreact",
-  "json",
-  "jsonc",
   "less",
+  "markdown",
   "scss",
-  "typescript",
-  "typescriptreact",
-  "vue",
   "yaml",
 }
 
@@ -25,15 +22,30 @@ return {
     optional = true,
     opts = function(_, opts)
       opts.formatters_by_ft = opts.formatters_by_ft or {}
-      for _, ft in ipairs(supported) do
+
+      -- Add Prettier for filetypes Biome doesn't support
+      for _, ft in ipairs(prettier_only) do
         opts.formatters_by_ft[ft] = opts.formatters_by_ft[ft] or {}
         table.insert(opts.formatters_by_ft[ft], "prettier")
-        table.insert(opts.formatters_by_ft[ft], "prettierd") -- fallback
       end
 
       opts.formatters = opts.formatters or {}
-      opts.formatters.prettier = opts.formatters.prettier or {}
-      opts.formatters.prettierd = opts.formatters.prettierd or {}
+
+      -- Configure Biome to use global config as fallback
+      opts.formatters.biome = {
+        require_cwd = false, -- Allow formatting without biome.json in project
+        env = {
+          BIOME_CONFIG_PATH = vim.fn.expand("~"),
+        },
+      }
+
+      -- Configure Prettier with sensible defaults
+      opts.formatters.prettier = {
+        prepend_args = {
+          "--tab-width=2",
+          "--print-width=100",
+        },
+      }
     end,
   },
   {
@@ -42,7 +54,9 @@ return {
     opts = function(_, opts)
       local nls = require("null-ls")
       opts.sources = opts.sources or {}
-      table.insert(opts.sources, nls.builtins.formatting.prettier)
+      table.insert(opts.sources, nls.builtins.formatting.prettier.with({
+        filetypes = prettier_only,
+      }))
     end,
   },
 }

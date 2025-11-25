@@ -121,7 +121,8 @@ return {
           return true
         end,
         vtsls = function(_, opts)
-          local on_attach = function(client, _)
+          -- Setup move to file refactoring command
+          Snacks.util.lsp.on({ name = "vtsls" }, function(_, client)
             client.commands["_typescript.moveToFileRefactoring"] = function(command, _)
               ---@type string, string, lsp.Range
               local action, uri, range = unpack(command.arguments)
@@ -170,17 +171,7 @@ return {
                 end)
               end)
             end
-          end
-          local name = "vtsls"
-          vim.api.nvim_create_autocmd("LspAttach", {
-            callback = function(args)
-              local buffer = args.buf ---@type number
-              local client = vim.lsp.get_client_by_id(args.data.client_id)
-              if client and (not name or client.name == name) then
-                return on_attach(client, buffer)
-              end
-            end,
-          })
+          end)
           -- copy typescript settings to javascript
           opts.settings.javascript =
             vim.tbl_deep_extend("force", {}, opts.settings.typescript, opts.settings.javascript or {})
@@ -262,7 +253,7 @@ return {
 
   -- Filetype icons
   {
-    "echasnovski/mini.icons",
+    "nvim-mini/mini.icons",
     opts = {
       file = {
         [".eslintrc.js"] = { glyph = "󰱺", hl = "MiniIconsYellow" },
