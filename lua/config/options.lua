@@ -4,6 +4,9 @@
 --
 local opt = vim.opt
 local g = vim.g
+local o = vim.o
+
+o.timeoutlen = 250
 
 g.codeium_arch = "arm64"
 g.codeium_os = "Darwin"
