@@ -5,5 +5,9 @@ return {
   config = true,
   opts = {
     terminal_cmd = "claude --dangerously-skip-permissions",
+    terminal = {
+      split_side = "left",
+      split_width_percentage = 0.20,
+    },
   },
 }
