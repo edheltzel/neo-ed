@@ -1,4 +1,5 @@
 return {
+  -- see git.lua for lazygit
   {
     "folke/snacks.nvim",
     opts = {

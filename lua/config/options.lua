@@ -5,7 +5,6 @@
 local opt = vim.opt
 local g = vim.g
 local o = vim.o
-
 o.timeoutlen = 250
 
 g.codeium_arch = "arm64"
@@ -24,3 +23,5 @@ opt.undodir = os.getenv("HOME") .. "/.local/state/nvim/undo"
 
 opt.spell = false
 opt.spelllang = "en_us"
+
+g.lazygit_config = false
