@@ -96,7 +96,7 @@ set("n", "<leader>ih", function()
   vim.notify(vim.lsp.inlay_hint.is_enabled() and "Inlay Hints Enabled" or "Inlay Hints Disabled")
 end)
 
--- Claude Code group
+-- Claude Code
 wk.add({ { "<leader>a", group = "Claude Code", icon = { icon = "🤖", color = "purple" } } })
 
 -- borderless lazygit
