@@ -51,9 +51,18 @@ return {
 
     local neoEd = require("plugins.ui.lualine.neoed").setup()
 
+    -- Use theme that matches colorscheme
+    local lualine_theme = "auto"
+    local colorscheme = vim.g.colors_name or "eldritch"
+    if colorscheme == "eldritch" then
+      lualine_theme = "eldritch"
+    elseif colorscheme:match("^rose%-pine") then
+      lualine_theme = "rose-pine"
+    end
+
     local opts = {
       options = {
-        theme = "eldritch",
+        theme = lualine_theme,
         component_separators = "",
         section_separators = "",
         globalstatus = vim.o.laststatus == 1,

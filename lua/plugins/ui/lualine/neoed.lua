@@ -1,23 +1,23 @@
----- This is NEO.ED a lualine theme - based on Eldritch
+---- This is NEO.ED a lualine theme - adapts to current colorscheme
 local M = {}
 
-function M.setup()
-  -- Start with the base eldritch theme
-  local neoEd = require("plugins.ui.lualine.eldritch")
+-- Eldritch color palette
+local eldritch_colors = {
+  darker = "#171928",
+  bg = "#212337",
+  darkGray = "#323449",
+  fg = "#454E7D",
+  gray = "#586089",
+  green = "#37F499",
+  blue = "#04D1F9",
+  purple = "#A48CF2",
+  red = "#F16d75",
+  magenta = "#F265B5",
+}
 
-  -- Custom color palette
-  local colors = {
-    darker = "#171928",
-    bg = "#212337",
-    darkGray = "#323449",
-    fg = "#454E7D",
-    gray = "#586089",
-    green = "#37F499",
-    blue = "#04D1F9",
-    purple = "#A48CF2",
-    red = "#F16d75",
-    magenta = "#F265B5",
-  }
+local function setup_eldritch()
+  local neoEd = require("plugins.ui.lualine.eldritch")
+  local colors = eldritch_colors
 
   -- Apply custom colors to modes
   neoEd.normal.a.fg = colors.fg
@@ -61,6 +61,22 @@ function M.setup()
   neoEd.dark = colors.darker
 
   return neoEd
+end
+
+local function setup_rose_pine(variant)
+  local rose_pine = require("plugins.ui.lualine.rose-pine")
+  return rose_pine.get_theme(variant)
+end
+
+function M.setup()
+  -- Detect current colorscheme
+  local colorscheme = vim.g.colors_name or "eldritch"
+
+  if colorscheme:match("^rose%-pine") then
+    return setup_rose_pine(colorscheme)
+  else
+    return setup_eldritch()
+  end
 end
 
 return M
