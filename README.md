@@ -3,7 +3,7 @@
 > [!NOTE]
 > This is a git submodule of [edheltzel/dotfiles](https://github.com/edheltzel/dotfiles). The standalone repository is available at [github.com/edheltzel/neoed](https://github.com/edheltzel/neoed)
 
-### My LazyVim-based Neovim setup for modern development
+### My LazyVim-based Neovim setup for web development
 
 ![Neovim](https://img.shields.io/badge/NeoVim-%2357A143.svg?&style=for-the-badge&logo=neovim&logoColor=white)
 ![Lua](https://img.shields.io/badge/lua-%232C2D72.svg?style=for-the-badge&logo=lua&logoColor=white)
@@ -48,6 +48,7 @@ Table of Contents:
 - A terminal with true color support
 
 **For the full dotfiles setup:**
+
 ```shell
 cd ~/.dotfiles && make stow pkg=nvim
 ```
@@ -60,17 +61,20 @@ cd ~/.dotfiles && make stow pkg=nvim
 This configuration is managed as a git submodule in my dotfiles. To install:
 
 1. Clone dotfiles with submodules:
+
    ```shell
    git clone --recurse-submodules https://github.com/edheltzel/dotfiles.git ~/.dotfiles
    ```
 
 2. Stow the nvim package:
+
    ```shell
    cd ~/.dotfiles
    make stow pkg=nvim
    ```
 
 3. Launch Neovim and let lazy.nvim install plugins:
+
    ```shell
    nvim
    ```
@@ -83,17 +87,20 @@ This configuration is managed as a git submodule in my dotfiles. To install:
 If you want to use this configuration standalone (outside of the dotfiles):
 
 1. Backup your existing Neovim configuration:
+
    ```shell
    mv ~/.config/nvim ~/.config/nvim.backup
    mv ~/.local/share/nvim ~/.local/share/nvim.backup
    ```
 
 2. Clone this repository:
+
    ```shell
    git clone https://github.com/edheltzel/neoed.git ~/.config/nvim
    ```
 
 3. Launch Neovim:
+
    ```shell
    nvim
    ```
@@ -132,45 +139,45 @@ Leader key: `<Space>`
 
 ### General
 
-| Key | Action |
-|-----|--------|
-| `jj` / `jk` | Exit INSERT mode |
-| `U` | Redo (shift+u) |
-| `<C-a>` | Select all |
+| Key         | Action                        |
+| ----------- | ----------------------------- |
+| `jj` / `jk` | Exit INSERT mode              |
+| `U`         | Redo (shift+u)                |
+| `<C-a>`     | Select all                    |
 | `gh` / `gl` | Jump to beginning/end of line |
-| `<Alt-j/k>` | Move lines up/down |
-| `<Enter>` | Toggle code folding |
+| `<Alt-j/k>` | Move lines up/down            |
+| `<Enter>`   | Toggle code folding           |
 
 ### File & Window Management
 
-| Key | Action |
-|-----|--------|
-| `<leader>fs` | Save file |
+| Key           | Action          |
+| ------------- | --------------- |
+| `<leader>fs`  | Save file       |
 | `<C-h/j/k/l>` | Navigate splits |
-| `<C-`>` | Toggle terminal |
+| `<C-`>`       | Toggle terminal |
 
 ### AI/Claude Code (`<leader>a`)
 
-| Key | Action |
-|-----|--------|
-| `<leader>ac` | Toggle Claude |
-| `<leader>af` | Focus Claude |
-| `<leader>ar` | Resume Claude |
+| Key          | Action                        |
+| ------------ | ----------------------------- |
+| `<leader>ac` | Toggle Claude                 |
+| `<leader>af` | Focus Claude                  |
+| `<leader>ar` | Resume Claude                 |
 | `<leader>ab` | Add current buffer to context |
-| `<leader>aa` | Accept diff |
-| `<leader>ad` | Deny diff |
+| `<leader>aa` | Accept diff                   |
+| `<leader>ad` | Deny diff                     |
 
 ### Search/Navigation
 
-| Key | Action |
-|-----|--------|
+| Key          | Action                         |
+| ------------ | ------------------------------ |
 | `<leader>jj` | Flash jump (leap to character) |
-| `<C-n>` | Multi-word editing |
+| `<C-n>`      | Multi-word editing             |
 
 ### Git
 
-| Key | Action |
-|-----|--------|
+| Key          | Action               |
+| ------------ | -------------------- |
 | `<leader>gg` | LazyGit (borderless) |
 
 <h2 id="plugin-highlights">Plugin Highlights <a href="#to-the-top">↑</a></h2>
@@ -190,6 +197,7 @@ Leader key: `<Space>`
 The following languages are configured with LSP, formatting, and linting:
 
 **Core Languages:**
+
 - Go (gopls, gofumpt, staticcheck)
 - Python (pyright, ruff)
 - Rust (rust-analyzer)
@@ -197,11 +205,13 @@ The following languages are configured with LSP, formatting, and linting:
 - PHP (intelephense)
 
 **Frontend:**
+
 - Astro
 - Svelte
 - Vue
 
 **Config/Data:**
+
 - Docker
 - Helm
 - YAML
