@@ -4,7 +4,7 @@ return {
   dependencies = { "folke/snacks.nvim" },
   config = true,
   keys = {
-    { "<C-c>", "<cmd>ClaudeCodeFocus<cr>", desc = "Toggle Claude Code", mode = { "n", "t", "x" } },
+    { "<C-A-S-c>", "<cmd>ClaudeCodeFocus<cr>", desc = "Toggle Claude Code", mode = { "n", "t", "x" } },
   },
   opts = {
     terminal_cmd = "claude --dangerously-skip-permissions",
@@ -16,7 +16,7 @@ return {
         border = "rounded",
         keys = {
           claude_hide = {
-            "<C-c>",
+            "<C-A-S-c>",
             function(self)
               self:hide()
             end,
