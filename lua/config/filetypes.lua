@@ -10,7 +10,7 @@ vim.filetype.add({
     ["_redirects"] = "plaintext",
   },
   pattern = {
-    -- [".*%.blade%.php"] = "blade",
+    [".*%.blade%.php"] = "blade",
     ["*.svg"] = "html",
     ["*.h"] = "c",
   },
