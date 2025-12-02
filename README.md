@@ -1,4 +1,4 @@
-<h1 id="to-the-top">NEO.ED - Neovim Configuration</h1>
+<h1 id="to-the-top">NOE.ED - Neovim Configuration</h1>
 
 > [!NOTE]
 > This is a git submodule of [edheltzel/dotfiles](https://github.com/edheltzel/dotfiles). The standalone repository is available at [github.com/edheltzel/neoed](https://github.com/edheltzel/neoed)
@@ -29,13 +29,14 @@ Table of Contents:
 <h2 id="features">Features <a href="#to-the-top">↑</a></h2>
 
 - **LazyVim Foundation** - Built on LazyVim for a modern, modular setup
-- **AI-Powered Coding** - Claude Code + Supermaven integration
-- **Multi-Language Support** - Go, Python, Rust, TypeScript, PHP, and more
+- **AI-Powered Coding** - Claude Code, Codeium, and Windsurf integration
+- **Multi-Language Support** - Go, Python, Rust, TypeScript, PHP, Elixir, and more
 - **Custom Keybindings** - Vim motions with modern IDE shortcuts
 - **Performance Optimized** - Lazy loading and minimal startup time
-- **Beautiful UI** - Eldritch theme with custom Lualine statusline
+- **Beautiful UI** - Rose Pine theme with custom Lualine statusline
 - **Git Integration** - LazyGit, Gitsigns, and GitHub CLI
 - **Modal Editing** - Extensive custom keybindings for efficient editing
+- **Snacks Dashboard** - Custom start screen with quick actions
 
 <h2 id="prerequisites">Prerequisites <a href="#to-the-top">↑</a></h2>
 
@@ -113,24 +114,45 @@ The configuration follows a modular architecture for maintainability:
 
 ```
 lua/
-├── config/                # Core configuration
-│   ├── lazy.lua          # Plugin manager bootstrap
-│   ├── options.lua       # Vim options
-│   ├── keymaps.lua       # Custom keybindings
-│   └── autocmds.lua      # Autocommands
-└── plugins/               # Plugin configurations
-    ├── colorscheme.lua   # Theme configuration
-    ├── lualine.lua       # Statusline
-    ├── snacks.lua        # UI enhancements
-    ├── supermaven.lua    # AI completion
-    ├── languages/        # Language-specific configs
+├── config/                  # Core configuration
+│   ├── lazy.lua            # Plugin manager bootstrap
+│   ├── options.lua         # Vim options
+│   ├── keymaps.lua         # Custom keybindings
+│   ├── autocmds.lua        # Autocommands
+│   └── filetypes.lua       # Filetype detection
+└── plugins/                 # Plugin configurations (organized by category)
+    ├── ai/                 # AI integrations
+    │   ├── claudecode.lua  # Claude Code config
+    │   ├── opencode.lua    # OpenCode config
+    │   └── windsurf.lua    # Windsurf/Codeium
+    ├── coding/             # Code editing tools
+    │   ├── emmet.lua       # Emmet expansion
+    │   └── surround.lua    # Surround text objects
+    ├── editor/             # Editor enhancements
+    │   ├── git.lua         # Git integration
+    │   └── multicursor.lua # Multi-cursor editing
+    ├── formatting/         # Code formatting
+    │   ├── conform.lua     # Conform config
+    │   └── prettier.lua    # Prettier config
+    ├── languages/          # Language-specific configs
     │   ├── go.lua
     │   ├── python.lua
-    │   ├── rust.lua
-    │   └── typescript.lua
-    └── themes/           # Custom themes
-        └── lualine/
-            └── neoed.lua # Custom statusline theme
+    │   ├── typescript.lua
+    │   ├── php.lua
+    │   ├── laravel.lua
+    │   └── ...
+    ├── linting/            # Linting tools
+    │   └── biome.lua       # Biome linter
+    ├── ui/                 # UI components
+    │   ├── colorscheme.lua # Theme config
+    │   ├── lualine.lua     # Statusline
+    │   └── lualine/        # Custom themes
+    │       ├── neoed.lua
+    │       ├── eldritch.lua
+    │       └── rose-pine.lua
+    ├── utils/              # Utility plugins
+    │   └── snacks.lua      # Snacks dashboard & utilities
+    └── disabled.lua        # Disabled plugins
 ```
 
 <h2 id="key-bindings">Key Bindings <a href="#to-the-top">↑</a></h2>
@@ -139,14 +161,16 @@ Leader key: `<Space>`
 
 ### General
 
-| Key         | Action                        |
-| ----------- | ----------------------------- |
-| `jj` / `jk` | Exit INSERT mode              |
-| `U`         | Redo (shift+u)                |
-| `<C-a>`     | Select all                    |
-| `gh` / `gl` | Jump to beginning/end of line |
-| `<Alt-j/k>` | Move lines up/down            |
-| `<Enter>`   | Toggle code folding           |
+| Key               | Action                        |
+| ----------------- | ----------------------------- |
+| `jj` / `jk`       | Exit INSERT mode              |
+| `U`               | Redo (shift+u)                |
+| `gh` / `gl`       | Jump to beginning/end of line |
+| `<Alt-j/k>`       | Move lines up/down            |
+| `<Alt-C-Up/Down>` | Duplicate lines up/down       |
+| `<Enter>`         | Toggle code folding           |
+| `<leader>nh`      | Clear search highlights       |
+| `<leader>ih`      | Toggle inlay hints            |
 
 ### File & Window Management
 
@@ -158,14 +182,14 @@ Leader key: `<Space>`
 
 ### AI/Claude Code (`<leader>a`)
 
-| Key          | Action                        |
-| ------------ | ----------------------------- |
-| `<leader>ac` | Toggle Claude                 |
-| `<leader>af` | Focus Claude                  |
-| `<leader>ar` | Resume Claude                 |
-| `<leader>ab` | Add current buffer to context |
-| `<leader>aa` | Accept diff                   |
-| `<leader>ad` | Deny diff                     |
+| Key            | Action                              |
+| -------------- | ----------------------------------- |
+| `<C-A-S-c>`    | Toggle Claude Code (floating)       |
+| `<leader>ac`   | Toggle Claude                       |
+| `<leader>af`   | Focus Claude                        |
+| `<leader>ab`   | Add current buffer to context       |
+| `<leader>aa`   | Accept diff                         |
+| `<leader>ad`   | Deny diff                           |
 
 ### Search/Navigation
 
@@ -184,17 +208,19 @@ Leader key: `<Space>`
 
 - **lazy.nvim** - Modern plugin manager with lazy loading
 - **LazyVim** - Neovim configuration framework
-- **Telescope** - Fuzzy finder for files, buffers, and more
+- **snacks.nvim** - Dashboard, picker, explorer, terminal, and utilities
 - **nvim-treesitter** - Syntax highlighting and code parsing
 - **nvim-lspconfig** - LSP configuration for language servers
 - **which-key** - Keybinding discovery and documentation
 - **flash.nvim** - Enhanced navigation and search
 - **LazyGit** - Git integration with TUI
-- **snacks.nvim** - UI enhancements and utilities
+- **harpoon2** - Quick file navigation
+- **mini-files** - File explorer alternative
+- **conform.nvim** - Code formatting
 
 <h2 id="language-support">Language Support <a href="#to-the-top">↑</a></h2>
 
-The following languages are configured with LSP, formatting, and linting:
+The following languages are configured with LSP, formatting, and linting via LazyVim extras:
 
 **Core Languages:**
 
@@ -202,44 +228,60 @@ The following languages are configured with LSP, formatting, and linting:
 - Python (pyright, ruff)
 - Rust (rust-analyzer)
 - TypeScript/JavaScript (typescript-language-server, biome)
-- PHP (intelephense)
+- PHP (intelephense, Laravel support)
+- Elixir
 
 **Frontend:**
 
+- Angular
 - Astro
 - Svelte
 - Vue
+- Tailwind CSS
 
-**Config/Data:**
+**Infrastructure:**
 
 - Docker
 - Helm
+- Terraform
+- Twig
+
+**Config/Data:**
+
 - YAML
 - TOML
 - JSON
-- Markdown
+- Markdown (with MDX support)
+- Jinja templates
 
 <h2 id="theme--ui">Theme & UI <a href="#to-the-top">↑</a></h2>
 
-- **Colorscheme:** Eldritch
-- **Statusline:** Custom Lualine with neo.ed theme
+- **Colorscheme:** Rose Pine Moon (also supports Eldritch)
+- **Statusline:** Custom Lualine with auto-detecting theme
+- **Dashboard:** Custom Snacks dashboard with NOE.ED branding
+- **Explorer:** Snacks explorer (neo-tree disabled)
 - **Icons:** Nerd Font icons throughout
-- **Transparency:** Optional background transparency support
+- **Cursor:** Cursorline and cursorcolumn enabled
 
-The UI is designed to be clean, distraction-free, and aesthetically pleasing while remaining functional.
+The UI is designed to be clean, distraction-free, and aesthetically pleasing while remaining functional. The Lualine statusline auto-detects the current colorscheme and applies matching colors.
 
 <h2 id="ai-integration">AI Integration <a href="#to-the-top">↑</a></h2>
 
-This configuration includes two AI-powered tools:
+This configuration includes multiple AI-powered tools:
 
 1. **Claude Code** - AI pair programmer with deep codebase understanding
+   - Toggle floating window with `<C-A-S-c>` (Ctrl+Alt+Shift+C)
    - Toggle with `<leader>ac`
    - Add context with `<leader>ab`
    - Accept/deny diffs with `<leader>aa`/`<leader>ad`
+   - Runs in a centered floating terminal (80% width/height)
 
-2. **Supermaven** - AI code completion
+2. **Codeium** - AI code completion (via LazyVim extra)
    - Real-time inline suggestions
    - Context-aware completions
+
+3. **Windsurf** - Additional AI coding assistance
+   - Alternative completion engine
 
 <h2 id="troubleshooting">Troubleshooting <a href="#to-the-top">↑</a></h2>
 
