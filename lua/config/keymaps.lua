@@ -37,6 +37,11 @@ set("n", "<A-C-Up>", "Vy`>p`<", { noremap = true, silent = true, desc = "duplica
 set("v", "<A-C-Down>", "y`<kp`>", { noremap = true, silent = true, desc = "duplicate lines down" })
 set("n", "<A-C-Down>", "Vy`<p`>", { noremap = true, silent = true, desc = "duplicate lines down" })
 set("n", "<A-C-d>", "Vy`<p`>", { noremap = true, silent = true, desc = "duplicate lines down" })
+set("v", "<A-C-d>", "Vy`<p`>", { noremap = true, silent = true, desc = "duplicate lines down" })
+set("n", "<A-C-j>", "Vy`<p`>", { noremap = true, silent = true, desc = "duplicate lines down" })
+set("v", "<A-C-j>", "Vy`<p`>", { noremap = true, silent = true, desc = "duplicate lines down" })
+set("n", "<A-C-l>", "Vy`<p`>", { noremap = true, silent = true, desc = "duplicate lines down" })
+set("v", "<A-C-l>", "Vy`<p`>", { noremap = true, silent = true, desc = "duplicate lines down" })
 
 set("n", "<leader>nh", ":nohl<CR>", { noremap = true, silent = true, desc = "Clear search highlights" })
 set("v", ">", ">gv", { noremap = true, silent = true, desc = "Indent right and reselect" }) -- shift+.
