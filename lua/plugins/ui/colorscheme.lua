@@ -1,13 +1,13 @@
 return {
   {
-    "rose-pine/neovim",
-    name = "rose-pine",
-  },
-  {
     "LazyVim/LazyVim",
     opts = {
       -- colorscheme options: "eldritch", "rose-pine", "rose-pine-moon", "rose-pine-dawn"
-      colorscheme = "rose-pine-moon",
+      colorscheme = "eldritch",
+    },
+    {
+      "rose-pine/neovim",
+      name = "rose-pine",
     },
   },
 }

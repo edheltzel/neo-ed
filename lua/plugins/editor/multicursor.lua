@@ -8,19 +8,8 @@ return {
 
     local set = vim.keymap.set
 
-    -- Add or skip cursor above/below the main cursor.
-    -- set({ "n", "x" }, "<up>", function()
-    --   mc.lineAddCursor(-1)
-    -- end)
-    -- set({ "n", "x" }, "<down>", function()
-    --   mc.lineAddCursor(1)
-    -- end)
-    -- set({ "n", "x" }, "<leader><up>", function()
-    --   mc.lineSkipCursor(-1)
-    -- end)
-    -- set({ "n", "x" }, "<leader><down>", function()
-    --   mc.lineSkipCursor(1)
-    -- end)
+    -- Add a cursor for all matches of cursor word/selection in the document.
+    set({ "n", "x" }, "<C-S-l>", mc.matchAllAddCursors)
 
     -- Add or skip adding a new cursor by matching word/selection
     set({ "n", "x" }, "<C-A-down>", function()
@@ -36,8 +25,19 @@ return {
       mc.matchSkipCursor(-1)
     end)
 
-    -- Add a cursor for all matches of cursor word/selection in the document.
-    set({ "n", "x" }, "<C-S-l>", mc.matchAllAddCursors)
+    -- Add or skip cursor above/below the main cursor.
+    -- set({ "n", "x" }, "<up>", function()
+    --   mc.lineAddCursor(-1)
+    -- end)
+    -- set({ "n", "x" }, "<down>", function()
+    --   mc.lineAddCursor(1)
+    -- end)
+    -- set({ "n", "x" }, "<leader><up>", function()
+    --   mc.lineSkipCursor(-1)
+    -- end)
+    -- set({ "n", "x" }, "<leader><down>", function()
+    --   mc.lineSkipCursor(1)
+    -- end)
 
     -- Add and remove cursors with control + left click.
     set("n", "<C-leftmouse>", mc.handleMouse)

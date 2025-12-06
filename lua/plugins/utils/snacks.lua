@@ -18,6 +18,7 @@ return {
           },
           explorer = {
             hidden = true,
+            trash = true,
             layout = {
               layout = {
                 position = "right",
