@@ -12,7 +12,7 @@ g.codeium_os = "Darwin"
 
 opt.cursorline = true
 opt.cursorcolumn = true
-opt.scrolloff = 5
+opt.scrolloff = 999
 opt.wrap = true
 
 opt.swapfile = false
