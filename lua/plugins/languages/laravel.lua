@@ -12,7 +12,7 @@ return {
     event = { "VeryLazy" },
     keys = {
       {
-        "<leader>ll",
+        "<leader>LL",
         function()
           Laravel.pickers.laravel()
         end,
@@ -26,56 +26,56 @@ return {
         desc = "Laravel: Open View Finder",
       },
       {
-        "<leader>la",
+        "<leader>La",
         function()
           Laravel.pickers.artisan()
         end,
         desc = "Laravel: Open Artisan Picker",
       },
       {
-        "<leader>lt",
+        "<leader>Lt",
         function()
           Laravel.commands.run("actions")
         end,
         desc = "Laravel: Open Actions Picker",
       },
       {
-        "<leader>lr",
+        "<leader>Lr",
         function()
           Laravel.pickers.routes()
         end,
         desc = "Laravel: Open Routes Picker",
       },
       {
-        "<leader>lh",
+        "<leader>Lh",
         function()
           Laravel.run("artisan docs")
         end,
         desc = "Laravel: Open Documentation",
       },
       {
-        "<leader>lm",
+        "<leader>Lm",
         function()
           Laravel.pickers.make()
         end,
         desc = "Laravel: Open Make Picker",
       },
       {
-        "<leader>lc",
+        "<leader>Lc",
         function()
           Laravel.pickers.commands()
         end,
         desc = "Laravel: Open Commands Picker",
       },
       {
-        "<leader>lo",
+        "<leader>Lo",
         function()
           Laravel.pickers.resources()
         end,
         desc = "Laravel: Open Resources Picker",
       },
       {
-        "<leader>lp",
+        "<leader>Lp",
         function()
           Laravel.commands.run("command_center")
         end,

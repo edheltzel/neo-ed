@@ -78,10 +78,8 @@ return {
         args = function(_, ctx)
           local args = { "format", "--stdin-file-path", "$FILENAME" }
           -- Check if project has local biome config
-          local has_local_config = vim.fs.find(
-            { "biome.json", "biome.jsonc" },
-            { path = ctx.dirname, upward = true, stop = vim.env.HOME }
-          )[1]
+          local has_local_config =
+            vim.fs.find({ "biome.json", "biome.jsonc" }, { path = ctx.dirname, upward = true, stop = vim.env.HOME })[1]
           -- If no local config, use global config
           if not has_local_config then
             local global_config = vim.fn.expand("~/biome.json")
@@ -108,10 +106,10 @@ return {
       }
 
       -- Enable format on save (LazyVim default, but explicit for clarity)
-      opts.format_on_save = opts.format_on_save or {
-        timeout_ms = 3000,
-        lsp_fallback = true,
-      }
+      -- opts.format_on_save = opts.format_on_save or {
+      --   timeout_ms = 3000,
+      --   lsp_fallback = true,
+      -- }
     end,
   },
 
@@ -122,9 +120,12 @@ return {
     opts = function(_, opts)
       local nls = require("null-ls")
       opts.sources = opts.sources or {}
-      table.insert(opts.sources, nls.builtins.formatting.prettier.with({
-        filetypes = prettier_only,
-      }))
+      table.insert(
+        opts.sources,
+        nls.builtins.formatting.prettier.with({
+          filetypes = prettier_only,
+        })
+      )
     end,
   },
 }

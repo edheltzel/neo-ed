@@ -104,6 +104,15 @@ end)
 -- Claude Code
 wk.add({ { "<leader>a", group = "Claude Code", icon = { icon = "🤖", color = "purple" } } })
 
+-- Laravel
+wk.add({ { "<leader>L", group = "Laravel", icon = { icon = "", color = "red" } } })
+
+-- Move LazyVim changelog from <leader>L to <leader>l
+set("n", "<leader>lc", function()
+  LazyVim.news.changelog()
+end, { desc = "LazyVim Changelog" })
+del("n", "<leader>L")
+
 -- borderless lazygit
 set("n", "<leader>gg", function()
   Snacks.lazygit({ cwd = vim.fn.getcwd(), esc_esc = false, ctrl_hjkl = false, border = "none" })

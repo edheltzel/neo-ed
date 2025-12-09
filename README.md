@@ -132,7 +132,6 @@ lua/
     │   ├── git.lua         # Git integration
     │   └── multicursor.lua # Multi-cursor editing
     ├── formatting/         # Code formatting
-    │   ├── conform.lua     # Conform config
     │   └── prettier.lua    # Prettier config
     ├── languages/          # Language-specific configs
     │   ├── go.lua
@@ -182,14 +181,14 @@ Leader key: `<Space>`
 
 ### AI/Claude Code (`<leader>a`)
 
-| Key            | Action                              |
-| -------------- | ----------------------------------- |
-| `<C-A-S-c>`    | Toggle Claude Code (floating)       |
-| `<leader>ac`   | Toggle Claude                       |
-| `<leader>af`   | Focus Claude                        |
-| `<leader>ab`   | Add current buffer to context       |
-| `<leader>aa`   | Accept diff                         |
-| `<leader>ad`   | Deny diff                           |
+| Key          | Action                        |
+| ------------ | ----------------------------- |
+| `<C-A-S-c>`  | Toggle Claude Code (floating) |
+| `<leader>ac` | Toggle Claude                 |
+| `<leader>af` | Focus Claude                  |
+| `<leader>ab` | Add current buffer to context |
+| `<leader>aa` | Accept diff                   |
+| `<leader>ad` | Deny diff                     |
 
 ### Search/Navigation
 
