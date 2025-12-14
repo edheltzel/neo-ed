@@ -1,365 +1,526 @@
-<h1 id="to-the-top">NOE.ED - Neovim Configuration</h1>
+# NOE.ED - Neovim Configuration
 
-> [!NOTE]
-> This is a git submodule of [edheltzel/dotfiles](https://github.com/edheltzel/dotfiles). The standalone repository is available at [github.com/edheltzel/neoed](https://github.com/edheltzel/neoed)
-
-### My LazyVim-based Neovim setup for web development
-
-![Neovim](https://img.shields.io/badge/NeoVim-%2357A143.svg?&style=for-the-badge&logo=neovim&logoColor=white)
-![Lua](https://img.shields.io/badge/lua-%232C2D72.svg?style=for-the-badge&logo=lua&logoColor=white)
-
-A carefully crafted Neovim configuration built on [LazyVim](https://www.lazyvim.org/), featuring extensive customizations, language support, and AI-powered tooling.
-
-> [!WARNING]
-> This is my personal Neovim setup and <ins>**changes often**</ins>. It's designed for my workflow and preferences. Feel free to get **inspired**, take what you want, and leave the rest to make it your own.
-
-Table of Contents:
-
-- [Features](#features)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Configuration Structure](#configuration-structure)
-- [Key Bindings](#key-bindings)
-- [Plugin Highlights](#plugin-highlights)
-- [Language Support](#language-support)
-- [Theme & UI](#theme--ui)
-- [AI Integration](#ai-integration)
-- [Troubleshooting](#troubleshooting)
-
-<h2 id="features">Features <a href="#to-the-top">↑</a></h2>
-
-- **LazyVim Foundation** - Built on LazyVim for a modern, modular setup
-- **AI-Powered Coding** - Claude Code, Codeium, and Windsurf integration
-- **Multi-Language Support** - Go, Python, Rust, TypeScript, PHP, Elixir, and more
-- **Custom Keybindings** - Vim motions with modern IDE shortcuts
-- **Performance Optimized** - Lazy loading and minimal startup time
-- **Beautiful UI** - Rose Pine theme with custom Lualine statusline
-- **Git Integration** - LazyGit, Gitsigns, and GitHub CLI
-- **Modal Editing** - Extensive custom keybindings for efficient editing
-- **Snacks Dashboard** - Custom start screen with quick actions
-
-<h2 id="prerequisites">Prerequisites <a href="#to-the-top">↑</a></h2>
-
-- Neovim >= 0.9.0
-- Git >= 2.19.0
-- A [Nerd Font](https://www.nerdfonts.com/) (recommended: JetBrainsMono Nerd Font)
-- ripgrep (for Telescope)
-- fd (for file finding)
-- Node.js >= 18.0.0 (for LSP servers)
-- A terminal with true color support
-
-**For the full dotfiles setup:**
-
-```shell
-cd ~/.dotfiles && make stow pkg=nvim
+```
+        ███╗   ██╗███████╗ ██████╗    ███████╗██████╗
+        ████╗  ██║██╔════╝██╔═══██╗   ██╔════╝██╔══██╗
+        ██╔██╗ ██║█████╗  ██║   ██║   █████╗  ██║  ██║
+        ██║╚██╗██║██╔══╝  ██║   ██║   ██╔══╝  ██║  ██║
+        ██║ ╚████║███████╗╚██████╔╝██╗███████╗██████╔╝
+        ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝╚══════╝╚═════╝
 ```
 
-<h2 id="installation">Installation <a href="#to-the-top">↑</a></h2>
+A modern, LazyVim-based Neovim configuration optimized for web development, AI-assisted coding, and multi-language support.
 
-<details>
-  <summary><strong>As part of dotfiles (recommended)</strong></summary>
+## Features
 
-This configuration is managed as a git submodule in my dotfiles. To install:
+- **LazyVim Foundation**: Built on LazyVim for a solid, well-maintained base
+- **AI Integration**: Claude Code, Codeium, and Supermaven support
+- **Multi-Language**: Go, Python, TypeScript, PHP/Laravel, Rust, and more
+- **Hybrid Formatting**: Biome-first with Prettier fallback
+- **Custom Theme**: Eldritch colorscheme with custom lualine statusline
+- **Modern UI**: Snacks.nvim for explorer, picker, dashboard, and terminal
 
-1. Clone dotfiles with submodules:
+---
 
-   ```shell
-   git clone --recurse-submodules https://github.com/edheltzel/dotfiles.git ~/.dotfiles
-   ```
+## Table of Contents
 
-2. Stow the nvim package:
+1. [Quick Start](#quick-start)
+2. [Architecture](#architecture)
+3. [Plugin Categories](#plugin-categories)
+4. [Keybindings Reference](#keybindings-reference)
+5. [Language Support](#language-support)
+6. [Configuration Guide](#configuration-guide)
+7. [Workflows](#workflows)
 
-   ```shell
-   cd ~/.dotfiles
-   make stow pkg=nvim
-   ```
+---
 
-3. Launch Neovim and let lazy.nvim install plugins:
+## Quick Start
 
-   ```shell
-   nvim
-   ```
+### Prerequisites
 
-</details>
+- Neovim >= 0.10.0
+- Git
+- A Nerd Font (for icons)
+- Node.js (for LSP servers)
+- Ripgrep (for search)
 
-<details>
-  <summary><strong>Standalone installation</strong></summary>
+### Installation
 
-If you want to use this configuration standalone (outside of the dotfiles):
+This configuration is part of a dotfiles repository managed with GNU Stow:
 
-1. Backup your existing Neovim configuration:
+```bash
+# Clone the dotfiles repository
+git clone https://github.com/yourusername/dotfiles ~/.dotfiles
 
-   ```shell
-   mv ~/.config/nvim ~/.config/nvim.backup
-   mv ~/.local/share/nvim ~/.local/share/nvim.backup
-   ```
+# Stow the nvim package
+cd ~/.dotfiles
+make stow pkg=nvim
 
-2. Clone this repository:
+# Or manually
+stow -v nvim
+```
 
-   ```shell
-   git clone https://github.com/edheltzel/neoed.git ~/.config/nvim
-   ```
+### First Launch
 
-3. Launch Neovim:
+1. Open Neovim: `nvim`
+2. Lazy.nvim will automatically install all plugins
+3. Run `:Mason` to install LSP servers and formatters
+4. Run `:LazyExtras` to enable additional language packs
 
-   ```shell
-   nvim
-   ```
+---
 
-</details>
+## Architecture
 
-<h2 id="configuration-structure">Configuration Structure <a href="#to-the-top">↑</a></h2>
-
-The configuration follows a modular architecture for maintainability:
+### Directory Structure
 
 ```
 lua/
-├── config/                  # Core configuration
-│   ├── lazy.lua            # Plugin manager bootstrap
-│   ├── options.lua         # Vim options
-│   ├── keymaps.lua         # Custom keybindings
-│   ├── autocmds.lua        # Autocommands
-│   └── filetypes.lua       # Filetype detection
-└── plugins/                 # Plugin configurations (organized by category)
-    ├── ai/                 # AI integrations
-    │   ├── claudecode.lua  # Claude Code config
-    │   ├── opencode.lua    # OpenCode config
-    │   └── windsurf.lua    # Windsurf/Codeium
-    ├── coding/             # Code editing tools
-    │   ├── emmet.lua       # Emmet expansion
-    │   └── surround.lua    # Surround text objects
-    ├── editor/             # Editor enhancements
-    │   ├── git.lua         # Git integration
-    │   └── multicursor.lua # Multi-cursor editing
-    ├── formatting/         # Code formatting
-    │   └── prettier.lua    # Prettier config
-    ├── languages/          # Language-specific configs
+├── config/              # Core configuration
+│   ├── lazy.lua        # Plugin manager bootstrap
+│   ├── options.lua     # Vim options
+│   ├── keymaps.lua     # Custom keybindings
+│   ├── autocmds.lua    # Autocommands
+│   └── filetypes.lua   # Custom filetype associations
+│
+└── plugins/             # Plugin configurations
+    ├── disabled.lua    # Disabled plugins (neo-tree)
+    │
+    ├── ai/             # AI assistants
+    │   ├── claudecode.lua
+    │   ├── opencode.lua
+    │   └── windsurf.lua
+    │
+    ├── coding/         # Code editing
+    │   ├── emmet.lua
+    │   └── surround.lua
+    │
+    ├── editor/         # Editor enhancements
+    │   ├── git.lua
+    │   ├── ghostty.lua
+    │   └── multicursor.lua
+    │
+    ├── formatting/     # Code formatters
+    │   └── prettier.lua
+    │
+    ├── linting/        # Linters
+    │   └── biome.lua
+    │
+    ├── languages/      # Language-specific configs
     │   ├── go.lua
     │   ├── python.lua
     │   ├── typescript.lua
     │   ├── php.lua
     │   ├── laravel.lua
-    │   └── ...
-    ├── linting/            # Linting tools
-    │   └── biome.lua       # Biome linter
-    ├── ui/                 # UI components
-    │   ├── colorscheme.lua # Theme config
-    │   ├── lualine.lua     # Statusline
-    │   └── lualine/        # Custom themes
-    │       ├── neoed.lua
-    │       ├── eldritch.lua
-    │       └── rose-pine.lua
-    ├── utils/              # Utility plugins
-    │   └── snacks.lua      # Snacks dashboard & utilities
-    └── disabled.lua        # Disabled plugins
+    │   ├── astro.lua
+    │   ├── docker.lua
+    │   ├── jinja.lua
+    │   ├── mdx.lua
+    │   ├── tailwind.lua
+    │   └── intelephense.lua
+    │
+    ├── ui/             # UI customization
+    │   ├── colorscheme.lua
+    │   ├── eldritch.lua
+    │   ├── lualine.lua
+    │   ├── treesitter-context.lua
+    │   └── lualine/
+    │       ├── neoed.lua      # Theme adapter
+    │       ├── eldritch.lua   # Eldritch theme
+    │       └── rose-pine.lua  # Rose Pine theme
+    │
+    └── utils/          # Utilities
+        └── snacks.lua
 ```
 
-<h2 id="key-bindings">Key Bindings <a href="#to-the-top">↑</a></h2>
+### Plugin Loading Architecture
 
-Leader key: `<Space>`
+```mermaid
+graph TB
+    subgraph "Bootstrap"
+        init[init.lua]
+        lazy[config/lazy.lua]
+    end
 
-### General
+    subgraph "Core Config"
+        options[config/options.lua]
+        keymaps[config/keymaps.lua]
+        autocmds[config/autocmds.lua]
+        filetypes[config/filetypes.lua]
+    end
 
-| Key               | Action                        |
-| ----------------- | ----------------------------- |
-| `jj` / `jk`       | Exit INSERT mode              |
-| `U`               | Redo (shift+u)                |
-| `gh` / `gl`       | Jump to beginning/end of line |
-| `<Alt-j/k>`       | Move lines up/down            |
-| `<Alt-C-Up/Down>` | Duplicate lines up/down       |
-| `<Enter>`         | Toggle code folding           |
-| `<leader>nh`      | Clear search highlights       |
-| `<leader>ih`      | Toggle inlay hints            |
+    subgraph "Plugin Spec Loading"
+        lazyvim[LazyVim Base]
+        plugins_root[plugins/]
+        plugins_ai[plugins/ai/]
+        plugins_coding[plugins/coding/]
+        plugins_editor[plugins/editor/]
+        plugins_formatting[plugins/formatting/]
+        plugins_languages[plugins/languages/]
+        plugins_ui[plugins/ui/]
+        plugins_utils[plugins/utils/]
+    end
 
-### File & Window Management
+    init --> lazy
+    lazy --> filetypes
+    lazy --> lazyvim
+    lazy --> plugins_root
+    lazy --> plugins_ai
+    lazy --> plugins_coding
+    lazy --> plugins_editor
+    lazy --> plugins_formatting
+    lazy --> plugins_languages
+    lazy --> plugins_ui
+    lazy --> plugins_utils
 
-| Key           | Action          |
-| ------------- | --------------- |
-| `<leader>fs`  | Save file       |
-| `<C-h/j/k/l>` | Navigate splits |
-| `<C-`>`       | Toggle terminal |
-
-### AI/Claude Code (`<leader>a`)
-
-| Key          | Action                        |
-| ------------ | ----------------------------- |
-| `<C-A-S-c>`  | Toggle Claude Code (floating) |
-| `<leader>ac` | Toggle Claude                 |
-| `<leader>af` | Focus Claude                  |
-| `<leader>ab` | Add current buffer to context |
-| `<leader>aa` | Accept diff                   |
-| `<leader>ad` | Deny diff                     |
-
-### Search/Navigation
-
-| Key          | Action                         |
-| ------------ | ------------------------------ |
-| `<leader>jj` | Flash jump (leap to character) |
-| `<C-n>`      | Multi-word editing             |
-
-### Git
-
-| Key          | Action               |
-| ------------ | -------------------- |
-| `<leader>gg` | LazyGit (borderless) |
-
-<h2 id="plugin-highlights">Plugin Highlights <a href="#to-the-top">↑</a></h2>
-
-- **lazy.nvim** - Modern plugin manager with lazy loading
-- **LazyVim** - Neovim configuration framework
-- **snacks.nvim** - Dashboard, picker, explorer, terminal, and utilities
-- **nvim-treesitter** - Syntax highlighting and code parsing
-- **nvim-lspconfig** - LSP configuration for language servers
-- **which-key** - Keybinding discovery and documentation
-- **flash.nvim** - Enhanced navigation and search
-- **LazyGit** - Git integration with TUI
-- **harpoon2** - Quick file navigation
-- **mini-files** - File explorer alternative
-- **conform.nvim** - Code formatting
-
-<h2 id="language-support">Language Support <a href="#to-the-top">↑</a></h2>
-
-The following languages are configured with LSP, formatting, and linting via LazyVim extras:
-
-**Core Languages:**
-
-- Go (gopls, gofumpt, staticcheck)
-- Python (pyright, ruff)
-- Rust (rust-analyzer)
-- TypeScript/JavaScript (typescript-language-server, biome)
-- PHP (intelephense, Laravel support)
-- Elixir
-
-**Frontend:**
-
-- Angular
-- Astro
-- Svelte
-- Vue
-- Tailwind CSS
-
-**Infrastructure:**
-
-- Docker
-- Helm
-- Terraform
-- Twig
-
-**Config/Data:**
-
-- YAML
-- TOML
-- JSON
-- Markdown (with MDX support)
-- Jinja templates
-
-<h2 id="theme--ui">Theme & UI <a href="#to-the-top">↑</a></h2>
-
-- **Colorscheme:** Rose Pine Moon (also supports Eldritch)
-- **Statusline:** Custom Lualine with auto-detecting theme
-- **Dashboard:** Custom Snacks dashboard with NOE.ED branding
-- **Explorer:** Snacks explorer (neo-tree disabled)
-- **Icons:** Nerd Font icons throughout
-- **Cursor:** Cursorline and cursorcolumn enabled
-
-The UI is designed to be clean, distraction-free, and aesthetically pleasing while remaining functional. The Lualine statusline auto-detects the current colorscheme and applies matching colors.
-
-<h2 id="ai-integration">AI Integration <a href="#to-the-top">↑</a></h2>
-
-This configuration includes multiple AI-powered tools:
-
-1. **Claude Code** - AI pair programmer with deep codebase understanding
-   - Toggle floating window with `<C-A-S-c>` (Ctrl+Alt+Shift+C)
-   - Toggle with `<leader>ac`
-   - Add context with `<leader>ab`
-   - Accept/deny diffs with `<leader>aa`/`<leader>ad`
-   - Runs in a centered floating terminal (80% width/height)
-
-2. **Codeium** - AI code completion (via LazyVim extra)
-   - Real-time inline suggestions
-   - Context-aware completions
-
-3. **Windsurf** - Additional AI coding assistance
-   - Alternative completion engine
-
-<h2 id="troubleshooting">Troubleshooting <a href="#to-the-top">↑</a></h2>
-
-<details>
-  <summary>Plugins not loading</summary>
-
-Try removing the lazy.nvim cache:
-
-```shell
-rm -rf ~/.local/share/nvim
-nvim
+    lazyvim --> options
+    lazyvim --> keymaps
+    lazyvim --> autocmds
 ```
 
-Then restart Neovim and run `:Lazy sync`.
+### Load Order
 
-</details>
-
-<details>
-  <summary>LSP not working</summary>
-
-Check if the language server is installed:
-
-```shell
-:LspInfo
-```
-
-Install missing servers with Mason:
-
-```shell
-:Mason
-```
-
-</details>
-
-<details>
-  <summary>Treesitter errors</summary>
-
-Update treesitter parsers:
-
-```shell
-:TSUpdate
-```
-
-Or install specific parser:
-
-```shell
-:TSInstall <language>
-```
-
-</details>
-
-<details>
-  <summary>Git submodule issues</summary>
-
-If this configuration is out of sync as a submodule:
-
-```shell
-cd ~/.dotfiles/nvim/.config/nvim
-git pull origin master
-cd ~/.dotfiles
-git add nvim/.config/nvim
-git commit -m "Update neoed submodule"
-```
-
-</details>
-
-<details>
-  <summary>Performance issues</summary>
-
-Check startup time:
-
-```shell
-nvim --startuptime startup.log
-```
-
-Disable plugins temporarily by commenting them out in `lua/plugins/`.
-
-</details>
+1. `init.lua` - Entry point, loads `config.lazy`
+2. `config/lazy.lua` - Bootstraps lazy.nvim, loads filetypes
+3. LazyVim base plugins load
+4. Custom plugin specs load (in directory import order)
+5. `config/options.lua` - Vim options
+6. `config/keymaps.lua` - Keybindings (VeryLazy)
+7. `config/autocmds.lua` - Autocommands (VeryLazy)
 
 ---
 
-<p align="center">Built with ❤️ by <a href="https://github.com/edheltzel">@edheltzel</a></p>
+## Plugin Categories
+
+### AI Assistants
+
+| Plugin          | Description             | Key Binding      |
+| --------------- | ----------------------- | ---------------- |
+| claudecode.nvim | Claude Code integration | `<C-A-S-c>`      |
+| codeium         | AI code completion      | (via LazyExtras) |
+
+**Claude Code Configuration** (`lua/plugins/ai/claudecode.lua`):
+
+- Floating window (80% width/height)
+- Rounded border
+- `--dangerously-skip-permissions` mode enabled
+
+### Editor Enhancements
+
+| Plugin           | Description      | Key Bindings               |
+| ---------------- | ---------------- | -------------------------- |
+| multicursor.nvim | Multiple cursors | `<C-S-l>`, `<C-A-down/up>` |
+| gitsigns.nvim    | Git integration  | Current line blame enabled |
+| flash.nvim       | Motion plugin    | `<leader>jj`               |
+
+### Formatting Stack
+
+```mermaid
+graph LR
+    subgraph "Biome-First Filetypes"
+        JS[JavaScript]
+        TS[TypeScript]
+        JSON[JSON]
+        CSS[CSS]
+    end
+
+    subgraph "Prettier-Only"
+        HTML[HTML]
+        MD[Markdown]
+        ASTRO[Astro]
+        SCSS[SCSS]
+    end
+
+    subgraph "Special"
+        YAML[YAML] --> yamlfmt
+    end
+
+    JS --> Biome
+    TS --> Biome
+    JSON --> Biome
+    CSS --> Biome
+    Biome -->|fallback| Prettier
+
+    HTML --> Prettier
+    MD --> Prettier
+    ASTRO --> Prettier
+    SCSS --> Prettier
+```
+
+**Formatter Priority** (from `lua/plugins/formatting/prettier.lua`):
+
+1. Biome (primary for JS/TS/JSON/CSS)
+2. Prettier (fallback for Biome-supported, primary for HTML/MD)
+3. yamlfmt (YAML files)
+
+### UI Components
+
+| Component     | Plugin           | Configuration                |
+| ------------- | ---------------- | ---------------------------- |
+| Colorscheme   | eldritch.nvim    | Dark theme with dim inactive |
+| Statusline    | lualine.nvim     | Custom NEO.ED theme          |
+| File Explorer | snacks.explorer  | Right sidebar, hidden files  |
+| Picker        | snacks.picker    | Default layout               |
+| Dashboard     | snacks.dashboard | Custom NEO.ED header         |
+| Terminal      | snacks.terminal  | Borderless float             |
+
+---
+
+## Keybindings Reference
+
+See [CHEATSHEET.md](./CHEATSHEET.md) for the complete keybindings reference.
+
+---
+
+## Language Support
+
+### Enabled LazyVim Extras
+
+From `lazyvim.json`:
+
+**AI**:
+
+- `ai.claudecode` - Claude Code integration
+- `ai.codeium` - AI completion
+
+**Coding**:
+
+- `coding.mini-surround` - Surround text objects
+- `dap.core` - Debug adapter protocol
+
+**Editor**:
+
+- `editor.harpoon2` - Quick file navigation
+- `editor.mini-files` - File browser
+- `editor.snacks_explorer` - Snacks file explorer
+- `editor.snacks_picker` - Snacks picker
+
+**Formatting**:
+
+- `formatting.biome` - Biome formatter/linter
+
+**Languages**:
+
+- `lang.angular` - Angular
+- `lang.astro` - Astro
+- `lang.docker` - Docker/Compose
+- `lang.elixir` - Elixir
+- `lang.go` - Go
+- `lang.helm` - Helm charts
+- `lang.json` - JSON
+- `lang.markdown` - Markdown
+- `lang.php` - PHP
+- `lang.python` - Python
+- `lang.rust` - Rust
+- `lang.svelte` - Svelte
+- `lang.tailwind` - Tailwind CSS
+- `lang.terraform` - Terraform
+- `lang.toml` - TOML
+- `lang.typescript` - TypeScript
+- `lang.vue` - Vue
+- `lang.yaml` - YAML
+
+**Utilities**:
+
+- `util.dot` - Dotfile support
+- `util.mini-hipatterns` - Pattern highlighting
+
+### Language-Specific Features
+
+#### Go (`lua/plugins/languages/go.lua`)
+
+**LSP**: gopls with enhanced settings
+
+- gofumpt formatting
+- Inlay hints (parameters, types, values)
+- Static analysis (nilness, unused params/writes)
+- Semantic tokens
+
+**Testing**: neotest-golang
+
+#### Python (`lua/plugins/languages/python.lua`)
+
+**LSP**: Pyright + Ruff
+
+- Pyright for type checking
+- Ruff for linting (replaces ESLint behavior)
+
+**DAP**: debugpy integration
+
+**Virtual Environments**: venv-selector.nvim
+
+#### TypeScript (`lua/plugins/languages/typescript.lua`)
+
+**LSP**: vtsls (not tsserver)
+
+- Complete function calls
+- Auto-update imports on file move
+- Inlay hints
+- Move to file refactoring
+
+**DAP**: js-debug-adapter
+
+**Custom Icons**: eslintrc, package.json, tsconfig, etc.
+
+#### PHP (`lua/plugins/languages/php.lua`)
+
+**LSP**: Intelephense
+
+- Blade template support
+- Large file support (5MB)
+
+**Tools**: PHPStan, Pint, blade-formatter
+
+**DAP**: php-debug-adapter
+
+#### Laravel (`lua/plugins/languages/laravel.lua`)
+
+**Plugin**: adalessa/laravel.nvim
+
+- Artisan commands
+- Route navigation
+- Make generators
+- View finder
+
+---
+
+## Configuration Guide
+
+### Vim Options (`lua/config/options.lua`)
+
+```lua
+-- UI
+opt.cursorline = true       -- Highlight current line
+opt.cursorcolumn = true     -- Highlight current column
+opt.scrolloff = 999         -- Keep cursor centered
+opt.wrap = true             -- Wrap long lines
+
+-- Files
+opt.swapfile = false        -- No swap files
+opt.backup = false          -- No backup files
+opt.undofile = true         -- Persistent undo
+
+-- Timing
+o.timeoutlen = 250          -- Key sequence timeout
+
+-- Platform
+g.codeium_arch = "arm64"
+g.codeium_os = "Darwin"
+```
+
+### Custom Filetypes (`lua/config/filetypes.lua`)
+
+| Extension/Pattern | Filetype   |
+| ----------------- | ---------- |
+| `.njk`            | htmldjango |
+| `.webc`           | htmldjango |
+| `.conf`           | sh         |
+| `*.blade.php`     | blade      |
+| `*.svg`           | html       |
+
+### Autocommands (`lua/config/autocmds.lua`)
+
+1. **YAML Frontmatter**: Enables YAML syntax in template files
+2. **Help Windows**: Opens help in vertical split
+3. **Auto Resize**: Equalizes splits on window resize
+4. **No Auto Comment**: Disables automatic comment continuation
+5. **Dotenv Syntax**: Highlights `.env` files as `dosini`
+
+### Theme Configuration
+
+**Colorscheme**: Eldritch (`lua/plugins/ui/eldritch.lua`)
+
+- Transparent: false
+- Dim inactive: true
+- Dark sidebars and floats
+- Custom background: `#171928`
+
+**Statusline**: Custom lualine theme (`lua/plugins/ui/lualine/neoed.lua`)
+
+- Centered filename
+- Mode indicator (left and right)
+- Project directory
+- Git branch and diff
+- Diagnostics
+- Macro recording indicator
+
+---
+
+## Workflows
+
+### Daily Development
+
+1. **Start Neovim** - Dashboard shows recent files, dotfiles shortcuts
+2. **Open Project** - Use `<leader>ff` for file picker
+3. **Navigate Files** - Use Snacks explorer (right sidebar)
+4. **Edit with Multi-Cursor** - `<C-n>` for next match
+5. **Format on Save** - Biome/Prettier automatically formats
+
+### Git Workflow
+
+1. Open Lazygit: `<leader>gg`
+2. View inline blame (automatic via gitsigns)
+3. Stage changes in Lazygit
+4. Commit with conventional messages
+
+### Debugging (DAP)
+
+1. Set breakpoints
+2. Start debug session with language-specific commands
+3. Use DAP UI for inspection
+
+### AI-Assisted Coding
+
+1. Toggle Claude Code: `<C-A-S-c>`
+2. Floating window appears (80% size)
+3. Ask questions or request code changes
+4. Claude Code can read/modify files directly
+
+### Laravel Development
+
+1. Open Laravel picker: `<leader>LL`
+2. Run Artisan commands: `<leader>La`
+3. Navigate routes: `<leader>Lr`
+4. Generate code: `<leader>Lm`
+
+---
+
+## Troubleshooting
+
+### Plugin Issues
+
+```vim
+:Lazy          " Open plugin manager
+:Lazy sync     " Sync plugins
+:Lazy health   " Check plugin health
+```
+
+### LSP Issues
+
+```vim
+:LspInfo       " Check LSP status
+:LspLog        " View LSP logs
+:Mason         " Manage LSP servers
+```
+
+### Performance
+
+```vim
+:LazyProfile   " Profile startup time
+```
+
+### Reload Configuration
+
+```vim
+:source %      " Reload current file
+" Or restart Neovim
+```
+
+---
+
+## License
+
+Part of the dotfiles repository. See main repository for license information.
+
+---
+
+_Generated documentation for NOE.ED Neovim configuration_
