@@ -132,52 +132,7 @@ lua/
         └── snacks.lua
 ```
 
-### Plugin Loading Architecture
-
-```mermaid
-graph TB
-    subgraph "Bootstrap"
-        init[init.lua]
-        lazy[config/lazy.lua]
-    end
-
-    subgraph "Core Config"
-        options[config/options.lua]
-        keymaps[config/keymaps.lua]
-        autocmds[config/autocmds.lua]
-        filetypes[config/filetypes.lua]
-    end
-
-    subgraph "Plugin Spec Loading"
-        lazyvim[LazyVim Base]
-        plugins_root[plugins/]
-        plugins_ai[plugins/ai/]
-        plugins_coding[plugins/coding/]
-        plugins_editor[plugins/editor/]
-        plugins_formatting[plugins/formatting/]
-        plugins_languages[plugins/languages/]
-        plugins_ui[plugins/ui/]
-        plugins_utils[plugins/utils/]
-    end
-
-    init --> lazy
-    lazy --> filetypes
-    lazy --> lazyvim
-    lazy --> plugins_root
-    lazy --> plugins_ai
-    lazy --> plugins_coding
-    lazy --> plugins_editor
-    lazy --> plugins_formatting
-    lazy --> plugins_languages
-    lazy --> plugins_ui
-    lazy --> plugins_utils
-
-    lazyvim --> options
-    lazyvim --> keymaps
-    lazyvim --> autocmds
-```
-
-### Load Order
+### Plugin Load Order
 
 1. `init.lua` - Entry point, loads `config.lazy`
 2. `config/lazy.lua` - Bootstraps lazy.nvim, loads filetypes
@@ -213,38 +168,6 @@ graph TB
 | flash.nvim       | Motion plugin    | `<leader>jj`               |
 
 ### Formatting Stack
-
-```mermaid
-graph LR
-    subgraph "Biome-First Filetypes"
-        JS[JavaScript]
-        TS[TypeScript]
-        JSON[JSON]
-        CSS[CSS]
-    end
-
-    subgraph "Prettier-Only"
-        HTML[HTML]
-        MD[Markdown]
-        ASTRO[Astro]
-        SCSS[SCSS]
-    end
-
-    subgraph "Special"
-        YAML[YAML] --> yamlfmt
-    end
-
-    JS --> Biome
-    TS --> Biome
-    JSON --> Biome
-    CSS --> Biome
-    Biome -->|fallback| Prettier
-
-    HTML --> Prettier
-    MD --> Prettier
-    ASTRO --> Prettier
-    SCSS --> Prettier
-```
 
 **Formatter Priority** (from `lua/plugins/formatting/prettier.lua`):
 
