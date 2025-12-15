@@ -1,9 +1,9 @@
--- Ensure common parsers are installed
+-- TreeSitter configuration
 return {
   "nvim-treesitter/nvim-treesitter",
-  opts = {
-    ensure_installed = {
-      "jsonc", -- JSON with comments (used by tsconfig, VSCode settings, etc.)
-    },
-  },
+  opts = function(_, opts)
+    -- Map jsonc filetype to use json parser (jsonc isn't a separate treesitter parser)
+    vim.treesitter.language.register("json", "jsonc")
+    return opts
+  end,
 }
