@@ -13,6 +13,9 @@ g.codeium_os = "Darwin"
 opt.cursorline = true
 opt.cursorcolumn = true
 opt.scrolloff = 999
+
+opt.textwidth = 120
+opt.colorcolumn = "120"
 opt.wrap = true
 
 opt.swapfile = false
