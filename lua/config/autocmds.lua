@@ -19,11 +19,6 @@ api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- -----------------------------------------------------
--- found these niftty nuggest on youtube
--- https://youtu.be/v36vLiFVOXY?si=1SygS6SK6TGDa9UT
--- -----------------------------------------------------
-
 api.nvim_create_autocmd("FileType", {
   pattern = "help",
   command = "wincmd L",
@@ -48,5 +43,20 @@ api.nvim_create_autocmd("BufRead", {
   pattern = { ".env", ".env.*" },
   callback = function()
     vim.bo.filetype = "dosini"
+  end,
+})
+
+-- Configure markdownlint-cli2 to use global config
+api.nvim_create_autocmd("BufReadPost", {
+  pattern = "*.md",
+  once = true,
+  callback = function()
+    local ok, lint = pcall(require, "lint")
+    if ok and lint.linters["markdownlint-cli2"] then
+      lint.linters["markdownlint-cli2"].args = {
+        "--config",
+        vim.fn.expand("~/.config/markdownlint-cli2/config.yaml"),
+      }
+    end
   end,
 })
