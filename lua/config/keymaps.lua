@@ -12,7 +12,7 @@ local set_keymap = api.nvim_set_keymap
 del({ "n", "i", "v" }, "<A-k>")
 del({ "n", "i", "v" }, "<A-j>")
 
--- -- ------------------------------------------------------
+--- -- ------------------------------------------------------
 -- General -------------------------------------------------
 -- -- ------------------------------------------------------
 api.nvim_set_keymap("i", "jj", "<Esc>", { noremap = false, desc = "exit INSERT mode" })
@@ -117,3 +117,21 @@ del("n", "<leader>L")
 set("n", "<leader>gg", function()
   Snacks.lazygit({ cwd = vim.fn.getcwd(), esc_esc = false, ctrl_hjkl = false, border = "none" })
 end, { noremap = true, silent = true, desc = "Lazygit (root dir)" })
+
+--------------------------------------------------------------------------------------------
+---- MacOS CMD keymaps ---------------------------------------------------------------------
+---- CSI u keyboard protocol must be supported by your terminal ----------------------------
+--------------------------------------------------------------------------------------------
+set("n", "<D-c>", '"+yiw', { noremap = true, silent = true, desc = "Copy word" })
+set("v", "<D-c>", '"+y', { noremap = true, silent = true, desc = "Copy selection" })
+set("n", "<D-v>", '"+p', { noremap = true, silent = true, desc = "Paste" })
+set("v", "<D-v>", '"+p', { noremap = true, silent = true, desc = "Paste" })
+set("i", "<D-v>", "<C-r>+", { noremap = true, silent = true, desc = "Paste in insert mode" })
+set("n", "<D-x>", '"+diw', { noremap = true, silent = true, desc = "Cut word" })
+set("v", "<D-x>", '"+d', { noremap = true, silent = true, desc = "Cut selection" })
+set("n", "<D-s>", ":w<CR>", { noremap = true, silent = true, desc = "Save file" })
+set("n", "<D-z>", "u", { noremap = true, silent = true, desc = "Undo" })
+set("i", "<D-z>", "<C-o>u", { noremap = true, silent = true, desc = "Undo in insert mode" })
+set("n", "<D-S-z>", "<C-r>", { noremap = true, silent = true, desc = "Redo" })
+set("i", "<D-S-z>", "<C-o><C-r>", { noremap = true, silent = true, desc = "Redo in insert mode" })
+set("n", "<D-a>", "ggVG", { noremap = true, silent = true, desc = "Select all" })
