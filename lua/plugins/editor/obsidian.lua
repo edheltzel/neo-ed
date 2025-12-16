@@ -13,6 +13,15 @@ return {
           path = vim.fn.expand("~") .. "/Library/Mobile Documents/iCloud~md~obsidian/Documents/FieldNotes✱ ",
         },
       },
+      daily_notes = {
+        folder = "TheLog",
+        date_format = "%Y-%m-%d",
+        alias_format = "%B %-d, %Y",
+        template = "New-DailyLog.md",
+      },
+      templates = {
+        folder = "Attachments/Templates",
+      },
     }
   end,
 }
