@@ -7,13 +7,29 @@ return {
   },
   config = function()
     vim.g.opencode_opts = {
-      -- Your configuration, if any — see `lua/opencode/config.lua`
+      provider = {
+        snacks = {
+          auto_close = true,
+          win = {
+            style = "terminal",
+            position = "float",
+            width = 0.8,
+            height = 0.8,
+            border = "rounded",
+            enter = true,
+          },
+        },
+      },
     }
 
     -- Required for `opts.auto_reload`
     vim.opt.autoread = true
 
     -- Recommended/example keymaps
+    -- <D> = Cmd
+    vim.keymap.set({ "n", "t", "x" }, "<D-A-C-o>", function()
+      require("opencode").toggle()
+    end, { desc = "Toggle OpenCode" })
     vim.keymap.set("n", "<leader>aot", function()
       require("opencode").toggle()
     end, { desc = "Toggle OpenCode" })
