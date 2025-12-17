@@ -12,17 +12,20 @@ local set_keymap = api.nvim_set_keymap
 del({ "n", "i", "v" }, "<A-k>")
 del({ "n", "i", "v" }, "<A-j>")
 
---- -- ------------------------------------------------------
--- General -------------------------------------------------
--- -- ------------------------------------------------------
-api.nvim_set_keymap("i", "jj", "<Esc>", { noremap = false, desc = "exit INSERT mode" })
+-- UI -------------------------------------------------
+set("n", "<leader>nh", ":nohl<CR>", { noremap = true, silent = true, desc = "Clear search highlights" })
+
+-- JK to exit insert mode
 api.nvim_set_keymap("i", "jk", "<Esc>", { noremap = false, desc = "exit INSERT mode" })
 
+-- delete without yanking
 set({ "n", "v" }, "<leader>d", "d", { noremap = true, silent = true, desc = "Delete without yanking" })
 
+-- jump to beginning/end of line
 set("n", "gh", "^", { noremap = true, silent = true, desc = "Jump beginning of line" })
 set("n", "gl", "$", { noremap = true, silent = true, desc = "Jump end of line" })
 
+-- alt-backspace
 set({ "i", "c" }, "<A-BD>", "<C-w>", { noremap = true, desc = "Delete word w/ alt-backspace" })
 set("n", "<A-BS>", "db", { noremap = true, desc = "Delete word w/ alt-backspace" })
 
@@ -32,30 +35,23 @@ set("n", "U", "<C-r>", { noremap = true, silent = true, desc = "Redo w/ U" })
 set("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true, desc = "Escape terminal" })
 
 -- duplicate lines up/down
-set("v", "<A-C-Up>", "y`>p`<", { noremap = true, silent = true, desc = "duplicate lines up" })
-set("n", "<A-C-Up>", "Vy`>p`<", { noremap = true, silent = true, desc = "duplicate lines up" })
-set("v", "<A-C-Down>", "y`<kp`>", { noremap = true, silent = true, desc = "duplicate lines down" })
-set("n", "<A-C-Down>", "Vy`<p`>", { noremap = true, silent = true, desc = "duplicate lines down" })
-set("n", "<A-C-d>", "Vy`<p`>", { noremap = true, silent = true, desc = "duplicate lines down" })
-set("v", "<A-C-d>", "Vy`<p`>", { noremap = true, silent = true, desc = "duplicate lines down" })
-set("n", "<A-C-j>", "Vy`<p`>", { noremap = true, silent = true, desc = "duplicate lines down" })
-set("v", "<A-C-j>", "Vy`<p`>", { noremap = true, silent = true, desc = "duplicate lines down" })
-set("n", "<A-C-l>", "Vy`<p`>", { noremap = true, silent = true, desc = "duplicate lines down" })
-set("v", "<A-C-l>", "Vy`<p`>", { noremap = true, silent = true, desc = "duplicate lines down" })
+set({ "n", "v" }, "<A-S-d>", "Vy`<p`>", { noremap = true, silent = true, desc = "duplicate lines down" })
 
-set("n", "<leader>nh", ":nohl<CR>", { noremap = true, silent = true, desc = "Clear search highlights" })
+set({ "n", "v" }, "<A-S-j>", "Vy`<p`>", { noremap = true, silent = true, desc = "duplicate lines down" })
+set({ "n", "v" }, "<A-S-k>", "Vy`<p`>", { noremap = true, silent = true, desc = "duplicate lines down" })
+
+-- indent line
 set("v", ">", ">gv", { noremap = true, silent = true, desc = "Indent right and reselect" }) -- shift+.
 set("v", "<", "<gv", { noremap = true, silent = true, desc = "Indent left and reselect" }) -- shift+,
+
 ---- move line down
-set("n", "<A-down>", ":m .+1<CR>==", { noremap = true, silent = true, desc = "Move line down" })
-set("n", "<A-j>", ":m .+1<CR>==", { noremap = true, silent = true, desc = "Move line down" })
-set("v", "<A-down>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true, desc = "Move selection down" })
-set("v", "<A-j>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true, desc = "Move selection down" })
+set({ "n", "v" }, "<A-down>", ":m .+1<CR>==", { noremap = true, silent = true, desc = "Move line down" })
+set({ "n", "v" }, "<A-j>", ":m .+1<CR>==", { noremap = true, silent = true, desc = "Move line down" })
+
 ---- move line up
-set("n", "<A-up>", ":m .-2<CR>==", { noremap = true, silent = true, desc = "Move line up" })
-set("n", "<A-k>", ":m .-2<CR>==", { noremap = true, silent = true, desc = "Move line up" })
-set("v", "<A-up>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true, desc = "Move selection up" })
-set("v", "<A-k>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true, desc = "Move selection up" })
+set({ "n", "v" }, "<A-up>", ":m .-2<CR>==", { noremap = true, silent = true, desc = "Move line up" })
+set({ "n", "v" }, "<A-k>", ":m .-2<CR>==", { noremap = true, silent = true, desc = "Move line up" })
+
 -- toggle terminal
 set({ "n", "t" }, "<C-`>", function()
   Snacks.terminal(nil, { border = "none" })
