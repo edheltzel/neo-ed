@@ -1,14 +1,77 @@
+-- Store URL for template substitution (module-level for access in substitutions)
+local reading_url = ""
+
+-- Fetch Open Graph title from URL (macOS compatible)
+local function fetch_og_title(url)
+  -- Try og:title first using sed (macOS compatible)
+  local handle = io.popen(string.format(
+    [[curl -sL --max-time 10 "%s" 2>/dev/null | tr '\n' ' ' | sed -n 's/.*<meta[^>]*property="og:title"[^>]*content="\([^"]*\)".*/\1/p' | head -1]],
+    url
+  ))
+  if handle then
+    local result = handle:read("*a")
+    handle:close()
+    if result and vim.trim(result) ~= "" then
+      return vim.trim(result)
+    end
+  end
+
+  -- Try alternate og:title format (content before property)
+  handle = io.popen(string.format(
+    [[curl -sL --max-time 10 "%s" 2>/dev/null | tr '\n' ' ' | sed -n 's/.*<meta[^>]*content="\([^"]*\)"[^>]*property="og:title".*/\1/p' | head -1]],
+    url
+  ))
+  if handle then
+    local result = handle:read("*a")
+    handle:close()
+    if result and vim.trim(result) ~= "" then
+      return vim.trim(result)
+    end
+  end
+
+  -- Fallback to <title> tag
+  handle = io.popen(string.format(
+    [[curl -sL --max-time 10 "%s" 2>/dev/null | tr '\n' ' ' | sed -n 's/.*<title>\([^<]*\)<\/title>.*/\1/p' | head -1]],
+    url
+  ))
+  if handle then
+    local result = handle:read("*a")
+    handle:close()
+    if result and vim.trim(result) ~= "" then
+      return vim.trim(result)
+    end
+  end
+
+  return nil
+end
+
 return {
   "obsidian-nvim/obsidian.nvim",
   version = "*",
   lazy = false,
   config = function()
+    local vault_path = vim.fn.expand("~") .. "/Library/Mobile Documents/iCloud~md~obsidian/Documents/FieldNotes✱ "
+
     require("obsidian").setup({
       legacy_commands = false,
+      -- Use title as filename instead of zettel ID
+      note_id_func = function(title)
+        if title ~= nil and title ~= "" then
+          -- Sanitize title for filename
+          return title
+            :gsub("[/\\:*?\"<>|]", "-")
+            :gsub("%s+", " ")
+            :gsub("^%s+", "")
+            :gsub("%s+$", "")
+            :gsub("%-+", "-")
+        end
+        -- Fallback to timestamp if no title
+        return tostring(os.time())
+      end,
       workspaces = {
         {
           name = "FieldNotes✱",
-          path = vim.fn.expand("~") .. "/Library/Mobile Documents/iCloud~md~obsidian/Documents/FieldNotes✱ ",
+          path = vault_path,
         },
       },
       daily_notes = {
@@ -31,8 +94,48 @@ return {
           date_long = function()
             return os.date("%A, %B %d, %Y")
           end,
+          url = function()
+            return reading_url
+          end,
         },
       },
     })
+
+    -- Create custom command for URL-based reading notes
+    vim.api.nvim_create_user_command("ObsidianNewReading", function()
+      vim.ui.input({ prompt = "Enter URL: " }, function(url)
+        if not url or url == "" then
+          vim.notify("No URL provided", vim.log.levels.WARN)
+          return
+        end
+
+        -- Store URL for template substitution
+        reading_url = url
+
+        vim.notify("Fetching page title...", vim.log.levels.INFO)
+
+        -- Fetch OG title
+        local title = fetch_og_title(url)
+        if not title then
+          vim.notify("Could not fetch title, using domain", vim.log.levels.WARN)
+          -- Extract domain as fallback title
+          title = url:match("https?://([^/]+)") or url:match("://([^/]+)") or "Reading Note"
+        end
+
+        vim.notify("Creating note: " .. title, vim.log.levels.INFO)
+
+        -- Use obsidian.nvim API to create the note (scheduled to avoid input callback issues)
+        vim.schedule(function()
+          local Note = require("obsidian.note")
+          local note = Note.create({
+            title = title,
+            dir = vault_path .. "/✱FieldNotes",
+            template = "New-Reading.md",
+            should_write = true,
+          })
+          note:open({ sync = false })
+        end)
+      end)
+    end, { desc = "Create a new reading note from URL" })
   end,
 }
