@@ -1,12 +1,10 @@
 return {
   "obsidian-nvim/obsidian.nvim",
-  version = "*", -- recommended, use latest release instead of latest commit
-  ft = "markdown",
-  ---@module 'obsidian'
-  ---@type obsidian.config
-  opts = function()
-    return {
-      legacy_commands = false, -- this will be removed in the next major release
+  version = "*",
+  lazy = false,
+  config = function()
+    require("obsidian").setup({
+      legacy_commands = false,
       workspaces = {
         {
           name = "FieldNotes✱",
@@ -21,7 +19,20 @@ return {
       },
       templates = {
         folder = "Attachments/Templates",
+        date_format = "%Y-%m-%d",
+        time_format = "%H:%M",
+        substitutions = {
+          yesterday = function()
+            return os.date("%Y-%m-%d", os.time() - 86400)
+          end,
+          tomorrow = function()
+            return os.date("%Y-%m-%d", os.time() + 86400)
+          end,
+          date_long = function()
+            return os.date("%A, %B %d, %Y")
+          end,
+        },
       },
-    }
+    })
   end,
 }
