@@ -9,6 +9,7 @@
 --
 local api = vim.api
 
+-- highlight YAML frontmatter
 api.nvim_create_autocmd("FileType", {
   pattern = { "htmldjango", "jinja", "htmldjango", "njk", "nunjucks", "twig", "liquid" },
   callback = function()
@@ -19,6 +20,7 @@ api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- open help in a vertical split
 api.nvim_create_autocmd("FileType", {
   pattern = "help",
   command = "wincmd L",
