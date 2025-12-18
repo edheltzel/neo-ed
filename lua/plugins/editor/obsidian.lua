@@ -1,5 +1,6 @@
 -- Store URL for template substitution (module-level for access in substitutions)
 local reading_url = ""
+local book_title = ""
 
 -- Fetch Open Graph title from URL (macOS compatible)
 local function fetch_og_title(url)
@@ -97,6 +98,9 @@ return {
           url = function()
             return reading_url
           end,
+          title = function()
+            return book_title
+          end,
         },
       },
     })
@@ -129,7 +133,7 @@ return {
           local Note = require("obsidian.note")
           local note = Note.create({
             title = title,
-            dir = vault_path .. "/✱FieldNotes",
+            dir = vault_path .. "/ReadingList",
             template = "New-Reading.md",
             should_write = true,
           })
@@ -137,5 +141,32 @@ return {
         end)
       end)
     end, { desc = "Create a new reading note from URL" })
+
+    -- Create custom command for book notes
+    vim.api.nvim_create_user_command("ObsidianNewBook", function()
+      vim.ui.input({ prompt = "Enter book title: " }, function(title)
+        if not title or title == "" then
+          vim.notify("No title provided", vim.log.levels.WARN)
+          return
+        end
+
+        -- Store title for template substitution
+        book_title = title
+
+        vim.notify("Creating book note: " .. title, vim.log.levels.INFO)
+
+        -- Use obsidian.nvim API to create the note
+        vim.schedule(function()
+          local Note = require("obsidian.note")
+          local note = Note.create({
+            title = title,
+            dir = vault_path .. "/ReadingList",
+            template = "New-Book.md",
+            should_write = true,
+          })
+          note:open({ sync = false })
+        end)
+      end)
+    end, { desc = "Create a new book note" })
   end,
 }
