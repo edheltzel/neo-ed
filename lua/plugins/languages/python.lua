@@ -107,6 +107,7 @@ return {
     dependencies = {
       "mfussenegger/nvim-dap-python",
       -- stylua: ignore
+      -- debug stuff
       keys = {
         { "<leader>dPt", function() require('dap-python').test_method() end, desc = "Debug Method", ft = "python" },
         { "<leader>dPc", function() require('dap-python').test_class() end, desc = "Debug Class", ft = "python" },
@@ -140,10 +141,11 @@ return {
     },
     opts = {},
     keys = {
+      { "<leader>cv", group = "Python Venv" },
       -- Keymap to open VenvSelector to pick a venv.
-      { "<leader>vs", "<cmd>VenvSelect<cr>" },
+      { "<leader>cvs", "<cmd>VenvSelect<cr>", desc = "Select Python venv" },
       -- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
-      { "<leader>vc", "<cmd>VenvSelectCached<cr>" },
+      { "<leader>cvc", "<cmd>VenvSelectCached<cr>", desc = "Select cached Python venv" },
     },
   },
 }

@@ -95,13 +95,10 @@ wk.add({ { "<leader>i", group = "Inlay Hints", icon = { icon = "ℹ", color = "o
 set("n", "<leader>ih", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
   vim.notify(vim.lsp.inlay_hint.is_enabled() and "Inlay Hints Enabled" or "Inlay Hints Disabled")
-end)
+end, { desc = "Toggle inlay hints" })
 
 -- Claude Code
 wk.add({ { "<leader>a", group = "Claude Code", icon = { icon = "🤖", color = "purple" } } })
-
--- Laravel
-wk.add({ { "<leader>L", group = "Laravel", icon = { icon = "", color = "red" } } })
 
 -- Move LazyVim changelog from <leader>L to <leader>l
 set("n", "<leader>lc", function()

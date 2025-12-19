@@ -1,5 +1,13 @@
 return {
   {
+    "folke/which-key.nvim",
+    opts = {
+      spec = {
+        { "<leader>cL", group = "Laravel", icon = { icon = "", color = "red" } },
+      },
+    },
+  },
+  {
     "adalessa/laravel.nvim",
     dependencies = {
       "tpope/vim-dotenv",
@@ -12,7 +20,7 @@ return {
     event = { "VeryLazy" },
     keys = {
       {
-        "<leader>LL",
+        "<leader>cLL",
         function()
           Laravel.pickers.laravel()
         end,
@@ -26,56 +34,56 @@ return {
         desc = "Laravel: Open View Finder",
       },
       {
-        "<leader>La",
+        "<leader>cLa",
         function()
           Laravel.pickers.artisan()
         end,
         desc = "Laravel: Open Artisan Picker",
       },
       {
-        "<leader>Lt",
+        "<leader>cLt",
         function()
           Laravel.commands.run("actions")
         end,
         desc = "Laravel: Open Actions Picker",
       },
       {
-        "<leader>Lr",
+        "<leader>cLr",
         function()
           Laravel.pickers.routes()
         end,
         desc = "Laravel: Open Routes Picker",
       },
       {
-        "<leader>Lh",
+        "<leader>cLh",
         function()
           Laravel.run("artisan docs")
         end,
         desc = "Laravel: Open Documentation",
       },
       {
-        "<leader>Lm",
+        "<leader>cLm",
         function()
           Laravel.pickers.make()
         end,
         desc = "Laravel: Open Make Picker",
       },
       {
-        "<leader>Lc",
+        "<leader>cLc",
         function()
           Laravel.pickers.commands()
         end,
         desc = "Laravel: Open Commands Picker",
       },
       {
-        "<leader>Lo",
+        "<leader>cLo",
         function()
           Laravel.pickers.resources()
         end,
         desc = "Laravel: Open Resources Picker",
       },
       {
-        "<leader>Lp",
+        "<leader>cLp",
         function()
           Laravel.commands.run("command_center")
         end,
