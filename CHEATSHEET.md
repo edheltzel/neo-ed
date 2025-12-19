@@ -1,12 +1,14 @@
 # NOE.ED Quick Reference Cheatsheet
 
-## Mode Exit
+### Mode Exit
+
 ```
-jj / jk         Exit INSERT mode
+jk              Exit INSERT mode
 <Esc>           Exit terminal / clear cursors
 ```
 
-## Navigation
+### Navigation
+
 ```
 gh              Start of line (^)
 gl              End of line ($)
@@ -14,7 +16,8 @@ gl              End of line ($)
 <leader>jj      Flash jump
 ```
 
-## Line Operations
+### Line Operations
+
 ```
 <A-j> / <A-down>     Move line down
 <A-k> / <A-up>       Move line up
@@ -22,7 +25,8 @@ gl              End of line ($)
 <A-C-up>             Duplicate line up
 ```
 
-## Editing
+### Editing
+
 ```
 U                    Redo
 <Enter>              Toggle fold
@@ -30,7 +34,8 @@ U                    Redo
 <C-]> / <C-[>        Indent right/left
 ```
 
-## Multi-Cursor
+### Multi-Cursor
+
 ```
 <C-S-l>              Add cursor to ALL matches
 <C-A-down>           Add cursor at next match
@@ -44,7 +49,8 @@ U                    Redo
 <Esc>                Clear all cursors
 ```
 
-## Files
+### Files
+
 ```
 <leader>fs           Save file
 <leader>fS           Save without formatting
@@ -52,29 +58,34 @@ U                    Redo
 <leader>fg           Live grep
 ```
 
-## Windows/Splits
+### Windows/Splits
+
 ```
 <C-h/j/k/l>          Navigate splits
 <leader>wh/j/k/l     Navigate splits (alt)
 ```
 
-## Terminal
+### Terminal
+
 ```
 <C-`>                Toggle terminal
 <Esc>                Exit terminal mode
 ```
 
-## Git
+### Git
+
 ```
 <leader>gg           Lazygit (borderless)
 ```
 
-## AI
+### AI
+
 ```
 <C-A-S-c>            Toggle Claude Code
 ```
 
-## LSP
+### LSP
+
 ```
 <leader>ih           Toggle inlay hints
 gd                   Go to definition
@@ -83,7 +94,8 @@ gR                   File references (TS)
 K                    Hover documentation
 ```
 
-## TypeScript
+### TypeScript
+
 ```
 <leader>co           Organize imports
 <leader>cM           Add missing imports
@@ -92,7 +104,8 @@ K                    Hover documentation
 <leader>cV           Select TS version
 ```
 
-## Python
+### Python
+
 ```
 <leader>co           Organize imports
 <leader>vs           Select venv
@@ -101,7 +114,8 @@ K                    Hover documentation
 <leader>dPc          Debug class
 ```
 
-## Laravel
+### Laravel
+
 ```
 <leader>LL           Laravel picker
 <leader>La           Artisan
@@ -114,7 +128,8 @@ K                    Hover documentation
 <C-g>                View finder
 ```
 
-## Dashboard Shortcuts
+### Dashboard Shortcuts
+
 ```
 N    New file
 r    Recent files
@@ -129,7 +144,8 @@ l    Lazy
 q    Quit
 ```
 
-## Plugin Management
+### Plugin Management
+
 ```
 :Lazy                Open Lazy.nvim
 :Mason               Open Mason (LSP installer)
