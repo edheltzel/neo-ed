@@ -1,4 +1,17 @@
 return {
+  -- Aura Theme
+  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+  {
+    "daltonmenezes/aura-theme",
+    lazy = false,
+    priority = 1000,
+    init = function()
+      -- Add the runtime path early, before colorscheme is loaded
+      local plugin_path = vim.fn.stdpath("data") .. "/lazy/aura-theme"
+      vim.opt.rtp:append(plugin_path .. "/packages/neovim")
+    end,
+  },
+
   -- Rose Pine Theme
   {
     "rose-pine/neovim",
@@ -44,7 +57,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      -- colorscheme options: "eldritch", "rose-pine", "rose-pine-moon", "rose-pine-dawn", "tokyonight", "tokyonight-storm", "tokyonight-moon", "tokyonight-day"
+      -- colorscheme options: "aura-dark", "aura-dark-soft-text", "aura-soft-dark", "aura-soft-dark-soft-text", "eldritch", "rose-pine", "rose-pine-moon", "rose-pine-dawn", "tokyonight", "tokyonight-storm", "tokyonight-moon", "tokyonight-day"
       colorscheme = "eldritch",
     },
   },
