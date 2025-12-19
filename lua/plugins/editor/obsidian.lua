@@ -5,10 +5,12 @@ local book_title = ""
 -- Fetch Open Graph title from URL (macOS compatible)
 local function fetch_og_title(url)
   -- Try og:title first using sed (macOS compatible)
-  local handle = io.popen(string.format(
-    [[curl -sL --max-time 10 "%s" 2>/dev/null | tr '\n' ' ' | sed -n 's/.*<meta[^>]*property="og:title"[^>]*content="\([^"]*\)".*/\1/p' | head -1]],
-    url
-  ))
+  local handle = io.popen(
+    string.format(
+      [[curl -sL --max-time 10 "%s" 2>/dev/null | tr '\n' ' ' | sed -n 's/.*<meta[^>]*property="og:title"[^>]*content="\([^"]*\)".*/\1/p' | head -1]],
+      url
+    )
+  )
   if handle then
     local result = handle:read("*a")
     handle:close()
@@ -18,10 +20,12 @@ local function fetch_og_title(url)
   end
 
   -- Try alternate og:title format (content before property)
-  handle = io.popen(string.format(
-    [[curl -sL --max-time 10 "%s" 2>/dev/null | tr '\n' ' ' | sed -n 's/.*<meta[^>]*content="\([^"]*\)"[^>]*property="og:title".*/\1/p' | head -1]],
-    url
-  ))
+  handle = io.popen(
+    string.format(
+      [[curl -sL --max-time 10 "%s" 2>/dev/null | tr '\n' ' ' | sed -n 's/.*<meta[^>]*content="\([^"]*\)"[^>]*property="og:title".*/\1/p' | head -1]],
+      url
+    )
+  )
   if handle then
     local result = handle:read("*a")
     handle:close()
@@ -31,10 +35,12 @@ local function fetch_og_title(url)
   end
 
   -- Fallback to <title> tag
-  handle = io.popen(string.format(
-    [[curl -sL --max-time 10 "%s" 2>/dev/null | tr '\n' ' ' | sed -n 's/.*<title>\([^<]*\)<\/title>.*/\1/p' | head -1]],
-    url
-  ))
+  handle = io.popen(
+    string.format(
+      [[curl -sL --max-time 10 "%s" 2>/dev/null | tr '\n' ' ' | sed -n 's/.*<title>\([^<]*\)<\/title>.*/\1/p' | head -1]],
+      url
+    )
+  )
   if handle then
     local result = handle:read("*a")
     handle:close()
@@ -59,12 +65,7 @@ return {
       note_id_func = function(title)
         if title ~= nil and title ~= "" then
           -- Sanitize title for filename
-          return title
-            :gsub("[/\\:*?\"<>|]", "-")
-            :gsub("%s+", " ")
-            :gsub("^%s+", "")
-            :gsub("%s+$", "")
-            :gsub("%-+", "-")
+          return title:gsub('[/\\:*?"<>|]', "-"):gsub("%s+", " "):gsub("^%s+", ""):gsub("%s+$", ""):gsub("%-+", "-")
         end
         -- Fallback to timestamp if no title
         return tostring(os.time())
@@ -168,5 +169,50 @@ return {
         end)
       end)
     end, { desc = "Create a new book note" })
+
+    -- Which-Key group and keybindings
+    local wk = require("which-key")
+    wk.add({
+      { "<leader>fo", group = "Obsidian", icon = { icon = "󰠮", color = "purple" } },
+      { "<leader>fot", ":Obsidian tags ", desc = "Search by tags", icon = { icon = "", color = "orange" } },
+      { "<leader>fob", ":Obsidian backlinks<CR>", desc = "Show backlinks", icon = { icon = "⬅", color = "cyan" } },
+      {
+        "<leader>fo0",
+        ":Obsidian open<CR>",
+        desc = "Open in Obsidian app",
+        icon = { icon = "󱓞", color = "purple" },
+      },
+      { "<leader>fos", ":Obsidian search<CR>", desc = "Search notes", icon = { icon = "", color = "cyan" } },
+      { "<leader>foq", ":Obsidian quick_switch<CR>", desc = "Quick switch", icon = { icon = "⚡", color = "purple" } },
+      { "<leader>fol", ":Obsidian link<CR>", desc = "Insert Link", icon = { icon = "", color = "blue" } },
+      { "<leader>foL", ":Obsidian link_new ", desc = "Create & Link Note", icon = { icon = "", color = "green" } },
+      {
+        "<leader>foc",
+        ":Obsidian toggle_checkbox<CR>",
+        desc = "Toggle checkbox",
+        icon = { icon = "", color = "green" },
+      },
+      {
+        "<leader>foNr",
+        ":ObsidianNewReading<CR>",
+        desc = "Add new read later",
+        icon = { icon = "", color = "orange" },
+      },
+      { "<leader>foNb", ":ObsidianNewBook<CR>", desc = "Add new book", icon = { icon = "󱉟", color = "orange" } },
+      { "<leader>foNn", ":Obsidian new ", desc = "New note", icon = { icon = "", color = "blue" } },
+      { "<leader>foNt", ":Obsidian today<CR>", desc = "Daily Note for Today", icon = { icon = "󰃶", color = "red" } },
+      {
+        "<leader>foNm",
+        ":Obsidian tomorrow<CR>",
+        desc = "Daily Note for Tomorrow",
+        icon = { icon = "▶", color = "grey" },
+      },
+      {
+        "<leader>foNy",
+        ":Obsidian yesterday<CR>",
+        desc = "Daily Note for Yesterday",
+        icon = { icon = "◀", color = "grey" },
+      },
+    })
   end,
 }
