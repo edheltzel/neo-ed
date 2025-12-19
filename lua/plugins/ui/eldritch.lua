@@ -18,10 +18,18 @@ return {
         "terminal",
       },
       on_colors = function(colors)
-        local original_bg = colors.bg
         -- colors.bg_dark = "#0F101A"
         -- colors.bg_dark = "#212337"
         colors.bg = "#171928"
+      end,
+      on_highlights = function(highlights, colors)
+        highlights.SnacksDashboardHeader = { fg = colors.fg_gutter }
+        highlights.SnacksDashboardDesc = { fg = colors.fg_dark }
+        highlights.SnacksDashboardIcon = { fg = colors.fg_gutter }
+        highlights.SnacksDashboardFooter = { fg = colors.fg_gutter }
+        highlights.SnacksPickerTree = { fg = colors.dark5 }
+        highlights.WhichKeyBorder = { fg = colors.comment }
+        highlights.FloatBorder = { fg = colors.comment }
       end,
     },
   },
