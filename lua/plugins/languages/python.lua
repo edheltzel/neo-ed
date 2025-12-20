@@ -101,6 +101,7 @@ return {
       table.insert(opts.auto_brackets, "python")
     end,
   },
+  -- debugging
   {
     "mfussenegger/nvim-dap",
     optional = true,
@@ -141,11 +142,10 @@ return {
     },
     opts = {},
     keys = {
-      { "<leader>cv", group = "Python Venv" },
       -- Keymap to open VenvSelector to pick a venv.
-      { "<leader>cvs", "<cmd>VenvSelect<cr>", desc = "Select Python venv" },
+      { "<leader>cvs", "<cmd>VenvSelect<cr>" },
       -- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
-      { "<leader>cvc", "<cmd>VenvSelectCached<cr>", desc = "Select cached Python venv" },
+      { "<leader>cvc", "<cmd>VenvSelectCached<cr>" },
     },
   },
 }
