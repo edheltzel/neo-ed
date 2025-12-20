@@ -62,3 +62,54 @@ api.nvim_create_autocmd("BufReadPost", {
     end
   end,
 })
+
+-- Auto-refresh lualine when colorscheme changes
+-- This ensures the NEO.ED theme adapts to the new colorscheme automatically
+api.nvim_create_autocmd("ColorScheme", {
+  group = api.nvim_create_augroup("lualine_colorscheme_refresh", { clear = true }),
+  pattern = "*",
+  callback = function(args)
+    -- The colorscheme name is passed in args.match
+    local colorscheme = args.match
+
+    -- Skip if lualine hasn't been loaded yet (initial startup)
+    -- This prevents errors when ColorScheme fires before plugins are fully initialized
+    if not package.loaded["lualine"] then
+      return
+    end
+
+    -- Clear cached modules so they reload with new colorscheme
+    package.loaded["plugins.ui.lualine.neoed"] = nil
+    package.loaded["plugins.ui.lualine.eldritch"] = nil
+    package.loaded["plugins.ui.lualine.rose-pine"] = nil
+    package.loaded["plugins.ui.lualine.tokyonight"] = nil
+    package.loaded["plugins.ui.lualine.aura"] = nil
+
+    -- Refresh lualine with new theme, passing the colorscheme name
+    local ok, lualine = pcall(require, "lualine")
+    if ok then
+      local neoEdTheme, _ = require("plugins.ui.lualine.neoed").setup(colorscheme)
+      lualine.setup({ options = { theme = neoEdTheme } })
+    end
+  end,
+})
+
+-- Manual command to refresh lualine theme
+vim.api.nvim_create_user_command("LualineRefresh", function()
+  -- Clear cached modules
+  package.loaded["plugins.ui.lualine.neoed"] = nil
+  package.loaded["plugins.ui.lualine.eldritch"] = nil
+  package.loaded["plugins.ui.lualine.rose-pine"] = nil
+  package.loaded["plugins.ui.lualine.tokyonight"] = nil
+  package.loaded["plugins.ui.lualine.aura"] = nil
+
+  -- Reload lualine
+  local ok, lualine = pcall(require, "lualine")
+  if ok then
+    local neoEdTheme, _ = require("plugins.ui.lualine.neoed").setup()
+    lualine.setup({ options = { theme = neoEdTheme } })
+    vim.notify("Lualine theme refreshed", vim.log.levels.INFO)
+  else
+    vim.notify("Failed to refresh lualine", vim.log.levels.ERROR)
+  end
+end, { desc = "Refresh lualine theme to match current colorscheme" })

@@ -1,51 +1,39 @@
----- See ./neoed.lua for customizations
---
-local colors = require("eldritch.colors").setup()
-local config = require("eldritch.config").options
+---- Eldritch color palettes for NEO.ED theme
+-- https://github.com/eldritch-theme/eldritch.nvim
 
-local eldritch = {}
+local M = {}
 
-eldritch.normal = {
-  a = { bg = colors.cyan, fg = colors.black },
-  b = { bg = colors.fg_gutter, fg = colors.cyan },
-  c = { bg = colors.bg_highlight, fg = colors.fg_sidebar },
+M.palettes = {
+  ["eldritch"] = {
+    colors = {
+      darker = "#171928",
+      bg = "#212337",
+      darkGray = "#323449",
+      fg = "#454E7D",
+      gray = "#586089",
+      green = "#37F499",
+      blue = "#04D1F9",
+      purple = "#A48CF2",
+      red = "#F16d75",
+      magenta = "#F265B5",
+    },
+    -- Override function receives colors table, return overrides
+    -- Example: Custom color for replace mode
+    -- get_overrides = function(colors)
+    --   return {
+    --     replace = {
+    --       a = { fg = colors.red, bg = colors.darker },
+    --     },
+    --   }
+    -- end,
+  },
 }
 
-eldritch.insert = {
-  a = { bg = colors.green, fg = colors.black },
-  b = { bg = colors.fg_gutter, fg = colors.green },
-}
-
-eldritch.command = {
-  a = { bg = colors.pink, fg = colors.black },
-  b = { bg = colors.fg_gutter, fg = colors.pink },
-}
-
-eldritch.visual = {
-  a = { bg = colors.purple, fg = colors.black },
-  b = { bg = colors.fg_gutter, fg = colors.purple },
-}
-
-eldritch.replace = {
-  a = { bg = colors.red, fg = colors.black },
-  b = { bg = colors.fg_gutter, fg = colors.red },
-}
-
-eldritch.terminal = {
-  a = { bg = colors.green, fg = colors.black },
-  b = { bg = colors.fg_gutter, fg = colors.green },
-}
-
-eldritch.inactive = {
-  a = { bg = colors.bg_statusline, fg = colors.dark_cyan },
-  b = { bg = colors.bg_statusline, fg = colors.fg_gutter, gui = "bold" },
-  c = { bg = colors.bg_statusline, fg = colors.fg_gutter },
-}
-
-if config.lualine_bold then
-  for _, mode in pairs(eldritch) do
-    mode.a.gui = "bold"
-  end
+function M.get_colors(variant)
+  variant = variant or "eldritch"
+  local palette = M.palettes[variant] or M.palettes["eldritch"]
+  local overrides = palette.get_overrides and palette.get_overrides(palette.colors) or nil
+  return palette.colors, overrides
 end
 
-return eldritch
+return M

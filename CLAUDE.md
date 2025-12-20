@@ -145,8 +145,47 @@ Key vim options set in lua/config/options.lua:
 
 ## Theme Configuration
 
-- **Active colorscheme:** eldritch (lua/plugins/colorscheme.lua)
-- **Statusline:** Custom lualine with neo.ed theme (lua/plugins/themes/lualine/neoed.lua)
+### Colorscheme Management
+
+**Single source of truth:** All colorscheme plugins and the active colorscheme setting are in `lua/plugins/ui/colorscheme.lua`
+
+**To change colorscheme:** Edit the `colorscheme` value in colorscheme.lua:
+```lua
+{
+  "LazyVim/LazyVim",
+  opts = {
+    colorscheme = "eldritch",  -- Change this value
+  },
+}
+```
+
+**Available colorschemes:**
+- Eldritch: `"eldritch"`
+- Aura: `"aura-dark"`, `"aura-dark-soft-text"`, `"aura-soft-dark"`, `"aura-soft-dark-soft-text"`
+- Rose Pine: `"rose-pine"`, `"rose-pine-moon"`, `"rose-pine-dawn"`
+- Tokyo Night: `"tokyonight"`, `"tokyonight-storm"`, `"tokyonight-moon"`, `"tokyonight-day"`
+
+### NEO.ED Lualine Theme
+
+The statusline uses a custom colorscheme-adaptive theme that automatically matches your active colorscheme. See `lua/plugins/ui/lualine/README.md` for full documentation.
+
+**How it works:**
+1. On startup: Reads colorscheme from `LazyVim.opts("LazyVim").colorscheme`
+2. On colorscheme change: Autocmd detects change and refreshes lualine
+3. Manual refresh: `:LualineRefresh`
+
+**Customization with overrides:** Each palette file supports a `get_overrides(colors)` function that lets you reference palette colors:
+```lua
+-- In lua/plugins/ui/lualine/aura.lua
+get_overrides = function(colors)
+  return {
+    normal = { a = { fg = colors.red, bg = colors.darkGray } },
+    insert = { a = { fg = colors.bg, bg = colors.magenta } },
+  }
+end
+```
+
+Global overrides for all colorschemes can be set in `neoed.lua`. See the README for details.
 
 ## Working with This Configuration
 

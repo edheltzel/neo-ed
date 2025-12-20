@@ -1,6 +1,42 @@
 return {
+  -- Eldritch Theme
+  -- https://github.com/eldritch-theme/eldritch.nvim
+  {
+    "eldritch-theme/eldritch.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent = false,
+      dim_inactive = true,
+      styles = {
+        sidebars = "dark",
+        floats = "dark",
+      },
+      sidebars = {
+        "qf",
+        "help",
+        "terminal",
+      },
+      on_colors = function(colors)
+        colors.bg = "#171928"
+      end,
+      on_highlights = function(highlights, colors)
+        highlights.SnacksDashboardHeader = { fg = colors.fg_gutter }
+        highlights.SnacksDashboardDesc = { fg = colors.fg_dark }
+        highlights.SnacksDashboardIcon = { fg = colors.fg_gutter }
+        highlights.SnacksDashboardFooter = { fg = colors.fg_gutter }
+        highlights.SnacksPickerTree = { fg = colors.dark5 }
+        highlights.WhichKeyBorder = { fg = colors.comment }
+        highlights.FloatBorder = { fg = colors.comment }
+      end,
+    },
+  },
+
   -- Aura Theme
-  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+  },
   {
     "daltonmenezes/aura-theme",
     lazy = false,
@@ -54,11 +90,16 @@ return {
   },
 
   -- LazyVim colorscheme configuration
+  -- This is the ONLY place to set your active colorscheme
   {
     "LazyVim/LazyVim",
     opts = {
-      -- colorscheme options: "aura-dark", "aura-dark-soft-text", "aura-soft-dark", "aura-soft-dark-soft-text", "eldritch", "rose-pine", "rose-pine-moon", "rose-pine-dawn", "tokyonight", "tokyonight-storm", "tokyonight-moon", "tokyonight-day"
-      colorscheme = "eldritch",
+      -- Available options:
+      --   Eldritch: "eldritch"
+      --   Aura: "aura-dark", "aura-dark-soft-text", "aura-soft-dark", "aura-soft-dark-soft-text"
+      --   Rose Pine: "rose-pine", "rose-pine-moon", "rose-pine-dawn"
+      --   Tokyo Night: "tokyonight", "tokyonight-storm", "tokyonight-moon", "tokyonight-day"
+      colorscheme = "tokyonight-night",
     },
   },
 }

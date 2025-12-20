@@ -49,20 +49,11 @@ return {
 
     vim.o.laststatus = vim.g.lualine_laststatus
 
-    local neoEd = require("plugins.ui.lualine.neoed").setup()
-
-    -- Use theme that matches colorscheme
-    local lualine_theme = "auto"
-    local colorscheme = vim.g.colors_name or "eldritch"
-    if colorscheme == "eldritch" then
-      lualine_theme = "eldritch"
-    elseif colorscheme:match("^rose%-pine") then
-      lualine_theme = "rose-pine"
-    end
+    local neoEdTheme, neoEdColors = require("plugins.ui.lualine.neoed").setup()
 
     local opts = {
       options = {
-        theme = lualine_theme,
+        theme = neoEdTheme,
         component_separators = "",
         section_separators = "",
         globalstatus = vim.o.laststatus == 1,
@@ -90,7 +81,7 @@ return {
               local cwd = vim.fn.getcwd()
               return "󱉭 " .. vim.fs.basename(cwd)
             end,
-            color = { fg = neoEd.fg },
+            color = { fg = neoEdColors.fg },
             fmt = function(str)
               return add_width(str, "root")
             end,
@@ -172,7 +163,7 @@ return {
             "filename",
             file_status = true,
             newfile_status = true,
-            color = { fg = neoEd.fg, gui = "BOLD" },
+            color = { fg = neoEdColors.fg, gui = "BOLD" },
             padding = { left = 0, right = 1 },
             fmt = function(str)
               return add_width(str, "filename")
@@ -189,8 +180,8 @@ return {
             padding = { left = 0, right = 0 },
             color = function()
               return {
-                fg = neoEd.dark,
-                bg = neoEd.replace.a.fg,
+                fg = neoEdColors.dark,
+                bg = neoEdColors.red,
               }
             end,
             fmt = function(str)
@@ -218,7 +209,7 @@ return {
               end
             end,
           },
-          { "branch", icon = "", color = { fg = neoEd.gray } },
+          { "branch", icon = "", color = { fg = neoEdColors.gray } },
         },
 
         lualine_y = {},
