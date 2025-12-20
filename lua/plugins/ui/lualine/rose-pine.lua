@@ -19,13 +19,13 @@ M.palettes = {
     },
     -- Override function receives colors table, return overrides
     -- Example: Make visual mode use a different purple
-    -- get_overrides = function(colors)
-    --   return {
-    --     visual = {
-    --       a = { fg = colors.bg, bg = colors.purple },
-    --     },
-    --   }
-    -- end,
+    get_overrides = function(colors)
+      return {
+        normal = {
+          a = { fg = colors.green },
+        },
+      }
+    end,
   },
   ["rose-pine-moon"] = {
     colors = {

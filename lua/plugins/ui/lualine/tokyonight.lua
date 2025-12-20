@@ -16,16 +16,17 @@ M.palettes = {
       purple = "#9d7cd8",
       red = "#f7768e",
       magenta = "#bb9af7",
+      pink = "#ff4499",
     },
     -- Override function receives colors table, return overrides
     -- Example: Custom red for replace mode
-    -- get_overrides = function(colors)
-    --   return {
-    --     replace = {
-    --       a = { fg = colors.red, bg = colors.darker },
-    --     },
-    --   }
-    -- end,
+    get_overrides = function(colors)
+      return {
+        insert = {
+          a = { bg = colors.pink },
+        },
+      }
+    end,
   },
   ["tokyonight-storm"] = {
     colors = {

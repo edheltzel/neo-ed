@@ -16,7 +16,7 @@ M.palettes = {
       purple = "#a277ff",
       red = "#ff6767",
       magenta = "#f694ff",
-      midPurple = "#3d375e7f",
+      midPurple = "#3d375e",
       darkPurple = "#29263c",
       orange = "#ffca85",
       white = "#edecee",
@@ -25,8 +25,11 @@ M.palettes = {
     -- Example: Make insert mode use bg text on magenta background
     get_overrides = function(colors)
       return {
-        insert = {
-          a = { fg = colors.darker, bg = colors.red },
+        normal = {
+          a = { fg = colors.purple },
+        },
+        command = {
+          a = { fg = colors.darker, bg = colors.green },
         },
       }
     end,
