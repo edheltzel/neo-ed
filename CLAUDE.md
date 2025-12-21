@@ -165,6 +165,20 @@ Key vim options set in lua/config/options.lua:
 - Rose Pine: `"rose-pine"`, `"rose-pine-moon"`, `"rose-pine-dawn"`
 - Tokyo Night: `"tokyonight"`, `"tokyonight-storm"`, `"tokyonight-moon"`, `"tokyonight-day"`
 
+**Theme switcher:** A system-wide theme switcher script is located at `~/.dotfiles/config/.config/theme-switcher/`. It provides an fzf-based interface to switch themes across multiple applications (ghostty, wezterm, neovim, bat, lazygit, oh-my-posh, kitty, btop).
+
+**Usage:**
+- Run `theme` in fish shell - opens interactive picker and auto-refreshes oh-my-posh prompt
+- Run `theme <theme-name>` - switches to specific theme
+- Direct script: `~/.config/theme-switcher/theme-switcher.sh`
+
+**Manual reloads:**
+- **Ghostty**: Press `Cmd+Ctrl+Alt+,` to reload config
+- **Prompt**: Auto-refreshes when using fish `theme` wrapper
+
+**Apps that auto-update:** bat, lazygit, oh-my-posh (with fish `theme` wrapper)
+**Apps requiring restart:** Neovim, WezTerm, Kitty, btop, Ghostty (or use keybind)
+
 ### NEO.ED Lualine Theme
 
 The statusline uses a custom colorscheme-adaptive theme that automatically matches your active colorscheme. See `lua/plugins/ui/lualine/README.md` for full documentation.
