@@ -1,4 +1,4 @@
-# NOE.ED - Neovim Configuration
+# NEO.ED - My personal Neovim configuration
 
 ```
         ███╗   ██╗███████╗ ██████╗    ███████╗██████╗
@@ -9,16 +9,16 @@
         ╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═╝╚══════╝╚═════╝
 ```
 
-A modern, LazyVim-based Neovim configuration optimized for web development, AI-assisted coding, and multi-language support.
+My personal Neovim configuration, based on LazyVim optimized for web development and used as my ADE (AI/Agent Development
+Environment) of choice.
 
 ## Features
 
 - **LazyVim Foundation**: Built on LazyVim for a solid, well-maintained base
-- **AI Integration**: Claude Code, Codeium, and Supermaven support
-- **Multi-Language**: Go, Python, TypeScript, PHP/Laravel, Rust, and more
+- **AI Integration**: opencode and Claude Code with Codeium and Supermaven for text completion
+- **Multi-Language**: JavaScript/TypeScript, Go, Python, PHP/Laravel, Rust, and more
 - **Hybrid Formatting**: Biome-first with Prettier fallback
-- **Custom Theme**: Eldritch colorscheme with custom lualine statusline
-- **Modern UI**: Snacks.nvim for explorer, picker, dashboard, and terminal
+- **Custom Theme**: [Eldritch](https://github.com/eldritch-theme) colorscheme with custom lualine statusline
 
 ---
 
@@ -46,11 +46,11 @@ A modern, LazyVim-based Neovim configuration optimized for web development, AI-a
 
 ### Installation
 
-This configuration is part of a dotfiles repository managed with GNU Stow:
+This configuration is part of my [Dotfiles](https://github.com/edheltzel/dotfiles) repo managed with GNU Stow:
 
 ```bash
 # Clone the dotfiles repository
-git clone https://github.com/yourusername/dotfiles ~/.dotfiles
+git clone https://github.com/edheltzel/dotfiles ~/.dotfiles
 
 # Stow the nvim package
 cd ~/.dotfiles
@@ -150,8 +150,16 @@ lua/
 
 | Plugin          | Description             | Key Binding      |
 | --------------- | ----------------------- | ---------------- |
+| opencode.nvim   | opencode integration    | `<C-A-S-o>`      |
 | claudecode.nvim | Claude Code integration | `<C-A-S-c>`      |
 | codeium         | AI code completion      | (via LazyExtras) |
+| supermaven      | AI code completion      | (via LazyExtras) |
+
+**opencode Configuration** (`lua/plugins/ai/opencode.lua`):
+
+- Floating window (80% width/height)
+- Rounded border
+- `YOLO` or `dangerously-skip-permissions` is enabled by default with opencod
 
 **Claude Code Configuration** (`lua/plugins/ai/claudecode.lua`):
 
@@ -446,4 +454,4 @@ Part of the dotfiles repository. See main repository for license information.
 
 ---
 
-_Generated documentation for NOE.ED Neovim configuration_
+_Generated documentation for NEO.ED Neovim configuration_
