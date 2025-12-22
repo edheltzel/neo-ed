@@ -15,6 +15,9 @@
 My personal Neovim configuration, based on LazyVim optimized for web development and used as my ADE (AI/Agent Development
 Environment) of choice.
 
+- [E.DOTS - Dotfiles](https://github.com/edheltzel/dotfiles)
+- [E.Defy - Dygma Defy keyboard](https://github.com/edheltzel/DygmaDefy)
+
 ## Features
 
 - **LazyVim Foundation**: Built on LazyVim for a solid, well-maintained base
