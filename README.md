@@ -20,6 +20,14 @@ Environment) of choice.
 - **Hybrid Formatting**: Biome-first with Prettier fallback
 - **Custom Theme**: [Eldritch](https://github.com/eldritch-theme) colorscheme with custom lualine statusline
 
+## Screenshots
+
+|                                                              |                                                                                           |
+| :----------------------------------------------------------: | :---------------------------------------------------------------------------------------: |
+|       ![1-neoed-dash.png](./_images/1-neoed-dash.png)        |                  ![3-neoed-whichkey.png](./_images/3-noeed-whichkey.png)                  |
+| ![2-noeed-whichkey.png](./_images/2-neoed-snacks-picker.png) | ![4-noed-snackers-explorer-gitblame.png](./_images/4-noed-snackers-explorer-gitblame.png) |
+|   ![5-noeed-opencode.png](./_images/5-noeed-opencode.png)    |               ![6-neoed-claudeccode.png](./_images/6-neoed-claudeccode.png)               |
+
 ---
 
 ## Table of Contents
