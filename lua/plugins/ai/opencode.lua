@@ -30,7 +30,7 @@ return {
     vim.keymap.set({ "n", "t", "x" }, "<D-A-C-o>", function()
       require("opencode").toggle()
     end, { desc = "Toggle OpenCode" })
-    vim.keymap.set("n", "<leader>aot", function()
+    vim.keymap.set("n", "<leader>aoo", function()
       require("opencode").toggle()
     end, { desc = "Toggle OpenCode" })
     vim.keymap.set("n", "<leader>aoa", function()
