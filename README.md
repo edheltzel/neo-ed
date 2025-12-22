@@ -9,7 +9,7 @@
 
 # NEO.ED
 
-> [!NOTES]
+> [!NOTE]
 > EdHeltzel's Neovim Configuration
 
 My personal Neovim configuration, based on LazyVim optimized for web development and used as my ADE (AI/Agent Development
