@@ -12,7 +12,7 @@
 > [!NOTE]
 > EdHeltzel's Neovim Configuration
 
-My personal Neovim configuration, based on LazyVim optimized for web development and used as my ADE (AI/Agent Development
+My personal Neovim configuration, based on LazyVim - optimized for web development and used as my ADE (AI/Agent Development
 Environment) of choice.
 
 - [E.DOTS - Dotfiles](https://github.com/edheltzel/dotfiles)
@@ -465,7 +465,3 @@ g.codeium_os = "Darwin"
 ## License
 
 Part of the dotfiles repository. See main repository for license information.
-
----
-
-_Generated documentation for NEO.ED Neovim configuration_
