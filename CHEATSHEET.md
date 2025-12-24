@@ -114,19 +114,7 @@ K                    Hover documentation
 <leader>dPc          Debug class
 ```
 
-### Laravel
 
-```
-<leader>LL           Laravel picker
-<leader>La           Artisan
-<leader>Lt           Actions
-<leader>Lr           Routes
-<leader>Lm           Make
-<leader>Lc           Commands
-<leader>Lo           Resources
-<leader>Lp           Command center
-<C-g>                View finder
-```
 
 ### Dashboard Shortcuts
 

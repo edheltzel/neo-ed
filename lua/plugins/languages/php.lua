@@ -1,6 +1,4 @@
-vim.g.lazyvim_php_lsp = "intelephense"
-
-local lsp = vim.g.lazyvim_php_lsp or "intelephense"
+vim.g.lazyvim_php_lsp = "phpactor"
 
 return {
   {
@@ -15,20 +13,13 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        intelephense = {
-          enabled = lsp == "intelephense",
-          filetypes = { "php", "blade", "php_only" },
-          settings = {
-            intelephense = {
-              files = {
-                associations = { "*.php", "*.blade.php" },
-                maxSize = 5000000,
-              },
-            },
-          },
-        },
-        [lsp] = {
+        phpactor = {
           enabled = true,
+          filetypes = { "php", "blade", "php_only" },
+          init_options = {
+            ["language_server_phpstan.enabled"] = false,
+            ["language_server_psalm.enabled"] = false,
+          },
         },
       },
     },
@@ -37,10 +28,29 @@ return {
     "mason-org/mason.nvim",
     opts = {
       ensure_installed = {
-        "blade-formatter",
         "php-debug-adapter",
-        "phpstan",
-        "pint",
+        "phpcs",
+      },
+    },
+  },
+  {
+    "mfussenegger/nvim-lint",
+    opts = {
+      linters_by_ft = {
+        php = {},
+      },
+    },
+  },
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        php = { "phpcbf" },
+      },
+      formatters = {
+        phpcbf = {
+          prepend_args = { "--standard=WordPress" },
+        },
       },
     },
   },

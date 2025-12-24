@@ -22,7 +22,7 @@ Environment) of choice.
 
 - **LazyVim Foundation**: Built on LazyVim for a solid, well-maintained base
 - **AI Integration**: opencode and Claude Code with Codeium and Supermaven for text completion
-- **Multi-Language**: JavaScript/TypeScript, Go, Python, PHP/Laravel, Rust, and more
+- **Multi-Language**: JavaScript/TypeScript, Go, Python, PHP/WordPress, Rust, and more
 - **Hybrid Formatting**: Biome-first with Prettier fallback
 - **Custom Theme**: [Eldritch](https://github.com/eldritch-theme) colorscheme with custom lualine statusline
 
@@ -123,14 +123,13 @@ lua/
     │   ├── go.lua
     │   ├── python.lua
     │   ├── typescript.lua
-    │   ├── php.lua
-    │   ├── laravel.lua
+    │   ├── php.lua           # PHP/WordPress (phpactor)
     │   ├── astro.lua
     │   ├── docker.lua
     │   ├── jinja.lua
     │   ├── mdx.lua
     │   ├── tailwind.lua
-    │   └── intelephense.lua
+    │   └── ghostty.lua
     │
     ├── ui/             # UI customization
     │   ├── colorscheme.lua
@@ -306,25 +305,27 @@ From `lazyvim.json`:
 
 **Custom Icons**: eslintrc, package.json, tsconfig, etc.
 
-#### PHP (`lua/plugins/languages/php.lua`)
+#### PHP/WordPress (`lua/plugins/languages/php.lua`)
 
-**LSP**: Intelephense
+**LSP**: phpactor
 
 - Blade template support
-- Large file support (5MB)
+- WordPress development optimized
+- Diagnostics disabled (no "function not found" errors)
 
-**Tools**: PHPStan, Pint, blade-formatter
+**Formatter**: phpcbf with WordPress coding standards
 
 **DAP**: php-debug-adapter
 
-#### Laravel (`lua/plugins/languages/laravel.lua`)
-
-**Plugin**: adalessa/laravel.nvim
-
-- Artisan commands
-- Route navigation
-- Make generators
-- View finder
+**WordPress Setup**:
+For WordPress projects, add `php-stubs/wordpress-stubs` via Composer and create a `.phpactor.json`:
+```json
+{
+  "php_code_sniffer.enabled": false,
+  "language_server_worse_reflection.diagnostics.enable": false,
+  "indexer.stub_paths": ["%project_root%/vendor/php-stubs/wordpress-stubs"]
+}
+```
 
 ---
 
@@ -419,13 +420,6 @@ g.codeium_os = "Darwin"
 2. Floating window appears (80% size)
 3. Ask questions or request code changes
 4. Claude Code can read/modify files directly
-
-### Laravel Development
-
-1. Open Laravel picker: `<leader>LL`
-2. Run Artisan commands: `<leader>La`
-3. Navigate routes: `<leader>Lr`
-4. Generate code: `<leader>Lm`
 
 ---
 
