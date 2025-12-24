@@ -26,7 +26,7 @@ return {
     vim.opt.autoread = true
     local set = vim.keymap.set
     -- Recommended/example keymaps
-    -- <D> = Cmd --> use Ghostty for this
+    -- <D> = Cmd
     set({ "n", "t", "x" }, "<D-A-C-o>", function()
       require("opencode").toggle()
     end, { desc = "Toggle OpenCode" })
