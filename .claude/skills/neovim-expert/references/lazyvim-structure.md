@@ -44,24 +44,28 @@ Managed via `lazyvim.json`. Enable/disable with `:LazyExtras`.
 ### Currently Enabled (32 extras)
 
 **AI/Coding:**
+
 - `lazyvim.plugins.extras.ai.claudecode`
 - `lazyvim.plugins.extras.ai.codeium`
 - `lazyvim.plugins.extras.coding.mini-surround`
 - `lazyvim.plugins.extras.dap.core`
 
 **Editor:**
+
 - `lazyvim.plugins.extras.editor.harpoon2`
 - `lazyvim.plugins.extras.editor.mini-files`
 - `lazyvim.plugins.extras.editor.snacks_explorer`
 - `lazyvim.plugins.extras.editor.snacks_picker`
 
 **Languages:**
+
 - go, python, rust, typescript, php
 - angular, astro, docker, elixir, helm
 - json, markdown, svelte, tailwind, terraform
-- toml, twig, vue, yaml
+- toml, vue, yaml
 
 **Utilities:**
+
 - `lazyvim.plugins.extras.util.dot`
 - `lazyvim.plugins.extras.util.mini-hipatterns`
 - `lazyvim.plugins.extras.formatting.biome`
@@ -77,9 +81,7 @@ Or manually edit `lazyvim.json`:
 
 ```json
 {
-  "extras": [
-    "lazyvim.plugins.extras.lang.python"
-  ]
+  "extras": ["lazyvim.plugins.extras.lang.python"]
 }
 ```
 
@@ -87,13 +89,13 @@ Or manually edit `lazyvim.json`:
 
 `lua/config/` contains core settings loaded before plugins:
 
-| File | Purpose | When Loaded |
-|------|---------|-------------|
-| `lazy.lua` | Plugin manager setup | First (from init.lua) |
-| `options.lua` | `vim.opt` settings | Before plugins |
-| `keymaps.lua` | Custom keybindings | After plugins |
-| `autocmds.lua` | Autocommands | After plugins |
-| `filetypes.lua` | Filetype associations | After plugins |
+| File            | Purpose               | When Loaded           |
+| --------------- | --------------------- | --------------------- |
+| `lazy.lua`      | Plugin manager setup  | First (from init.lua) |
+| `options.lua`   | `vim.opt` settings    | Before plugins        |
+| `keymaps.lua`   | Custom keybindings    | After plugins         |
+| `autocmds.lua`  | Autocommands          | After plugins         |
+| `filetypes.lua` | Filetype associations | After plugins         |
 
 ### options.lua Key Settings
 
