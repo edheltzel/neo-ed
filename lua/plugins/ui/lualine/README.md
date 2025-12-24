@@ -74,6 +74,15 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 3. Lualine reloads with fresh colors from the new colorscheme
 4. Your statusline automatically matches the new theme
 
+## Git Branch Dirty Indicator
+
+The branch component changes color based on working tree status:
+
+- **Gray** - Clean working tree
+- **Red** - Has uncommitted changes (added, modified, or removed lines)
+
+This uses `gitsigns` to detect changes, so gitsigns must be installed and active.
+
 ## Commands
 
 ### `:LualineRefresh`

@@ -209,7 +209,17 @@ return {
               end
             end,
           },
-          { "branch", icon = "", color = { fg = neoEdColors.gray } },
+          {
+            "branch",
+            icon = "",
+            color = function()
+              local gitsigns = vim.b.gitsigns_status_dict
+              if gitsigns and (gitsigns.added or 0) + (gitsigns.changed or 0) + (gitsigns.removed or 0) > 0 then
+                return { fg = neoEdColors.red }
+              end
+              return { fg = neoEdColors.gray }
+            end,
+          },
         },
 
         lualine_y = {},
