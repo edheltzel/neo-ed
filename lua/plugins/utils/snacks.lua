@@ -17,7 +17,7 @@ return {
             hidden = true,
           },
           grep = {
-            hidden = true,  -- search hidden files
+            hidden = true, -- search hidden files
           },
           explorer = {
             hidden = true,
@@ -46,7 +46,7 @@ return {
               end,
             },
             { icon = "⊙ ", key = "d", desc = "DOTFILES", action = ":cd ${HOME}/.dotfiles | :e ." },
-            { icon = " ", key = "v", desc = "NOE.ED", action = ":cd ${HOME}/.dotfiles/nvim/.config/nvim | :e ." },
+            { icon = " ", key = "v", desc = "NOE.ED", action = ":cd ${HOME}/.dotfiles/neoed/.config/nvim | :e ." },
             {
               icon = "󰎞 ",
               key = "n",
