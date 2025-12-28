@@ -63,8 +63,9 @@ api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
--- Auto-refresh lualine when colorscheme changes
--- This ensures the NEO.ED theme adapts to the new colorscheme automatically
+------------------- LUALINE -------------------
+---- Auto-refresh lualine when colorscheme changes
+-- This ensures NEOED theme adapts to the colorscheme automatically
 api.nvim_create_autocmd("ColorScheme", {
   group = api.nvim_create_augroup("lualine_colorscheme_refresh", { clear = true }),
   pattern = "*",
@@ -95,7 +96,7 @@ api.nvim_create_autocmd("ColorScheme", {
 })
 
 -- Manual command to refresh lualine theme
-vim.api.nvim_create_user_command("LualineRefresh", function()
+api.nvim_create_user_command("LualineRefresh", function()
   -- Clear cached modules
   package.loaded["plugins.ui.lualine.neoed"] = nil
   package.loaded["plugins.ui.lualine.eldritch"] = nil
