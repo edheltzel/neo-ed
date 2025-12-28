@@ -3,6 +3,9 @@ return {
   {
     "folke/snacks.nvim",
     opts = {
+      notifier = {
+        top_down = false,
+      },
       image = {
         enable = true,
         max_width = 100,
@@ -30,6 +33,7 @@ return {
           },
         },
       },
+
       dashboard = {
         preset = {
           keys = {
