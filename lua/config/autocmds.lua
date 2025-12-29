@@ -114,3 +114,11 @@ api.nvim_create_user_command("LualineRefresh", function()
     vim.notify("Failed to refresh lualine", vim.log.levels.ERROR)
   end
 end, { desc = "Refresh lualine theme to match current colorscheme" })
+
+api.nvim_create_autocmd("FileType", {
+  group = api.nvim_create_augroup("neoed_wrap_spell", { clear = true }),
+  pattern = { "gitcommit", "markdown", "text" },
+  callback = function()
+    vim.opt_local.spell = true
+  end,
+})
