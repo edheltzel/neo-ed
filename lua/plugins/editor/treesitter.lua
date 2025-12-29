@@ -1,9 +1,27 @@
--- TreeSitter configuration
+vim.treesitter.language.register("json", "jsonc")
+
 return {
   "nvim-treesitter/nvim-treesitter",
-  opts = function(_, opts)
-    -- Map jsonc filetype to use json parser (jsonc isn't a separate treesitter parser)
-    vim.treesitter.language.register("json", "jsonc")
-    return opts
-  end,
+  opts = {
+    ensure_installed = {
+      "bash",
+      "c",
+      "cpp",
+      "css",
+      "fish",
+      "go",
+      "html",
+      "javascript",
+      "json",
+      "jsonc",
+      "lua",
+      "markdown",
+      "markdown_inline",
+      "php",
+      "python",
+      "rust",
+      "typescript",
+      "yaml",
+    },
+  },
 }
