@@ -14,8 +14,8 @@ opt.cursorline = true
 opt.cursorcolumn = true
 opt.scrolloff = 999
 
-opt.textwidth = 120
-opt.colorcolumn = "120"
+opt.textwidth = 80
+opt.colorcolumn = "80"
 opt.wrap = true
 
 opt.swapfile = false
