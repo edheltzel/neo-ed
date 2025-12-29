@@ -21,8 +21,9 @@ gl              End of line ($)
 ```
 <A-j> / <A-down>     Move line down
 <A-k> / <A-up>       Move line up
-<A-C-down>           Duplicate line down
-<A-C-up>             Duplicate line up
+<A-S-j>              Duplicate line down
+<A-S-k>              Duplicate line up
+<A-S-d>              Duplicate line down
 ```
 
 ### Editing
@@ -32,6 +33,9 @@ U                    Redo
 <Enter>              Toggle fold
 > / <                Indent right/left
 <C-]> / <C-[>        Indent right/left
+<A-BS>               Delete word (alt-backspace)
+<leader>d            Delete without yanking
+<leader>nh           Clear search highlights
 ```
 
 ### Multi-Cursor
@@ -49,13 +53,14 @@ U                    Redo
 <Esc>                Clear all cursors
 ```
 
-### Files
+### Files & Projects
 
 ```
 <leader>fs           Save file
 <leader>fS           Save without formatting
 <leader>ff           Find file
 <leader>fg           Live grep
+<leader>fp           Find projects (like VSCode Project Manager)
 ```
 
 ### Windows/Splits
@@ -78,10 +83,35 @@ U                    Redo
 <leader>gg           Lazygit (borderless)
 ```
 
-### AI
+### AI - Claude Code
 
 ```
-<C-A-S-c>            Toggle Claude Code
+<D-A-C-c>            Toggle Claude Code (Cmd+Alt+Ctrl+c)
+```
+
+### AI - OpenCode
+
+```
+<D-A-C-o>            Toggle OpenCode (Cmd+Alt+Ctrl+o)
+<leader>aoo          Toggle OpenCode
+<leader>aoa          Ask OpenCode (normal: @cursor, visual: @selection)
+<leader>ao+          Add buffer to prompt
+<leader>aos          Add selection to prompt (visual)
+<leader>aoe          Explain code at cursor
+<leader>aon          New session
+<leader>aop          Select prompt
+```
+
+### macOS Cmd Keys (requires CSI u protocol)
+
+```
+<D-c>                Copy (word in normal, selection in visual)
+<D-v>                Paste
+<D-x>                Cut (word in normal, selection in visual)
+<D-s>                Save file
+<D-z>                Undo
+<D-S-z>              Redo
+<D-a>                Select all
 ```
 
 ### LSP

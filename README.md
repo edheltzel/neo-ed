@@ -109,9 +109,11 @@ lua/
     │   └── surround.lua
     │
     ├── editor/         # Editor enhancements
+    │   ├── flash.lua
     │   ├── git.lua
-    │   ├── ghostty.lua
-    │   └── multicursor.lua
+    │   ├── multicursor.lua
+    │   ├── obsidian.lua
+    │   └── treesitter.lua
     │
     ├── formatting/     # Code formatters
     │   └── prettier.lua
@@ -120,29 +122,36 @@ lua/
     │   └── biome.lua
     │
     ├── languages/      # Language-specific configs
-    │   ├── go.lua
-    │   ├── python.lua
-    │   ├── typescript.lua
-    │   ├── php.lua           # PHP/WordPress (phpactor)
     │   ├── astro.lua
     │   ├── docker.lua
+    │   ├── ghostty.lua
+    │   ├── go.lua
     │   ├── jinja.lua
-    │   ├── mdx.lua
+    │   ├── markdown.lua
+    │   ├── php.lua           # PHP/WordPress (phpactor)
+    │   ├── python.lua
     │   ├── tailwind.lua
-    │   └── ghostty.lua
+    │   └── typescript.lua
     │
     ├── ui/             # UI customization
     │   ├── colorscheme.lua
-    │   ├── eldritch.lua
     │   ├── lualine.lua
+    │   ├── noice.lua
     │   ├── treesitter-context.lua
-    │   └── lualine/
-    │       ├── neoed.lua      # Theme adapter
-    │       ├── eldritch.lua   # Eldritch theme
-    │       └── rose-pine.lua  # Rose Pine theme
+    │   └── lualine/          # Statusline themes
+    │       ├── neoed.lua         # Theme adapter
+    │       ├── aura.lua
+    │       ├── eldritch.lua
+    │       ├── rose-pine.lua
+    │       └── tokyonight.lua
     │
-    └── utils/          # Utilities
-        └── snacks.lua
+    └── utils/          # Snacks.nvim utilities
+        ├── snacks-dashboard.lua
+        ├── snacks-image.lua
+        ├── snacks-notifier.lua
+        ├── snacks-persistence.lua
+        ├── snacks-picker.lua
+        └── snacks-projects.lua   # Project manager (like VSCode)
 ```
 
 ### Plugin Load Order
@@ -206,6 +215,7 @@ lua/
 | Picker        | snacks.picker    | Default layout               |
 | Dashboard     | snacks.dashboard | Custom NEO.ED header         |
 | Terminal      | snacks.terminal  | Borderless float             |
+| Projects      | snacks.projects  | Project manager (like VSCode)|
 
 ---
 
@@ -396,10 +406,20 @@ g.codeium_os = "Darwin"
 ### Daily Development
 
 1. **Start Neovim** - Dashboard shows recent files, dotfiles shortcuts
-2. **Open Project** - Use `<leader>ff` for file picker
-3. **Navigate Files** - Use Snacks explorer (right sidebar)
-4. **Edit with Multi-Cursor** - `<C-n>` for next match
-5. **Format on Save** - Biome/Prettier automatically formats
+2. **Open Project** - Use `<leader>fp` to browse projects (scans ~/Developer and ~/Sites)
+3. **Find Files** - Use `<leader>ff` for file picker
+4. **Navigate Files** - Use Snacks explorer (right sidebar)
+5. **Edit with Multi-Cursor** - `<C-n>` for next match
+6. **Format on Save** - Biome/Prettier automatically formats
+
+### Project Management
+
+The `snacks-projects` module works similarly to **VSCode's Project Manager extension**:
+
+- Press `<leader>fp` to open the project picker
+- Scans `~/Developer` and `~/Sites` for git repositories (up to 4 levels deep)
+- Selecting a project loads its session automatically
+- Configure additional directories in `lua/plugins/utils/snacks-projects.lua`
 
 ### Git Workflow
 
