@@ -103,6 +103,15 @@ return {
             return book_title
           end,
         },
+        -- Per-template customizations for directory placement
+        customizations = {
+          ["New-Reading.md"] = {
+            notes_subdir = "ReadingList",
+          },
+          ["New-Book.md"] = {
+            notes_subdir = "ReadingList",
+          },
+        },
       },
     })
 
@@ -129,16 +138,9 @@ return {
 
         vim.notify("Creating note: " .. title, vim.log.levels.INFO)
 
-        -- Use obsidian.nvim API to create the note (scheduled to avoid input callback issues)
+        -- Use Obsidian command API for stability across plugin updates
         vim.schedule(function()
-          local Note = require("obsidian.note")
-          local note = Note.create({
-            title = title,
-            dir = vault_path .. "/ReadingList",
-            template = "New-Reading.md",
-            should_write = true,
-          })
-          note:open({ sync = false })
+          vim.cmd("Obsidian new_from_template '" .. title:gsub("'", "\\'") .. "' 'New-Reading'")
         end)
       end)
     end, { desc = "Create a new reading note from URL" })
@@ -156,16 +158,9 @@ return {
 
         vim.notify("Creating book note: " .. title, vim.log.levels.INFO)
 
-        -- Use obsidian.nvim API to create the note
+        -- Use Obsidian command API for stability across plugin updates
         vim.schedule(function()
-          local Note = require("obsidian.note")
-          local note = Note.create({
-            title = title,
-            dir = vault_path .. "/ReadingList",
-            template = "New-Book.md",
-            should_write = true,
-          })
-          note:open({ sync = false })
+          vim.cmd("Obsidian new_from_template '" .. title:gsub("'", "\\'") .. "' 'New-Book'")
         end)
       end)
     end, { desc = "Create a new book note" })
