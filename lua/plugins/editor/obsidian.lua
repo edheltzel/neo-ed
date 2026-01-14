@@ -57,7 +57,7 @@ return {
   version = "*",
   lazy = false,
   config = function()
-    local vault_path = vim.fn.expand("~") .. "/Library/Mobile Documents/iCloud~md~obsidian/Documents/FieldNotes✱ "
+    local vault_path = vim.fn.expand("~") .. "/Library/Mobile Documents/iCloud~md~obsidian/Documents/FieldNotes✱"
 
     require("obsidian").setup({
       legacy_commands = false,
