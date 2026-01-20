@@ -28,3 +28,5 @@ opt.spell = false
 opt.spelllang = "en_us"
 
 g.lazygit_config = false
+
+opt.lazyredraw = true
