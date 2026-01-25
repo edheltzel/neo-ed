@@ -14,6 +14,7 @@ opt.cursorline = true
 opt.cursorcolumn = true
 opt.scrolloff = 999
 
+opt.linespace = 2
 opt.textwidth = 80
 opt.colorcolumn = "80"
 opt.wrap = true
@@ -28,5 +29,3 @@ opt.spell = false
 opt.spelllang = "en_us"
 
 g.lazygit_config = false
-
-opt.lazyredraw = true
