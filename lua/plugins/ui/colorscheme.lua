@@ -6,7 +6,7 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
-      transparent = true,
+      transparent = false,
       dim_inactive = true,
       styles = {
         sidebars = "dark",
@@ -99,7 +99,7 @@ return {
       --   Aura: "aura-dark", "aura-dark-soft-text", "aura-soft-dark", "aura-soft-dark-soft-text"
       --   Rose Pine: "rose-pine", "rose-pine-moon", "rose-pine-dawn"
       --   Tokyo Night: "tokyonight", "tokyonight-storm", "tokyonight-moon", "tokyonight-day"
-      colorscheme = "eldritch",
+      colorscheme = "rose-pine-dawn",
     },
   },
 }
