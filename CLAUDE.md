@@ -143,6 +143,17 @@ Key vim options set in lua/config/options.lua:
 - Undo directory: `~/.local/state/nvim/undo`
 - Platform: macOS arm64 (for Codeium)
 
+### Terminal Background Sync (OSC 11/111)
+
+Autocmds in `options.lua` sync terminal background with Neovim colorscheme:
+
+- **UIEnter/ColorScheme**: Sends `OSC 11` to set terminal bg to Normal highlight color
+- **UILeave**: Sends `OSC 111` to reset terminal bg on exit
+- **Why**: Eliminates visible padding gap in terminals with window padding
+- **Compatibility**: WezTerm, Kitty, Ghostty, Alacritty (any OSC 11-compliant terminal)
+
+This runs BEFORE lazy.nvim loads to ensure immediate effect on startup.
+
 ## Theme Configuration
 
 ### Colorscheme Management
