@@ -344,6 +344,10 @@ For WordPress projects, add `php-stubs/wordpress-stubs` via Composer and create 
 ### Vim Options (`lua/config/options.lua`)
 
 ```lua
+-- Terminal Background Sync (OSC 11/111)
+-- Eliminates padding gap by syncing terminal bg with colorscheme
+-- Works with: WezTerm, Kitty, Ghostty, Alacritty
+
 -- UI
 opt.cursorline = true       -- Highlight current line
 opt.cursorcolumn = true     -- Highlight current column
@@ -473,6 +477,21 @@ The `snacks-projects` module works similarly to **VSCode's Project Manager exten
 :source %      " Reload current file
 " Or restart Neovim
 ```
+
+---
+
+## Changelog
+
+### v1.0.0 (2026-02-03)
+
+**First stable release**
+
+- **Terminal Background Sync**: OSC 11/111 integration eliminates padding gaps in WezTerm, Kitty, Ghostty, Alacritty
+- **Theme Support**: Eldritch (default), Aura, Rose Pine (including Dawn for light mode), Tokyo Night
+- **AI Integration**: Claude Code and opencode with floating windows
+- **Project Management**: VSCode-style project picker scanning ~/Developer and ~/Sites
+- **Modular Snacks**: Dashboard, explorer, picker, notifier, persistence split into individual configs
+- **Custom Lualine**: Colorscheme-adaptive statusline with mode indicators
 
 ---
 
