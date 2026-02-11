@@ -74,6 +74,13 @@ M.palettes = {
 
 function M.get_colors(variant)
   variant = variant or "tokyonight"
+
+  -- tokyonight.nvim sets vim.g.colors_name = "tokyonight-night" for the night
+  -- style, but the palette stores it under "tokyonight" (the default)
+  if variant == "tokyonight-night" then
+    variant = "tokyonight"
+  end
+
   local palette = M.palettes[variant] or M.palettes["tokyonight"]
   local overrides = palette.get_overrides and palette.get_overrides(palette.colors) or nil
   return palette.colors, overrides

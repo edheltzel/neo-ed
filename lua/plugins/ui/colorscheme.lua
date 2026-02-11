@@ -55,7 +55,7 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
-      variant = "main", -- auto, main, moon, or dawn
+      variant = "dawn", -- auto, main, moon, or dawn
       dark_variant = "main",
       dim_inactive_windows = false,
       extend_background_behind_borders = true,
@@ -88,9 +88,8 @@ return {
       dim_inactive = true,
     },
   },
-
-  -- LazyVim colorscheme configuration
   -- This is the ONLY place to set your active colorscheme
+  -- LazyVim colorscheme configuration
   {
     "LazyVim/LazyVim",
     opts = {

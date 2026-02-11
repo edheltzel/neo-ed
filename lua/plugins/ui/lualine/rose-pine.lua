@@ -59,6 +59,22 @@ M.palettes = {
 
 function M.get_colors(variant)
   variant = variant or "rose-pine"
+
+  -- rose-pine.nvim sets vim.g.colors_name = "rose-pine" for ALL variants,
+  -- so we query the plugin's internal config to detect the actual variant
+  if variant == "rose-pine" then
+    local ok, rp_config = pcall(require, "rose-pine.config")
+    if ok and rp_config.options then
+      local rp_variant = rp_config.options.variant
+      if rp_variant == "dawn" then
+        variant = "rose-pine-dawn"
+      elseif rp_variant == "moon" then
+        variant = "rose-pine-moon"
+      end
+      -- "main" stays as "rose-pine"
+    end
+  end
+
   local palette = M.palettes[variant] or M.palettes["rose-pine"]
   local overrides = palette.get_overrides and palette.get_overrides(palette.colors) or nil
   return palette.colors, overrides
