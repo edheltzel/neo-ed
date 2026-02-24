@@ -55,7 +55,7 @@ end
 return {
   "obsidian-nvim/obsidian.nvim",
   version = "*",
-  lazy = false,
+  event = "VeryLazy",
   config = function()
     local vault_path = vim.fn.expand("~") .. "/Library/Mobile Documents/iCloud~md~obsidian/Documents/FieldNotes✱"
 
