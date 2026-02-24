@@ -97,8 +97,6 @@ set("n", "<leader>ih", function()
   vim.notify(vim.lsp.inlay_hint.is_enabled() and "Inlay Hints Enabled" or "Inlay Hints Disabled")
 end, { desc = "Toggle inlay hints" })
 
--- Claude Code
-wk.add({ { "<leader>a", group = "Claude Code", icon = { icon = "🤖", color = "purple" } } })
 
 -- Move LazyVim changelog from <leader>L to <leader>l
 set("n", "<leader>lc", function()

@@ -28,6 +28,7 @@ o.timeoutlen = 250
 
 g.codeium_arch = "arm64"
 g.codeium_os = "Darwin"
+g.loaded_python3_provider = 0
 
 opt.cursorline = true
 opt.cursorcolumn = true
