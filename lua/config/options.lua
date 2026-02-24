@@ -31,8 +31,7 @@ g.codeium_os = "Darwin"
 g.loaded_python3_provider = 0
 
 opt.cursorline = true
-opt.cursorcolumn = true
-opt.scrolloff = 999
+opt.scrolloff = 8
 
 opt.linespace = 2
 opt.textwidth = 80

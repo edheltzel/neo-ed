@@ -31,21 +31,6 @@ return {
             },
           },
         },
-        ruff_lsp = {
-          keys = {
-            {
-              "<leader>co",
-              vim.lsp.buf.code_action({
-                apply = true,
-                context = {
-                  only = { "source.organizeImports" },
-                  diagnostics = {},
-                },
-              }),
-              desc = "Organize Imports",
-            },
-          },
-        },
       },
       setup = {
         [ruff] = function()

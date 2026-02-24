@@ -39,8 +39,7 @@ return {
   },
   {
     "daltonmenezes/aura-theme",
-    lazy = false,
-    priority = 1000,
+    lazy = true,
     init = function()
       -- Add the runtime path early, before colorscheme is loaded
       local plugin_path = vim.fn.stdpath("data") .. "/lazy/aura-theme"
@@ -52,8 +51,7 @@ return {
   {
     "rose-pine/neovim",
     name = "rose-pine",
-    lazy = false,
-    priority = 1000,
+    lazy = true,
     opts = {
       variant = "dawn", -- auto, main, moon, or dawn
       dark_variant = "main",
@@ -70,8 +68,7 @@ return {
   -- Tokyo Night Theme
   {
     "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
+    lazy = true,
     opts = {
       style = "night", -- storm, moon, night, or day
       transparent = false,
