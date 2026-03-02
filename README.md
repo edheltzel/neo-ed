@@ -68,7 +68,7 @@ git clone https://github.com/edheltzel/dotfiles ~/.dotfiles
 
 # Stow the nvim package
 cd ~/.dotfiles
-make stow pkg=nvim
+just stow nvim
 
 # Or manually
 stow -v nvim
