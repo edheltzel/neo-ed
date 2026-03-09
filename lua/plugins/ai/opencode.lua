@@ -28,11 +28,25 @@ return {
     -- Recommended/example keymaps
     -- <D> = Cmd
     set({ "n", "t", "x" }, "<D-A-C-o>", function()
-      require("opencode").toggle()
-    end, { desc = "Toggle OpenCode" })
+      Snacks.terminal.toggle("opencode", {
+        win = {
+          position = "float",
+          width = 0.8,
+          height = 0.8,
+          border = "rounded",
+        },
+      })
+    end, { desc = "Toggle OpenCode Terminal" })
     set("n", "<leader>aoo", function()
-      require("opencode").toggle()
-    end, { desc = "Toggle OpenCode" })
+      Snacks.terminal.toggle("opencode", {
+        win = {
+          position = "float",
+          width = 0.8,
+          height = 0.8,
+          border = "rounded",
+        },
+      })
+    end, { desc = "Toggle OpenCode Terminal" })
     set("n", "<leader>aoa", function()
       require("opencode").ask("@cursor: ")
     end, { desc = "Ask OpenCode about this" })
