@@ -69,7 +69,7 @@ set("n", "<C-l>", "<C-w>l", { noremap = true, silent = true, desc = "switch wind
 ---- move around splits
 set("n", "<leader>wh", "<C-w>h", { noremap = true, silent = true, desc = "switch window right" })
 
-set("n", "<ENTER>", "za", { noremap = true, silent = true, desc = "Code Folding" })
+-- set("n", "<ENTER>", "za", { noremap = true, silent = true, desc = "Code Folding" })
 -- indenting
 set("n", "<C-]>", ">>", { noremap = true, silent = true, desc = "Indent right" })
 set("n", "<C-[>", "<<", { noremap = true, silent = true, desc = "Indent left" })
