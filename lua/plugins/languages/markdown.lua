@@ -9,7 +9,7 @@ return {
     "bullets-vim/bullets.vim",
     ft = "markdown",
     config = function()
-      vim.g.buttlets_delete_last_bullet_if_empty = 2
+      vim.g.bullets_delete_last_bullet_if_empty = 2
     end,
   },
 }

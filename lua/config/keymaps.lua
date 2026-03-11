@@ -6,7 +6,6 @@ local set = vim.keymap.set
 local del = vim.keymap.del
 local wk = require("which-key")
 local Snacks = require("snacks")
-local set_keymap = api.nvim_set_keymap
 
 -- unset
 del({ "n", "i", "v" }, "<A-k>")
@@ -19,7 +18,7 @@ set("n", "<leader>nh", ":nohl<CR>", { noremap = true, silent = true, desc = "Cle
 api.nvim_set_keymap("i", "jk", "<Esc>", { noremap = false, desc = "exit INSERT mode" })
 
 -- delete without yanking
-set({ "n", "v" }, "<leader>d", "d", { noremap = true, silent = true, desc = "Delete without yanking" })
+set({ "n", "v" }, "<leader>d", '"_d', { noremap = true, silent = true, desc = "Delete without yanking" })
 
 -- jump to beginning/end of line
 set("n", "gh", "^", { noremap = true, silent = true, desc = "Jump beginning of line" })
@@ -35,10 +34,10 @@ set("n", "U", "<C-r>", { noremap = true, silent = true, desc = "Redo w/ U" })
 set("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true, desc = "Escape terminal" })
 
 -- duplicate lines up/down
-set({ "n", "v" }, "<A-S-d>", "Vy`<p`>", { noremap = true, silent = true, desc = "duplicate lines down" })
+set({ "n", "v" }, "<A-S-d>", "Vy`<p`>", { noremap = true, silent = true, desc = "Duplicate line down" })
 
-set({ "n", "v" }, "<A-S-j>", "Vy`<p`>", { noremap = true, silent = true, desc = "duplicate lines down" })
-set({ "n", "v" }, "<A-S-k>", "Vy`<p`>", { noremap = true, silent = true, desc = "duplicate lines down" })
+set({ "n", "v" }, "<A-S-j>", "Vy`<p`>", { noremap = true, silent = true, desc = "Duplicate line down" })
+set({ "n", "v" }, "<A-S-k>", "Vy`<p`>", { noremap = true, silent = true, desc = "Duplicate line down" })
 
 -- indent line
 set("v", ">", ">gv", { noremap = true, silent = true, desc = "Indent right and reselect" }) -- shift+.
@@ -58,16 +57,14 @@ set({ "n", "t" }, "<C-`>", function()
 end, { noremap = true, silent = true, desc = "Toggle terminal" })
 
 ---- move around splits
-set("n", "<leader>wh", "<C-w>h", { noremap = true, silent = true, desc = "switch window right" })
+set("n", "<leader>wh", "<C-w>h", { noremap = true, silent = true, desc = "switch window left" })
 set("n", "<leader>wj", "<C-w>j", { noremap = true, silent = true, desc = "switch window down" })
 set("n", "<leader>wk", "<C-w>k", { noremap = true, silent = true, desc = "switch window up" })
-set("n", "<leader>wl", "<C-w>l", { noremap = true, silent = true, desc = "switch window left" })
+set("n", "<leader>wl", "<C-w>l", { noremap = true, silent = true, desc = "switch window right" })
 set("n", "<C-h>", "<C-w>h", { noremap = true, silent = true, desc = "switch window left" })
 set("n", "<C-j>", "<C-w>j", { noremap = true, silent = true, desc = "switch window down" })
 set("n", "<C-k>", "<C-w>k", { noremap = true, silent = true, desc = "switch window up" })
 set("n", "<C-l>", "<C-w>l", { noremap = true, silent = true, desc = "switch window right" })
----- move around splits
-set("n", "<leader>wh", "<C-w>h", { noremap = true, silent = true, desc = "switch window right" })
 
 -- set("n", "<ENTER>", "za", { noremap = true, silent = true, desc = "Code Folding" })
 -- indenting

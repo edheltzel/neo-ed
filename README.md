@@ -21,7 +21,7 @@ Environment) of choice.
 ## Features
 
 - **LazyVim Foundation**: Built on LazyVim for a solid, well-maintained base
-- **AI Integration**: opencode and Claude Code with Codeium and Supermaven for text completion
+- **AI Integration**: opencode, Claude Code, and Pi with Supermaven for text completion
 - **Multi-Language**: JavaScript/TypeScript, Go, Python, PHP/WordPress, Rust, and more
 - **Hybrid Formatting**: Biome-first with Prettier fallback
 - **Custom Theme**: [Eldritch](https://github.com/eldritch-theme) colorscheme with custom lualine statusline
@@ -102,7 +102,7 @@ lua/
     ├── ai/             # AI assistants
     │   ├── claudecode.lua
     │   ├── opencode.lua
-    │   └── windsurf.lua
+    │   └── pi-agent.lua
     │
     ├── coding/         # Code editing
     │   ├── emmet.lua
@@ -172,16 +172,16 @@ lua/
 
 | Plugin          | Description             | Key Binding      |
 | --------------- | ----------------------- | ---------------- |
-| opencode.nvim   | opencode integration    | `<C-A-S-o>`      |
-| claudecode.nvim | Claude Code integration | `<C-A-S-c>`      |
-| codeium         | AI code completion      | (via LazyExtras) |
+| opencode.nvim   | opencode integration    | `<D-A-C-o>`      |
+| claudecode.nvim | Claude Code integration | `<D-A-C-c>`      |
+| pi.nvim         | Pi integration          | `<D-A-C-p>`      |
 | supermaven      | AI code completion      | (via LazyExtras) |
 
 **opencode Configuration** (`lua/plugins/ai/opencode.lua`):
 
 - Floating window (80% width/height)
 - Rounded border
-- `YOLO` or `dangerously-skip-permissions` is enabled by default with opencod
+- Floating terminal is exposed through Snacks with rounded borders and editor keymaps
 
 **Claude Code Configuration** (`lua/plugins/ai/claudecode.lua`):
 
@@ -234,7 +234,7 @@ From `lazyvim.json`:
 **AI**:
 
 - `ai.claudecode` - Claude Code integration
-- `ai.codeium` - AI completion
+- `ai.supermaven` - AI completion
 
 **Coding**:
 
@@ -254,12 +254,9 @@ From `lazyvim.json`:
 
 **Languages**:
 
-- `lang.angular` - Angular
 - `lang.astro` - Astro
 - `lang.docker` - Docker/Compose
-- `lang.elixir` - Elixir
 - `lang.go` - Go
-- `lang.helm` - Helm charts
 - `lang.json` - JSON
 - `lang.markdown` - Markdown
 - `lang.php` - PHP
@@ -267,7 +264,6 @@ From `lazyvim.json`:
 - `lang.rust` - Rust
 - `lang.svelte` - Svelte
 - `lang.tailwind` - Tailwind CSS
-- `lang.terraform` - Terraform
 - `lang.toml` - TOML
 - `lang.typescript` - TypeScript
 - `lang.vue` - Vue
@@ -440,7 +436,7 @@ The `snacks-projects` module works similarly to **VSCode's Project Manager exten
 
 ### AI-Assisted Coding
 
-1. Toggle Claude Code: `<C-A-S-c>`
+1. Toggle Claude Code: `<D-A-C-c>`
 2. Floating window appears (80% size)
 3. Ask questions or request code changes
 4. Claude Code can read/modify files directly
