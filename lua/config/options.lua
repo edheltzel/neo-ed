@@ -17,8 +17,24 @@ vim.api.nvim_create_autocmd({ "UIEnter", "ColorScheme" }, {
 vim.api.nvim_create_autocmd("UILeave", {
   callback = function()
     io.write("\027]111\027\\")
+    io.write("\027]112\027\\")
   end,
-  desc = "Reset terminal background on exit",
+  desc = "Reset terminal background and cursor color on exit",
+})
+
+-- Cursor color: white in normal mode, green (#37F499) in insert mode
+io.write("\027]12;#FFFFFF\027\\")
+vim.api.nvim_create_autocmd("InsertEnter", {
+  callback = function()
+    io.write("\027]12;#37F499\027\\")
+  end,
+  desc = "Set cursor color to green on insert",
+})
+vim.api.nvim_create_autocmd("InsertLeave", {
+  callback = function()
+    io.write("\027]12;#FFFFFF\027\\")
+  end,
+  desc = "Set cursor color to white on normal",
 })
 
 local opt = vim.opt
