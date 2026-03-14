@@ -19,6 +19,21 @@ return {
       mode = { "n", "t", "x" },
     },
     {
+      "<C-A-p>",
+      function()
+        Snacks.terminal.toggle("pi", {
+          win = {
+            position = "float",
+            width = 0.8,
+            height = 0.8,
+            border = "rounded",
+          },
+        })
+      end,
+      desc = "Toggle Pi Terminal",
+      mode = { "n", "t", "x" },
+    },
+    {
       "<leader>app",
       function()
         Snacks.terminal.toggle("pi", {

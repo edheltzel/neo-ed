@@ -10,7 +10,12 @@ return {
       "<cmd>ClaudeCodeFocus<cr>",
       desc = "Toggle Claude Code",
       mode = { "n", "t", "x" },
-      -- "<C-A-S-c>", "<cmd>ClaudeCodeFocus<cr>", desc = "Toggle Claude Code", mode = { "n", "t", "x" }
+    },
+    {
+      "<C-A-c>",
+      "<cmd>ClaudeCodeFocus<cr>",
+      desc = "Toggle Claude Code",
+      mode = { "n", "t", "x" },
     },
   },
   opts = {
@@ -23,8 +28,15 @@ return {
         border = "rounded",
         keys = {
           claude_hide = {
-            -- "<C-A-S-c>",
             "<D-A-C-c>",
+            function(self)
+              self:hide()
+            end,
+            mode = "t",
+            desc = "Hide Claude",
+          },
+          claude_hide_alt = {
+            "<C-A-c>",
             function(self)
               self:hide()
             end,

@@ -27,7 +27,7 @@ return {
     local set = vim.keymap.set
     -- Recommended/example keymaps
     -- <D> = Cmd
-    set({ "n", "t", "x" }, "<D-A-C-o>", function()
+    local function toggle_opencode()
       Snacks.terminal.toggle("opencode", {
         win = {
           position = "float",
@@ -36,7 +36,9 @@ return {
           border = "rounded",
         },
       })
-    end, { desc = "Toggle OpenCode Terminal" })
+    end
+    set({ "n", "t", "x" }, "<D-A-C-o>", toggle_opencode, { desc = "Toggle OpenCode Terminal" })
+    set({ "n", "t", "x" }, "<C-A-o>", toggle_opencode, { desc = "Toggle OpenCode Terminal" })
     set("n", "<leader>aoo", function()
       Snacks.terminal.toggle("opencode", {
         win = {
