@@ -87,6 +87,22 @@ end, { noremap = true, silent = true, desc = "Jump to character" })
 set("n", "<leader>fs", ":w<CR>", { noremap = true, silent = true, desc = "Save file" })
 set("n", "<leader>fS", ":noautocmd w<CR>", { noremap = true, silent = true, desc = "Save without formatting" })
 
+-- Spelling ----------------------------------------
+wk.add({ { "<leader>S", group = "Spelling", icon = { icon = "󰓆", color = "green" } } })
+set("n", "<leader>Ss", function()
+  vim.opt_local.spell = not vim.opt_local.spell:get()
+  vim.notify(vim.opt_local.spell:get() and "Spell check ON" or "Spell check OFF")
+end, { desc = "Toggle spell (buffer)" })
+set("n", "<leader>Sa", "zg", { remap = true, desc = "Add word to dictionary" })
+set("n", "<leader>Sw", "zw", { remap = true, desc = "Mark word as wrong" })
+set("n", "<leader>Su", "zug", { remap = true, desc = "Undo add word" })
+set("n", "<leader>S=", "z=", { remap = true, desc = "Spelling suggestions" })
+set("n", "<leader>Sn", "]s", { remap = true, desc = "Next misspelled" })
+set("n", "<leader>Sp", "[s", { remap = true, desc = "Prev misspelled" })
+set("n", "<leader>Sf", function()
+  vim.cmd("edit " .. vim.fn.stdpath("config") .. "/spell/en.utf-8.add")
+end, { desc = "Edit spellfile" })
+
 -- toggle inlay hints
 wk.add({ { "<leader>i", group = "Inlay Hints", icon = { icon = "ℹ", color = "orange" } } })
 set("n", "<leader>ih", function()
