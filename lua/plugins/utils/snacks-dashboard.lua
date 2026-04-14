@@ -46,8 +46,6 @@ return {
               open_project("~/Library/Mobile Documents/iCloud~md~obsidian/Documents/FieldNotes✱")
             end,
           },
-          { icon = "󰒲 ", key = "x", desc = "Lazy Extras", action = ":LazyExtras" },
-          { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy" },
           { icon = "󰩈 ", key = "q", desc = "Quit", action = ":qa" },
         },
         header = [[
