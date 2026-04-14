@@ -4,10 +4,6 @@ return {
     dashboard = {
       preset = {
         keys = {
-          { icon = " ", key = "N", desc = "New File", action = ":ene | startinsert" },
-          { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('recent')" },
-          { icon = "󰮗 ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
-          { icon = "󱩾 ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
           {
             icon = " ",
             key = "o",
