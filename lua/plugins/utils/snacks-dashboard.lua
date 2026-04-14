@@ -15,7 +15,7 @@ return {
       preset = {
         keys = {
           {
-            icon = " ",
+            icon = "󱈅 ",
             key = "o",
             desc = "Find Session",
             action = function()
@@ -31,15 +31,15 @@ return {
             end,
           },
           {
-            icon = " ",
+            icon = "\u{E6AE} ",
             key = "v",
-            desc = "NOE.ED",
+            desc = "NEO.ED",
             action = function()
               open_project("~/.dotfiles/neoed/.config/nvim")
             end,
           },
           {
-            icon = " ",
+            icon = "\u{F082E} ",
             key = "n",
             desc = "FieldNotes✱",
             action = function()
