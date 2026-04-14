@@ -4,7 +4,7 @@ local function open_project(path)
   if ok and vim.fn.filereadable(persistence.current()) == 1 then
     persistence.load()
   else
-    vim.cmd("edit .")
+    vim.cmd("enew")
   end
 end
 
