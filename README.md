@@ -60,18 +60,49 @@ Environment) of choice.
 
 ### Installation
 
-This configuration is part of my [Dotfiles](https://github.com/edheltzel/dotfiles) repo managed with GNU Stow:
+Choose one of the two install paths below.
+
+#### Option 1: Standalone (recommended)
+
+Install NEO.ED directly as your Neovim configuration — no dotfiles or Stow required.
+
+```bash
+# 1. Back up any existing Neovim configuration and state
+mv ~/.config/nvim ~/.config/nvim.bak 2>/dev/null
+mv ~/.local/share/nvim ~/.local/share/nvim.bak 2>/dev/null
+mv ~/.local/state/nvim ~/.local/state/nvim.bak 2>/dev/null
+mv ~/.cache/nvim ~/.cache/nvim.bak 2>/dev/null
+
+# 2. Clone NEO.ED into your Neovim config directory
+git clone https://github.com/edheltzel/neoed ~/.config/nvim
+
+# 3. (Optional) Remove the upstream git history so you can version it as your own
+rm -rf ~/.config/nvim/.git
+
+# 4. Launch Neovim — Lazy.nvim will install plugins on first run
+nvim
+```
+
+To update later (if you kept the `.git` directory):
+
+```bash
+cd ~/.config/nvim && git pull
+```
+
+#### Option 2: Via Dotfiles (my personal setup)
+
+NEO.ED is also available as a submodule inside my [Dotfiles](https://github.com/edheltzel/dotfiles) repo, managed with GNU Stow. Use this path if you want my full macOS setup (fish shell, Homebrew, app configs, etc.).
 
 ```bash
 # Clone the dotfiles repository
-git clone https://github.com/edheltzel/dotfiles ~/.dotfiles
+git clone --recurse-submodules https://github.com/edheltzel/dotfiles ~/.dotfiles
 
-# Stow the nvim package
+# Stow the neoed package
 cd ~/.dotfiles
-just stow nvim
+just stow neoed
 
 # Or manually
-stow -v nvim
+stow -v neoed
 ```
 
 ### First Launch
