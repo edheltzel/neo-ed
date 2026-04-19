@@ -48,6 +48,15 @@ api.nvim_create_autocmd("BufRead", {
   end,
 })
 
+-- Ghostty config uses `key = value` with `#` comments and quoted strings — treat as TOML
+vim.filetype.add({
+  pattern = {
+    [".*/ghostty/config"] = "toml",
+    [".*/ghostty/themes/.*"] = "toml",
+    [".*/ghostty/colors/.*"] = "toml",
+  },
+})
+
 -- Configure markdownlint-cli2 to use global config
 api.nvim_create_autocmd("BufReadPost", {
   pattern = "*.md",
