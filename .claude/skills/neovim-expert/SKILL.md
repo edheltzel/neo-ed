@@ -10,7 +10,7 @@ Expert assistance for the NOE.ED Neovim configuration - a LazyVim-based setup wi
 ## Configuration Location
 
 ```
-/Users/ed/.dotfiles/nvim/.config/nvim/
+~/.dotfiles/nvim/.config/nvim/
 ```
 
 ## Architecture Overview
@@ -46,13 +46,13 @@ lua/
 
 ## Key Files
 
-| File | Purpose |
-|------|---------|
-| `lazyvim.json` | Enabled LazyVim extras (32 extras) |
-| `lazy-lock.json` | Plugin version lockfile |
-| `lua/config/keymaps.lua` | Custom keybindings |
-| `lua/plugins/ui/lualine.lua` | Custom statusline (253 lines) |
-| `lua/plugins/ui/lualine/neoed.lua` | Theme adapter |
+| File                               | Purpose                            |
+| ---------------------------------- | ---------------------------------- |
+| `lazyvim.json`                     | Enabled LazyVim extras (32 extras) |
+| `lazy-lock.json`                   | Plugin version lockfile            |
+| `lua/config/keymaps.lua`           | Custom keybindings                 |
+| `lua/plugins/ui/lualine.lua`       | Custom statusline (253 lines)      |
+| `lua/plugins/ui/lualine/neoed.lua` | Theme adapter                      |
 
 ## Quick Reference
 
