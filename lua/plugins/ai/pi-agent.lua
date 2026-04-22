@@ -4,7 +4,7 @@ return {
   keys = {
     -- Floating Terminal toggles
     {
-      "<D-A-C-p>",
+      "<D-C-p>",
       function()
         Snacks.terminal.toggle("pi", {
           win = {

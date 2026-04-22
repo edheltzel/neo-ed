@@ -6,7 +6,7 @@ return {
   -- <D> = Cmd
   keys = {
     {
-      "<D-A-C-c>",
+      "<D-C-c>",
       "<cmd>ClaudeCodeFocus<cr>",
       desc = "Toggle Claude Code",
       mode = { "n", "t", "x" },

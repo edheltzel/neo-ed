@@ -37,7 +37,7 @@ return {
         },
       })
     end
-    set({ "n", "t", "x" }, "<D-A-C-o>", toggle_opencode, { desc = "Toggle OpenCode Terminal" })
+    set({ "n", "t", "x" }, "<D-C-o>", toggle_opencode, { desc = "Toggle OpenCode Terminal" })
     set({ "n", "t", "x" }, "<C-A-o>", toggle_opencode, { desc = "Toggle OpenCode Terminal" })
     set("n", "<leader>aoo", function()
       Snacks.terminal.toggle("opencode", {
