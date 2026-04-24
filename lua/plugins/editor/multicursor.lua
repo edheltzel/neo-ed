@@ -7,10 +7,13 @@ return {
     mc.setup()
 
     local set = vim.keymap.set
+    local wk = require("which-key")
+
+    wk.add({ { "<leader>m", group = "Multi-Cursor", icon = { icon = "󰇀", color = "cyan" } } })
 
     -- Add a cursor for all matches of cursor word/selection in the document.
-    set({ "n", "x" }, "<C-S-l>", mc.matchAllAddCursors)
-    set({ "n", "x" }, "<D-S-l>", mc.matchAllAddCursors)
+    set({ "n", "x" }, "<leader>ma", mc.matchAllAddCursors, { desc = "Match all (add cursors)" })
+    set({ "n", "x" }, "<D-S-l>", mc.matchAllAddCursors, { desc = "Match all (add cursors)" })
 
     -- Add or skip adding a new cursor by matching word/selection
     set({ "n", "x" }, "<D-C-j>", function()
