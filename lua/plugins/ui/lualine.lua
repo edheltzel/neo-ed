@@ -161,9 +161,10 @@ return {
           },
           { -- filename centered to middle of window
             "filename",
+            path = 1, -- show relative path
             file_status = true,
             newfile_status = true,
-            color = { fg = neoEdColors.fg, gui = "BOLD" },
+            color = { fg = neoEdColors.fg, gui = "italic" },
             padding = { left = 0, right = 1 },
             fmt = function(str)
               return add_width(str, "filename")
@@ -237,6 +238,7 @@ return {
           { "%=" },
           {
             "filename",
+            path = 1, -- show path relative to cwd (nested directory + file, not full path)
             file_status = true,
             newfile_status = true,
             color = { fg = Snacks.util.color("Normal"), gui = "italic" },
