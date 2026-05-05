@@ -62,8 +62,5 @@ return {
       mode = "v",
     },
   },
-  opts = {
-    provider = "opencode",
-    model = "gemini-3.1-pro",
-  },
+  opts = {},
 }
