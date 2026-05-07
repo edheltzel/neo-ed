@@ -96,7 +96,7 @@ return {
     opts = {
       -- Available options:
       -- "eldritch", "aura-dark", "aura-dark-soft-text", "aura-soft-dark", "aura-soft-dark-soft-text", "rose-pine", "rose-pine-moon", "rose-pine-dawn", "tokyonight", "tokyonight-storm", "tokyonight-moon", "tokyonight-day", "solarized-osaka"
-      colorscheme = "rose-pine-dawn",
+      colorscheme = "eldritch",
     },
   },
 }
