@@ -7,3 +7,7 @@ foo.*
 *.log
 data
 lazy-lock.json
+/.agents/
+/.claude/
+/AGENTS.md
+/CLAUDE.md
