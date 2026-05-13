@@ -36,8 +36,8 @@ set("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true, desc = "Escape
 -- duplicate lines up/down
 set({ "n", "v" }, "<A-S-d>", "Vy`<p`>", { noremap = true, silent = true, desc = "Duplicate line down" })
 
-set({ "n", "v" }, "<A-S-j>", "Vy`<p`>", { noremap = true, silent = true, desc = "Duplicate line down" })
-set({ "n", "v" }, "<A-S-k>", "Vy`<p`>", { noremap = true, silent = true, desc = "Duplicate line down" })
+set({ "n", "v" }, "<A-S-d>", "Vy`<p`>", { noremap = true, silent = true, desc = "Duplicate line down" })
+-- set({ "n", "v" }, "<A-S-k>", "Vy`<p`>", { noremap = true, silent = true, desc = "Duplicate line down" })
 
 -- indent line
 set("v", ">", ">gv", { noremap = true, silent = true, desc = "Indent right and reselect" }) -- shift+.
@@ -109,7 +109,6 @@ set("n", "<leader>ih", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
   vim.notify(vim.lsp.inlay_hint.is_enabled() and "Inlay Hints Enabled" or "Inlay Hints Disabled")
 end, { desc = "Toggle inlay hints" })
-
 
 -- Move LazyVim changelog from <leader>L to <leader>l
 set("n", "<leader>lc", function()
