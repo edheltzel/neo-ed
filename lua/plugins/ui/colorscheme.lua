@@ -3,8 +3,8 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
   },
+  -- Eldritch Theme
   {
-    -- Eldritch Theme
     "eldritch-theme/eldritch.nvim",
     lazy = false,
     priority = 1000,
@@ -35,8 +35,8 @@ return {
     },
   },
 
+  -- Aura Theme
   {
-    -- Aura Theme
     "daltonmenezes/aura-theme",
     lazy = true,
     init = function()
@@ -46,8 +46,8 @@ return {
     end,
   },
 
+  -- Rose Pine Theme
   {
-    -- Rose Pine Theme
     "rose-pine/neovim",
     name = "rose-pine",
     lazy = true,
@@ -64,8 +64,8 @@ return {
     },
   },
 
+  -- Tokyo Night Theme
   {
-    -- Tokyo Night Theme
     "folke/tokyonight.nvim",
     lazy = true,
     opts = {
@@ -84,6 +84,8 @@ return {
       dim_inactive = true,
     },
   },
+
+  -- Solarized Osaka
   {
     "craftzdog/solarized-osaka.nvim",
     lazy = false,
