@@ -13,13 +13,13 @@ return {
 
     -- Add a cursor for all matches of cursor word/selection in the document.
     set({ "n", "x" }, "<leader>ma", mc.matchAllAddCursors, { desc = "Match all (add cursors)" })
-    set({ "n", "x" }, "<D-S-l>", mc.matchAllAddCursors, { desc = "Match all (add cursors)" }) -- cmd+shift+l
+    set({ "n", "x" }, "<C-A-l>", mc.matchAllAddCursors, { desc = "Match all (add cursors)" }) -- cmd+shift+l
 
     -- Add or skip adding a new cursor by matching word/selection
-    set({ "n", "x" }, "<D-C-j>", function()
+    set({ "n", "x" }, "<C-A-j>", function()
       mc.matchAddCursor(1)
     end)
-    set({ "n", "x" }, "<D-C-k>", function()
+    set({ "n", "x" }, "<C-A-k>", function()
       mc.matchSkipCursor(-1)
     end) -- cmd+ctrl+j/k
 
