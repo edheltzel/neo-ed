@@ -3,7 +3,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
   },
-  -- Eldritch Theme
+  -- Eldritch Themel - eldritch
   {
     "eldritch-theme/eldritch.nvim",
     lazy = false,
@@ -35,7 +35,7 @@ return {
     },
   },
 
-  -- Aura Theme
+  -- Aura Theme - aura-dark, aura-dark-soft-text, aura-soft-dark, aura-soft-dark-soft-text
   {
     "daltonmenezes/aura-theme",
     lazy = true,
@@ -46,7 +46,7 @@ return {
     end,
   },
 
-  -- Rose Pine Theme
+  -- Rose Pine Theme rose-pine, rose-pine-moon, rose-pine-dawn
   {
     "rose-pine/neovim",
     name = "rose-pine",
@@ -64,7 +64,7 @@ return {
     },
   },
 
-  -- Tokyo Night Theme
+  -- Tokyo Night Theme - tokyonight, tokyonight-storm, tokyonight-moon, tokyonight-day
   {
     "folke/tokyonight.nvim",
     lazy = true,
@@ -85,20 +85,21 @@ return {
     },
   },
 
-  -- Solarized Osaka
+  -- Solarized Osaka - solarized-osaka
   {
     "craftzdog/solarized-osaka.nvim",
     lazy = false,
     priority = 1000,
     opts = {},
   },
+  -- Base 16 - see https://github.com/wincent/base16-nvim/tree/main/colors
+  { "wincent/base16-nvim", lazy = false, priority = 1000 },
+
   -- LazyVim colorscheme configuration
   {
     "LazyVim/LazyVim",
     opts = {
-      -- Available options:
-      -- "eldritch", "aura-dark", "aura-dark-soft-text", "aura-soft-dark", "aura-soft-dark-soft-text", "rose-pine", "rose-pine-moon", "rose-pine-dawn", "tokyonight", "tokyonight-storm", "tokyonight-moon", "tokyonight-day", "solarized-osaka"
-      colorscheme = "eldritch",
+      colorscheme = "atelier-lakeside",
     },
   },
 }
