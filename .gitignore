@@ -9,5 +9,8 @@ data
 lazy-lock.json
 /.agents/
 /.claude/
+/.codex/
+/.pi/
+/.atlas/
 /AGENTS.md
 /CLAUDE.md
