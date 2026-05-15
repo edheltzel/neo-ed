@@ -188,7 +188,9 @@ return {
         "mason-org/mason.nvim",
         opts = function(_, opts)
           opts.ensure_installed = opts.ensure_installed or {}
-          table.insert(opts.ensure_installed, "js-debug-adapter")
+          if not vim.tbl_contains(opts.ensure_installed, "js-debug-adapter") then
+            table.insert(opts.ensure_installed, "js-debug-adapter")
+          end
         end,
       },
     },
@@ -256,11 +258,10 @@ return {
     "nvim-mini/mini.icons",
     opts = {
       file = {
-        [".eslintrc.js"] = { glyph = "󰱺", hl = "MiniIconsYellow" },
         [".node-version"] = { glyph = "", hl = "MiniIconsGreen" },
-        [".prettierrc"] = { glyph = "", hl = "MiniIconsPurple" },
+        [".oxfmtrc.json"] = { glyph = "󰬗", hl = "MiniIconsPurple" },
+        [".oxlintrc.json"] = { glyph = "󰬗", hl = "MiniIconsYellow" },
         [".yarnrc.yml"] = { glyph = "", hl = "MiniIconsBlue" },
-        ["eslint.config.js"] = { glyph = "󰱺", hl = "MiniIconsYellow" },
         ["package.json"] = { glyph = "", hl = "MiniIconsGreen" },
         ["tsconfig.json"] = { glyph = "", hl = "MiniIconsAzure" },
         ["tsconfig.build.json"] = { glyph = "", hl = "MiniIconsAzure" },

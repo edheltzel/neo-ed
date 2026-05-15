@@ -26,5 +26,5 @@ return {
     end,
   },
 
-  -- Formatting handled in plugins/formatting/prettier.lua (uses Prettier for astro)
+  -- Formatting handled in plugins/formatting/viteplus.lua (uses Vite+/Oxfmt for astro)
 }
