@@ -21,7 +21,7 @@ Environment) of choice.
 ## Features
 
 - **LazyVim Foundation**: Built on LazyVim for a solid, well-maintained base
-- **AI Integration**: opencode, Claude Code, and Pi with Supermaven for text completion
+- **AI Integration**: Claude Code and Pi
 - **Multi-Language**: JavaScript/TypeScript, Go, Python, PHP/WordPress, Rust, and more
 - **Hybrid Formatting**: Biome-first with Prettier fallback
 - **Custom Theme**: [Eldritch](https://github.com/eldritch-theme) colorscheme with custom lualine statusline
@@ -32,7 +32,6 @@ Environment) of choice.
 | :----------------------------------------------------------: | :---------------------------------------------------------------------------------------: |
 |       ![1-neoed-dash.png](./_images/1-neoed-dash.png)        |                  ![3-neoed-whichkey.png](./_images/3-noeed-whichkey.png)                  |
 | ![2-noeed-whichkey.png](./_images/2-neoed-snacks-picker.png) | ![4-noed-snackers-explorer-gitblame.png](./_images/4-noed-snackers-explorer-gitblame.png) |
-|   ![5-noeed-opencode.png](./_images/5-noeed-opencode.png)    |               ![6-neoed-claudeccode.png](./_images/6-neoed-claudeccode.png)               |
 
 ---
 
@@ -132,7 +131,6 @@ lua/
     │
     ├── ai/             # AI assistants
     │   ├── claudecode.lua
-    │   ├── opencode.lua
     │   └── pi-agent.lua
     │
     ├── coding/         # Code editing
@@ -201,14 +199,10 @@ lua/
 
 ### AI Assistants
 
-| Plugin          | Description             | Key Binding      |
-| --------------- | ----------------------- | ---------------- |
-| opencode.nvim   | opencode integration    | `<D-A-C-o>`      |
-| claudecode.nvim | Claude Code integration | `<D-A-C-c>`      |
-| pi.nvim         | Pi integration          | `<D-A-C-p>`      |
-| supermaven      | AI code completion      | (via LazyExtras) |
-
-**opencode Configuration** (`lua/plugins/ai/opencode.lua`):
+| Plugin          | Description             | Key Binding |
+| --------------- | ----------------------- | ----------- |
+| claudecode.nvim | Claude Code integration | `<D-A-C-c>` |
+| pi.nvim         | Pi integration          | `<D-A-C-p>` |
 
 - Floating window (80% width/height)
 - Rounded border
@@ -238,15 +232,15 @@ lua/
 
 ### UI Components
 
-| Component     | Plugin           | Configuration                |
-| ------------- | ---------------- | ---------------------------- |
-| Colorscheme   | eldritch.nvim    | Dark theme with dim inactive |
-| Statusline    | lualine.nvim     | Custom NEO.ED theme          |
-| File Explorer | snacks.explorer  | Right sidebar, hidden files  |
-| Picker        | snacks.picker    | Default layout               |
-| Dashboard     | snacks.dashboard | Custom NEO.ED header         |
-| Terminal      | snacks.terminal  | Borderless float             |
-| Projects      | snacks.projects  | Project manager (like VSCode)|
+| Component     | Plugin           | Configuration                 |
+| ------------- | ---------------- | ----------------------------- |
+| Colorscheme   | eldritch.nvim    | Dark theme with dim inactive  |
+| Statusline    | lualine.nvim     | Custom NEO.ED theme           |
+| File Explorer | snacks.explorer  | Right sidebar, hidden files   |
+| Picker        | snacks.picker    | Default layout                |
+| Dashboard     | snacks.dashboard | Custom NEO.ED header          |
+| Terminal      | snacks.terminal  | Borderless float              |
+| Projects      | snacks.projects  | Project manager (like VSCode) |
 
 ---
 
@@ -265,7 +259,7 @@ From `lazyvim.json`:
 **AI**:
 
 - `ai.claudecode` - Claude Code integration
-- `ai.supermaven` - AI completion
+- `ai.pi` - Pi integration
 
 **Coding**:
 
@@ -274,7 +268,6 @@ From `lazyvim.json`:
 
 **Editor**:
 
-- `editor.harpoon2` - Quick file navigation
 - `editor.mini-files` - File browser
 - `editor.snacks_explorer` - Snacks file explorer
 - `editor.snacks_picker` - Snacks picker
@@ -356,6 +349,7 @@ From `lazyvim.json`:
 
 **WordPress Setup**:
 For WordPress projects, add `php-stubs/wordpress-stubs` via Composer and create a `.phpactor.json`:
+
 ```json
 {
   "php_code_sniffer.enabled": false,
@@ -514,8 +508,9 @@ The `snacks-projects` module works similarly to **VSCode's Project Manager exten
 **First stable release**
 
 - **Terminal Background Sync**: OSC 11/111 integration eliminates padding gaps in WezTerm, Kitty, Ghostty, Alacritty
-- **Theme Support**: Eldritch (default), Aura, Rose Pine (including Dawn for light mode), Tokyo Night
-- **AI Integration**: Claude Code and opencode with floating windows
+- **Theme Support**: Eldritch (default), Aura, Rose Pine, Tokyo Night, Base16
+  (Atelier Cave/Lakeside)
+- **AI Integration**: Claude Code and Pi with floating windows
 - **Project Management**: VSCode-style project picker scanning ~/Developer and ~/Sites
 - **Modular Snacks**: Dashboard, explorer, picker, notifier, persistence split into individual configs
 - **Custom Lualine**: Colorscheme-adaptive statusline with mode indicators

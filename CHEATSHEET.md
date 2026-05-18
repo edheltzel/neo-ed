@@ -83,23 +83,11 @@ U                    Redo
 <leader>gg           Lazygit (borderless)
 ```
 
-### AI - Claude Code
+### AI
 
 ```
-<D-A-C-c>            Toggle Claude Code (Cmd+Alt+Ctrl+c)
-```
-
-### AI - OpenCode
-
-```
-<D-A-C-o>            Toggle OpenCode (Cmd+Alt+Ctrl+o)
-<leader>aoo          Toggle OpenCode
-<leader>aoa          Ask OpenCode (normal: @cursor, visual: @selection)
-<leader>ao+          Add buffer to prompt
-<leader>aos          Add selection to prompt (visual)
-<leader>aoe          Explain code at cursor
-<leader>aon          New session
-<leader>aop          Select prompt
+<D-C-c>            Toggle Claude Code (Cmd+Ctrl+c)
+<D-C-p>            Toggle Pi (Cmd+Ctrl+c)
 ```
 
 ### macOS Cmd Keys (requires CSI u protocol)
@@ -143,8 +131,6 @@ K                    Hover documentation
 <leader>dPt          Debug method
 <leader>dPc          Debug class
 ```
-
-
 
 ### Dashboard Shortcuts
 
