@@ -61,6 +61,10 @@ return {
         italic = true,
         transparency = false,
       },
+      highlight_groups = {
+        CursorColumn = { bg = "#F4E9E0" },
+        ColorColumn = { bg = "#F4E9E0" },
+      },
     },
   },
 
