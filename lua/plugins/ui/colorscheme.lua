@@ -4,14 +4,6 @@ return {
     build = ":TSUpdate",
   },
   -- eldritch
-  --
-  -- priority=11000 (above LazyVim's 10000) is the race fix: lazy.nvim loads
-  -- non-lazy plugins in descending priority. Forcing eldritch to load before
-  -- LazyVim guarantees `eldritch.setup(opts)` runs first, so by the time
-  -- LazyVim's `:colorscheme eldritch` fires `on_colors`/`on_highlights` are
-  -- already registered and the customized #171928 background applies on the
-  -- first (and only) paint. Without this, a load-order race lets the default
-  -- #212337 commit on roughly 40% of launches.
   {
     "eldritch-theme/eldritch.nvim",
     lazy = false,
@@ -107,7 +99,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "atelier-lakeside",
+      colorscheme = "rose-pine-dawn",
     },
   },
 }
