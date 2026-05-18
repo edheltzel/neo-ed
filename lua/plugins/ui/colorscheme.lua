@@ -35,17 +35,6 @@ return {
     },
   },
 
-  -- Aura Theme - aura-dark, aura-dark-soft-text, aura-soft-dark, aura-soft-dark-soft-text
-  {
-    "daltonmenezes/aura-theme",
-    lazy = true,
-    init = function()
-      -- Add the runtime path early, before colorscheme is loaded
-      local plugin_path = vim.fn.stdpath("data") .. "/lazy/aura-theme"
-      vim.opt.rtp:append(plugin_path .. "/packages/neovim")
-    end,
-  },
-
   -- Rose Pine Theme rose-pine, rose-pine-moon, rose-pine-dawn
   {
     "rose-pine/neovim",
@@ -67,37 +56,6 @@ return {
       },
     },
   },
-
-  -- Tokyo Night Theme - tokyonight, tokyonight-storm, tokyonight-moon, tokyonight-day
-  {
-    "folke/tokyonight.nvim",
-    lazy = true,
-    opts = {
-      style = "night", -- storm, moon, night, or day
-      transparent = false,
-      terminal_colors = true,
-      styles = {
-        comments = { italic = true },
-        keywords = { italic = true },
-        functions = {},
-        variables = {},
-        sidebars = "dark",
-        floats = "dark",
-      },
-      sidebars = { "qf", "help", "terminal" },
-      dim_inactive = true,
-    },
-  },
-
-  -- Solarized Osaka - solarized-osaka
-  {
-    "craftzdog/solarized-osaka.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {},
-  },
-  -- Base 16 - see https://github.com/wincent/base16-nvim/tree/main/colors
-  { "wincent/base16-nvim", lazy = false, priority = 1000 },
 
   -- LazyVim colorscheme configuration
   {
