@@ -6,9 +6,6 @@
 -- SUPPORTED COLORSCHEMES:
 --   - eldritch
 --   - rose-pine, rose-pine-moon, rose-pine-dawn
---   - tokyonight, tokyonight-storm, tokyonight-moon, tokyonight-day
---   - aura-dark, aura-soft
---   - atelier-lakeside (base16)
 --
 -- HOW IT WORKS:
 --   1. Detects current colorscheme via vim.g.colors_name
@@ -80,18 +77,9 @@ local function get_colors(colorscheme)
   if colorscheme:match("^rose%-pine") then
     local rose_pine = require("plugins.ui.lualine.rose-pine")
     return rose_pine.get_colors(colorscheme)
-  elseif colorscheme:match("^tokyonight") then
-    local tokyonight = require("plugins.ui.lualine.tokyonight")
-    return tokyonight.get_colors(colorscheme)
-  elseif colorscheme:match("^aura") then
-    local aura = require("plugins.ui.lualine.aura")
-    return aura.get_colors(colorscheme)
   elseif colorscheme == "eldritch" then
     local eldritch = require("plugins.ui.lualine.eldritch")
     return eldritch.get_colors(colorscheme)
-  elseif colorscheme == "atelier-lakeside" then
-    local atelier_lakeside = require("plugins.ui.lualine.atelier-lakeside")
-    return atelier_lakeside.get_colors(colorscheme)
   else
     -- Fallback for unknown colorschemes: use eldritch colors
     -- vim.notify("NEO.ED: Unknown colorscheme, using eldritch fallback", vim.log.levels.WARN)
