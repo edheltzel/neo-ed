@@ -86,6 +86,7 @@ end, { noremap = true, silent = true, desc = "Jump to character" })
 -- save like vspacecode
 set("n", "<leader>fs", ":w<CR>", { noremap = true, silent = true, desc = "Save file" })
 set("n", "<leader>fS", ":noautocmd w<CR>", { noremap = true, silent = true, desc = "Save without formatting" })
+set("n", "<leader>sf", ":%s#", { desc = "Search/Replace Buffer(:%s#old/path#new/path#g)" })
 
 -- Spelling ----------------------------------------
 wk.add({ { "<leader>S", group = "Spelling", icon = { icon = "󰓆", color = "green" } } })
