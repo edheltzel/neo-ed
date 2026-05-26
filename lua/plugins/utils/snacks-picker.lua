@@ -2,7 +2,8 @@ return {
   "folke/snacks.nvim",
   opts = {
     explorer = {
-      replace_netrw = false,
+      -- set to true to disable Snacks picker from opening on startup
+      replace_netrw = true,
     },
     picker = {
       layout = "default",
