@@ -92,6 +92,7 @@ api.nvim_create_autocmd("ColorScheme", {
     package.loaded["plugins.ui.lualine.neoed"] = nil
     package.loaded["plugins.ui.lualine.eldritch"] = nil
     package.loaded["plugins.ui.lualine.rose-pine"] = nil
+    package.loaded["plugins.ui.lualine.catppuccin"] = nil
 
     -- Refresh lualine with new theme, passing the colorscheme name
     local ok, lualine = pcall(require, "lualine")
@@ -107,6 +108,8 @@ api.nvim_create_user_command("LualineRefresh", function()
   -- Clear cached modules
   package.loaded["plugins.ui.lualine.neoed"] = nil
   package.loaded["plugins.ui.lualine.eldritch"] = nil
+  package.loaded["plugins.ui.lualine.rose-pine"] = nil
+  package.loaded["plugins.ui.lualine.catppuccin"] = nil
 
   -- Reload lualine
   local ok, lualine = pcall(require, "lualine")

@@ -6,6 +6,7 @@
 -- SUPPORTED COLORSCHEMES:
 --   - eldritch
 --   - rose-pine, rose-pine-moon, rose-pine-dawn
+--   - catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 --
 -- HOW IT WORKS:
 --   1. Detects current colorscheme via vim.g.colors_name
@@ -80,6 +81,9 @@ local function get_colors(colorscheme)
   elseif colorscheme == "eldritch" then
     local eldritch = require("plugins.ui.lualine.eldritch")
     return eldritch.get_colors(colorscheme)
+  elseif colorscheme:match("^catppuccin") then
+    local catppuccin = require("plugins.ui.lualine.catppuccin")
+    return catppuccin.get_colors(colorscheme)
   else
     -- Fallback for unknown colorschemes: use eldritch colors
     -- vim.notify("NEO.ED: Unknown colorscheme, using eldritch fallback", vim.log.levels.WARN)
