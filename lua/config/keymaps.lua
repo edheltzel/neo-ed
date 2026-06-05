@@ -78,15 +78,10 @@ set("v", ">", ">gv", { noremap = true, silent = true, desc = "Indent right and r
 -- shift+,
 set("n", "<", "<<", { noremap = true, silent = true, desc = "Indent left" })
 set("v", "<", "<gv", { noremap = true, silent = true, desc = "Indent left and reselect" })
--- jump to character like vspacecode (moved from <leader>jj to <leader>fj)
-set({ "n", "x", "o" }, "<leader>fj", function()
+-- jump to character like vspacecode
+set({ "n", "x", "o" }, "<leader>jj", function()
   require("flash").jump()
 end, { noremap = true, silent = true, desc = "Jump to character" })
--- jujutsu: borderless lazyjj TUI (mirrors lazygit at <leader>gg)
-wk.add({ { "<leader>j", group = "Jujutsu", icon = { icon = "󰊢", color = "orange" } } })
-set("n", "<leader>jj", function()
-  Snacks.terminal("lazyjj", { cwd = vim.fn.getcwd(), border = "none" })
-end, { noremap = true, silent = true, desc = "Lazyjj (root dir)" })
 -- save like vspacecode
 set("n", "<leader>fs", ":w<CR>", { noremap = true, silent = true, desc = "Save file" })
 set("n", "<leader>fS", ":noautocmd w<CR>", { noremap = true, silent = true, desc = "Save without formatting" })
