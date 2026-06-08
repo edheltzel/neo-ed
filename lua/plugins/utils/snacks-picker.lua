@@ -16,6 +16,7 @@ return {
         },
         explorer = {
           hidden = true,
+          ignored = true,
           trash = true,
           layout = {
             layout = {
