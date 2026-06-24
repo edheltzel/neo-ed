@@ -11,6 +11,7 @@ lazy-lock.json
 /.claude/
 /.codex/
 /.pi/
+/.omp/
 /.atlas/
 /AGENTS.md
 /CLAUDE.md
