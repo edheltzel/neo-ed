@@ -126,10 +126,31 @@ K                    Hover documentation
 
 ```
 <leader>co           Organize imports
-<leader>vs           Select venv
-<leader>vc           Cached venv
+<leader>vs           Select venv        ⚠ shares <leader>v with Vite+
+<leader>vc           Cached venv        ⚠ collides with Vite+ check
 <leader>dPt          Debug method
 <leader>dPc          Debug class
+```
+
+### Vite+ (`<leader>v`)
+
+Formatting on save uses `vp fmt` (Oxfmt); linting is the live Oxlint LSP.
+These keymaps drive the `vp` CLI in a terminal:
+
+```
+<leader>vv           Command picker
+<leader>vd           Dev server
+<leader>vc           Check (fmt + lint + types)   ⚠ collides with Python "Cached venv"
+<leader>vC           Check --fix
+<leader>vl           Lint
+<leader>vL           Lint --fix
+<leader>vf           Format (vp fmt)
+<leader>vt           Test
+<leader>vT           Test --watch
+<leader>vb           Build
+<leader>vp           Preview
+<leader>vr           Run task (prompt)
+<leader>vi           Install deps
 ```
 
 ### Dashboard Shortcuts

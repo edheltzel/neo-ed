@@ -502,6 +502,17 @@ The `snacks-projects` module works similarly to **VSCode's Project Manager exten
 
 ## Changelog
 
+### v1.1.0 (2026-06-24)
+
+**Vite+ replaces Biome for JS/TS**
+
+- **Formatting**: `vp fmt` (Oxfmt) via conform on save, for JS/TS/JSX/TSX/JSON/CSS/HTML/Markdown/GraphQL/Vue/Svelte. Invoked by absolute path (`~/.vite-plus/bin/vp`) with `--stdin-filepath`; no-ops outside a Vite+ workspace.
+- **Linting**: live Oxlint language server diagnostics (replaces Biome/ESLint, which are disabled). `vtsls` retained for TypeScript type info.
+- **`oxfmt` LSP disabled** — formatting flows through `vp fmt` instead.
+- **`<leader>v` Vite+ commands** — dev/check/lint/fmt/test/build/preview/run/install + a command picker.
+- **Pre-commit**: Vite+ `staged` hook (`vp check --fix`) replaces the Biome pre-commit story.
+- Astro: Oxfmt has no `.astro` support, so the astro LSP handles astro formatting.
+
 ### v1.0.0 (2026-02-03)
 
 **First stable release**
