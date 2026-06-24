@@ -21,8 +21,8 @@ The core orchestrator that:
 Separate files that define color palettes for each supported colorscheme:
 - `eldritch.lua` - Eldritch theme (default fallback)
 - `rose-pine.lua` - Rose Pine variants
-- `tokyonight.lua` - Tokyo Night variants
-- `aura.lua` - Aura Dark variants
+- `catppuccin.lua` - Catppuccin flavors
+- `vesper.lua` - Vesper theme
 
 Each palette file exports a `get_colors(variant)` function that returns:
 1. A standardized color table
@@ -51,8 +51,8 @@ options = {
 |------------|----------|
 | **eldritch** | `eldritch` |
 | **rose-pine** | `rose-pine`, `rose-pine-moon`, `rose-pine-dawn` |
-| **tokyonight** | `tokyonight`, `tokyonight-storm`, `tokyonight-moon`, `tokyonight-day` |
-| **aura** | `aura-dark`, `aura-soft` |
+| **catppuccin** | `catppuccin-latte`, `catppuccin-frappe`, `catppuccin-macchiato`, `catppuccin-mocha` |
+| **vesper** | `vesper` |
 
 ## Auto-refresh on Colorscheme Change
 

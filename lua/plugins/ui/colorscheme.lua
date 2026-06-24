@@ -62,11 +62,12 @@ return {
     priority = 1000,
     opts = {},
   },
+  { "datsfilipe/vesper.nvim" },
   -- LazyVim colorscheme configuration
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight",
+      colorscheme = "vesper",
     },
   },
 }
