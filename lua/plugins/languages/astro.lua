@@ -26,5 +26,8 @@ return {
     end,
   },
 
-  -- Formatting handled in plugins/formatting/viteplus.lua (uses Vite+/Oxfmt for astro)
+  -- Astro formatting is NOT handled by Vite+: Oxfmt (vp fmt) does not support
+  -- .astro files. Formatting falls back to the astro language server above
+  -- (best-effort; reformats only when prettier-plugin-astro is available in the
+  -- project). Linting/type-info still come from oxlint + vtsls.
 }

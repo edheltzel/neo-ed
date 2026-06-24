@@ -23,7 +23,7 @@ Environment) of choice.
 - **LazyVim Foundation**: Built on LazyVim for a solid, well-maintained base
 - **AI Integration**: Claude Code and Pi
 - **Multi-Language**: JavaScript/TypeScript, Go, Python, PHP/WordPress, Rust, and more
-- **Hybrid Formatting**: Biome-first with Prettier fallback
+- **Vite+ Formatting & Linting**: `vp fmt` (Oxfmt) on save, live Oxlint LSP diagnostics
 - **Custom Theme**: [Eldritch](https://github.com/eldritch-theme) colorscheme with custom lualine statusline
 
 ## Screenshots
@@ -145,10 +145,8 @@ lua/
     │   └── treesitter.lua
     │
     ├── formatting/     # Code formatters
-    │   └── prettier.lua
-    │
-    ├── linting/        # Linters
-    │   └── biome.lua
+    │   ├── align.lua
+    │   └── viteplus.lua  # vp fmt (Oxfmt) via conform
     │
     ├── languages/      # Language-specific configs
     │   ├── astro.lua
@@ -224,11 +222,12 @@ lua/
 
 ### Formatting Stack
 
-**Formatter Priority** (from `lua/plugins/formatting/prettier.lua`):
+**Formatting** (from `lua/plugins/formatting/viteplus.lua`):
 
-1. Biome (primary for JS/TS/JSON/CSS)
-2. Prettier (fallback for Biome-supported, primary for HTML/MD)
-3. yamlfmt (YAML files)
+- Vite+ `vp fmt` (Oxfmt) — primary for JS/TS/JSX/TSX/JSON/JSONC/CSS/SCSS/LESS/HTML/Markdown/GraphQL/Vue/Svelte
+- Astro language server — `.astro` (Oxfmt does not support astro)
+
+**Linting**: Oxlint LSP (live, as-you-type) + `vtsls` for TypeScript type diagnostics. Biome and ESLint LSPs are disabled. Commit-time format/lint runs via the Vite+ `staged` hook (`vp check --fix`).
 
 ### UI Components
 
@@ -274,7 +273,7 @@ From `lazyvim.json`:
 
 **Formatting**:
 
-- `formatting.biome` - Biome formatter/linter
+- `formatting.viteplus` - Vite+ `vp fmt` (Oxfmt) via conform; Oxlint LSP for linting
 
 **Languages**:
 
@@ -435,7 +434,7 @@ g.codeium_os = "Darwin"
 3. **Find Files** - Use `<leader>ff` for file picker
 4. **Navigate Files** - Use Snacks explorer (right sidebar)
 5. **Edit with Multi-Cursor** - `<C-n>` for next match
-6. **Format on Save** - Biome/Prettier automatically formats
+6. **Format on Save** - Vite+ (Oxfmt via `vp fmt`) automatically formats
 
 ### Project Management
 

@@ -1,8 +1,19 @@
 -- Vite+ / Oxfmt formatting.
--- Vite+ is the source of truth for JS/TS/React formatting; Prettier and Biome are intentionally not wired.
+-- `vp fmt` (forwards to Oxfmt) is the source of truth for JS/TS/React/JSON/CSS
+-- formatting, replacing Biome. LazyVim's autoformat drives format-on-save through
+-- these conform formatters.
+--
+-- Notes:
+--   * vp is invoked by absolute path because the interactive `vp` is a shell
+--     function that Neovim's (non-interactive) environment cannot resolve.
+--   * `vp fmt` requires a workspace (package.json/vite.config.*); require_cwd makes
+--     the formatter no-op outside one instead of erroring.
+--   * Oxfmt does not support .astro yet, so astro is intentionally not wired here
+--     and falls back to LazyVim's astro formatter.
+
+local vp = vim.fn.expand("~/.vite-plus/bin/vp")
 
 local viteplus_filetypes = {
-  "astro",
   "css",
   "graphql",
   "html",
@@ -12,53 +23,33 @@ local viteplus_filetypes = {
   "jsonc",
   "less",
   "markdown",
-  "markdown.mdx",
   "scss",
   "svelte",
-  "toml",
   "typescript",
   "typescriptreact",
   "vue",
-  "yaml",
 }
-
-local function has_vp()
-  return vim.fn.executable("vp") == 1
-end
 
 return {
   {
     "stevearc/conform.nvim",
     optional = true,
     opts = function(_, opts)
-      opts.formatters_by_ft = opts.formatters_by_ft or {}
+      local util = require("conform.util")
       opts.formatters = opts.formatters or {}
+      opts.formatters_by_ft = opts.formatters_by_ft or {}
 
-      opts.formatters.viteplus_oxfmt = {
-        command = "vp",
-        args = { "exec", "oxfmt", "--stdin-file-path", "$FILENAME" },
+      opts.formatters.viteplus_fmt = {
+        command = vp,
+        args = { "fmt", "--stdin-filepath", "$FILENAME" },
         stdin = true,
-        condition = function()
-          return has_vp()
-        end,
-      }
-
-      opts.formatters.oxfmt = {
-        command = "oxfmt",
-        args = { "--stdin-file-path", "$FILENAME" },
-        stdin = true,
+        cwd = util.root_file({ "vite.config.ts", "vite.config.mts", "vite.config.js", "package.json" }),
+        require_cwd = true,
       }
 
       for _, ft in ipairs(viteplus_filetypes) do
-        opts.formatters_by_ft[ft] = { "viteplus_oxfmt", "oxfmt", stop_after_first = true }
+        opts.formatters_by_ft[ft] = { "viteplus_fmt" }
       end
-
-      opts.formatters_by_ft.yaml = { "viteplus_oxfmt", "oxfmt", "yamlfmt", stop_after_first = true }
-
-      opts.format_on_save = opts.format_on_save or {
-        timeout_ms = 2000,
-        lsp_format = "fallback",
-      }
     end,
   },
 }

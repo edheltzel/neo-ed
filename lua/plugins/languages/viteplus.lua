@@ -8,8 +8,10 @@ local function root()
   return vim.fn.getcwd()
 end
 
+local vp_bin = vim.fn.expand("~/.vite-plus/bin/vp")
+
 local function has_vp()
-  return vim.fn.executable("vp") == 1
+  return vim.fn.executable(vp_bin) == 1
 end
 
 local function ensure_mason_packages(opts, packages)
@@ -92,10 +94,12 @@ return {
   {
     "mason-org/mason.nvim",
     opts = function(_, opts)
+      -- vtsls = TS language server; oxlint = Oxc lint LSP (live diagnostics).
+      -- Formatting goes through `vp fmt` (conform), so the standalone oxfmt LSP
+      -- is intentionally not installed/enabled.
       ensure_mason_packages(opts, {
         "vtsls",
         "oxlint",
-        "oxfmt",
         "js-debug-adapter",
       })
     end,
@@ -119,6 +123,11 @@ return {
         eslint = { enabled = false },
         tsserver = { enabled = false },
         ts_ls = { enabled = false },
+        -- oxlint LSP = live lint diagnostics (replaces Biome's linting).
+        oxlint = { enabled = true },
+        -- oxfmt LSP off: formatting is handled by `vp fmt` via conform.
+        -- See plugins/formatting/viteplus.lua.
+        oxfmt = { enabled = false },
       },
     },
   },
