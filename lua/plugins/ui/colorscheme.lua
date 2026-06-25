@@ -3,8 +3,15 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
   },
-  -- eldritch
   {
+    --tokyonight
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
+  {
+    --eldritch
     "eldritch-theme/eldritch.nvim",
     lazy = false,
     priority = 11000,
@@ -34,9 +41,8 @@ return {
       end,
     },
   },
-
-  -- Rose Pine Theme rose-pine, rose-pine-moon, rose-pine-dawn
   {
+    -- rose pine
     "rose-pine/neovim",
     name = "rose-pine",
     lazy = true,
@@ -57,24 +63,11 @@ return {
     },
   },
   {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {},
-  },
-  {
     "datsfilipe/vesper.nvim",
-    -- Vesper ships no code-block highlight, so markdown code inherits Normal
-    -- and reads as low-contrast. `overrides` is merged last over every group
-    -- at theme-load (no autocmd needed), so scope the fix to vesper here.
     opts = {
       overrides = {
-        -- render-markdown.nvim virtual backgrounds (rendered view).
-        -- fg is set too: plain (no-language) code blocks have no syntax to
-        -- color the text, so without an explicit fg it stays dim/low-contrast.
-        RenderMarkdownCode = { bg = "#282828", fg = "#E4E4E4" }, -- fenced block panel (bgFloat)
-        RenderMarkdownCodeInline = { bg = "#343434", fg = "#FEFEFE" }, -- inline `code` (bgOption)
-        -- raw treesitter captures (focused/edit line + when render is off)
+        RenderMarkdownCode = { bg = "#282828", fg = "#E4E4E4" },
+        RenderMarkdownCodeInline = { bg = "#343434", fg = "#FEFEFE" },
         ["@markup.raw.block.markdown"] = { bg = "#282828", fg = "#E4E4E4" },
         ["@markup.raw.markdown_inline"] = { bg = "#343434", fg = "#FEFEFE" },
       },
