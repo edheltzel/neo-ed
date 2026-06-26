@@ -66,12 +66,14 @@ return {
     "datsfilipe/vesper.nvim",
     opts = {
       overrides = {
-        -- Mute the colorcolumn ruler (default blends the orange accent into bg)
-        ColorColumn = { bg = "#1F1F1F" },
+        ColorColumn = { bg = "#1F1F1F" }, --colorcolumn ruler
         CursorLine = { bg = "#1F1F1F" },
         -- Mute the indent guides (default links to bright NonText / Special)
         SnacksIndent = { fg = "#2E2E2E" },
         SnacksIndentScope = { fg = "#3C3C3C" },
+        -- Snacks picker selected row defaults to Visual (~#656565, too bright);
+        -- match the CursorLine highlight above so the selection reads cleanly
+        SnacksPickerListCursorLine = { bg = "#1F1F1F" },
         RenderMarkdownCode = { bg = "#282828", fg = "#E4E4E4" },
         RenderMarkdownCodeInline = { bg = "#343434", fg = "#FEFEFE" },
         ["@markup.raw.block.markdown"] = { bg = "#282828", fg = "#E4E4E4" },
