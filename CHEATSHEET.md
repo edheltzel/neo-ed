@@ -87,7 +87,10 @@ U                    Redo
 
 ```
 <D-C-c>            Toggle Claude Code (Cmd+Ctrl+c)
-<D-C-p>            Toggle Pi (Cmd+Ctrl+c)
+<D-C-p>            Toggle Pi (Cmd+Ctrl+p)
+<D-C-o>            Toggle OMP (Cmd+Ctrl+o)
+<leader>ao         Toggle OMP
+<leader>aO         Open OMP with current buffer
 ```
 
 ### macOS Cmd Keys (requires CSI u protocol)

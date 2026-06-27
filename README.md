@@ -21,7 +21,7 @@ Environment) of choice.
 ## Features
 
 - **LazyVim Foundation**: Built on LazyVim for a solid, well-maintained base
-- **AI Integration**: Claude Code and Pi
+- **AI Integration**: Claude Code, Pi, and OMP
 - **Multi-Language**: JavaScript/TypeScript, Go, Python, PHP/WordPress, Rust, and more
 - **Vite+ Formatting & Linting**: `vp fmt` (Oxfmt) on save, live Oxlint LSP diagnostics
 - **Custom Theme**: [Eldritch](https://github.com/eldritch-theme) colorscheme with custom lualine statusline
@@ -131,6 +131,7 @@ lua/
     │
     ├── ai/             # AI assistants
     │   ├── claudecode.lua
+    │   ├── omp-agent.lua
     │   └── pi-agent.lua
     │
     ├── coding/         # Code editing
@@ -199,8 +200,9 @@ lua/
 
 | Plugin          | Description             | Key Binding |
 | --------------- | ----------------------- | ----------- |
-| claudecode.nvim | Claude Code integration | `<D-A-C-c>` |
-| pi.nvim         | Pi integration          | `<D-A-C-p>` |
+| claudecode.nvim | Claude Code integration | `<D-C-c>`   |
+| pi.nvim         | Pi integration          | `<D-C-p>`   |
+| OMP             | OMP terminal agent      | `<D-C-o>`   |
 
 - Floating window (80% width/height)
 - Rounded border
@@ -259,6 +261,7 @@ From `lazyvim.json`:
 
 - `ai.claudecode` - Claude Code integration
 - `ai.pi` - Pi integration
+- `omp-agent.lua` - OMP terminal integration
 
 **Coding**:
 
@@ -460,7 +463,7 @@ The `snacks-projects` module works similarly to **VSCode's Project Manager exten
 
 ### AI-Assisted Coding
 
-1. Toggle Claude Code: `<D-A-C-c>`
+1. Toggle Claude Code: `<D-C-c>`
 2. Floating window appears (80% size)
 3. Ask questions or request code changes
 4. Claude Code can read/modify files directly
@@ -520,7 +523,7 @@ The `snacks-projects` module works similarly to **VSCode's Project Manager exten
 - **Terminal Background Sync**: OSC 11/111 integration eliminates padding gaps in WezTerm, Kitty, Ghostty, Alacritty
 - **Theme Support**: Eldritch (default), Aura, Rose Pine, Tokyo Night, Base16
   (Atelier Cave/Lakeside)
-- **AI Integration**: Claude Code and Pi with floating windows
+- **AI Integration**: Claude Code, Pi, and OMP with floating windows
 - **Project Management**: VSCode-style project picker scanning ~/Developer and ~/Sites
 - **Modular Snacks**: Dashboard, explorer, picker, notifier, persistence split into individual configs
 - **Custom Lualine**: Colorscheme-adaptive statusline with mode indicators
