@@ -8,6 +8,8 @@
 --   - rose-pine, rose-pine-moon, rose-pine-dawn
 --   - catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 --   - vesper
+--   - dracula
+--   - gruvbox
 --
 -- HOW IT WORKS:
 --   1. Detects current colorscheme via vim.g.colors_name
@@ -88,6 +90,12 @@ local function get_colors(colorscheme)
   elseif colorscheme == "vesper" then
     local vesper = require("plugins.ui.lualine.vesper")
     return vesper.get_colors(colorscheme)
+  elseif colorscheme == "dracula" then
+    local dracula = require("plugins.ui.lualine.dracula")
+    return dracula.get_colors(colorscheme)
+  elseif colorscheme == "gruvbox" then
+    local gruvbox = require("plugins.ui.lualine.gruvbox")
+    return gruvbox.get_colors(colorscheme)
   else
     -- Fallback for unknown colorschemes: use eldritch colors
     -- vim.notify("NEO.ED: Unknown colorscheme, using eldritch fallback", vim.log.levels.WARN)

@@ -81,11 +81,26 @@ return {
       },
     },
   },
+  {
+    -- dracula
+    "Mofiqul/dracula.nvim",
+    name = "dracula",
+    lazy = true,
+    opts = {},
+  },
+  {
+    -- gruvbox
+    "ellisonleao/gruvbox.nvim",
+    lazy = true,
+    opts = {
+      contrast = "", -- "hard", "soft" or empty string (medium)
+    },
+  },
   -- LazyVim colorscheme configuration
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "vesper",
+      colorscheme = "eldritch",
     },
   },
 }

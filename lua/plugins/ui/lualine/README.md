@@ -53,6 +53,8 @@ options = {
 | **rose-pine** | `rose-pine`, `rose-pine-moon`, `rose-pine-dawn` |
 | **catppuccin** | `catppuccin-latte`, `catppuccin-frappe`, `catppuccin-macchiato`, `catppuccin-mocha` |
 | **vesper** | `vesper` |
+| **dracula** | `dracula` |
+| **gruvbox** | `gruvbox` |
 
 ## Auto-refresh on Colorscheme Change
 
@@ -374,8 +376,10 @@ lua/plugins/ui/lualine/
 ├── neoed.lua              ← Theme engine (main orchestrator)
 ├── eldritch.lua           ← Eldritch color palettes
 ├── rose-pine.lua          ← Rose Pine color palettes
-├── tokyonight.lua         ← Tokyo Night color palettes
-└── aura.lua               ← Aura color palettes
+├── catppuccin.lua         ← Catppuccin color palettes
+├── vesper.lua             ← Vesper color palettes
+├── dracula.lua            ← Dracula color palettes
+└── gruvbox.lua            ← Gruvbox Dark color palettes
 ```
 
 ## Credits

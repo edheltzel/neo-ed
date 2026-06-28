@@ -94,6 +94,8 @@ api.nvim_create_autocmd("ColorScheme", {
     package.loaded["plugins.ui.lualine.rose-pine"] = nil
     package.loaded["plugins.ui.lualine.catppuccin"] = nil
     package.loaded["plugins.ui.lualine.vesper"] = nil
+    package.loaded["plugins.ui.lualine.dracula"] = nil
+    package.loaded["plugins.ui.lualine.gruvbox"] = nil
 
     -- Refresh lualine with new theme, passing the colorscheme name
     local ok, lualine = pcall(require, "lualine")
@@ -112,6 +114,8 @@ api.nvim_create_user_command("LualineRefresh", function()
   package.loaded["plugins.ui.lualine.rose-pine"] = nil
   package.loaded["plugins.ui.lualine.catppuccin"] = nil
   package.loaded["plugins.ui.lualine.vesper"] = nil
+  package.loaded["plugins.ui.lualine.dracula"] = nil
+  package.loaded["plugins.ui.lualine.gruvbox"] = nil
 
   -- Reload lualine
   local ok, lualine = pcall(require, "lualine")
