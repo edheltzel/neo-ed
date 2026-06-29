@@ -451,9 +451,10 @@ The `snacks-projects` module works similarly to **VSCode's Project Manager exten
 ### Git Workflow
 
 1. Open Lazygit: `<leader>gg`
-2. View inline blame (automatic via gitsigns)
-3. Stage changes in Lazygit
-4. Commit with conventional messages
+2. Open GitHub Dash: `<leader>gh` (rounded floating terminal)
+3. View inline blame (automatic via gitsigns)
+4. Stage changes in Lazygit
+5. Commit with conventional messages
 
 ### Debugging (DAP)
 

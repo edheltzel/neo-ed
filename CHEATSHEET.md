@@ -81,6 +81,7 @@ U                    Redo
 
 ```
 <leader>gg           Lazygit (borderless)
+<leader>gh           GitHub Dash (rounded float)
 ```
 
 ### AI
