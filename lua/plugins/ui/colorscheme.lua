@@ -16,7 +16,7 @@ return {
     lazy = false,
     priority = 11000,
     opts = {
-      transparent = false,
+      transparent = true,
       dim_inactive = true,
       styles = {
         sidebars = "dark",
