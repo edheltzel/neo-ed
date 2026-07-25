@@ -77,13 +77,13 @@ return {
         },
       },
       daily_notes = {
-        folder = "TheLog",
+        folder = "HUB/TheLog",
         date_format = "%Y-%m-%d",
         alias_format = "%B %-d, %Y",
         template = "New-DailyLog.md",
       },
       templates = {
-        folder = "Attachments/Templates",
+        folder = "HUB/Attachments/Templates",
         date_format = "%Y-%m-%d",
         time_format = "%H:%M",
         substitutions = {
@@ -104,12 +104,16 @@ return {
           end,
         },
         -- Per-template customizations for directory placement
+        -- Keys are matched against the template filename WITHOUT its extension
         customizations = {
-          ["New-Reading.md"] = {
-            notes_subdir = "ReadingList",
+          ["New-Reading"] = {
+            notes_subdir = "HUB/ReadingList",
           },
-          ["New-Book.md"] = {
-            notes_subdir = "ReadingList",
+          ["New-Book"] = {
+            notes_subdir = "HUB/ReadingList",
+          },
+          ["New-Devotional"] = {
+            notes_subdir = "HUB/Devotionals",
           },
         },
       },
