@@ -40,16 +40,16 @@ set({ "n", "v" }, "<A-S-d>", "Vy`<p`>", { noremap = true, silent = true, desc = 
 -- set({ "n", "v" }, "<A-S-k>", "Vy`<p`>", { noremap = true, silent = true, desc = "Duplicate line down" })
 
 -- indent line
-set("v", ">", ">gv", { noremap = true, silent = true, desc = "Indent right and reselect" }) -- shift+.
-set("v", "<", "<gv", { noremap = true, silent = true, desc = "Indent left and reselect" }) -- shift+,
+set("v", ">", ">gv", { noremap = true, silent = true, desc = "Indent right and reselect" })
+set("v", "<", "<gv", { noremap = true, silent = true, desc = "Indent left and reselect" })
 
----- move line down
+-- move line down
 set({ "n", "v" }, "<A-down>", ":m .+1<CR>==", { noremap = true, silent = true, desc = "Move line down" })
-set({ "n", "v" }, "<A-j>", ":m .+1<CR>==", { noremap = true, silent = true, desc = "Move line down" })
+set({ "n", "v" }, "<A-S-j>", ":m .+1<CR>==", { noremap = true, silent = true, desc = "Move line down" })
 
----- move line up
+-- move line up
 set({ "n", "v" }, "<A-up>", ":m .-2<CR>==", { noremap = true, silent = true, desc = "Move line up" })
-set({ "n", "v" }, "<A-k>", ":m .-2<CR>==", { noremap = true, silent = true, desc = "Move line up" })
+set({ "n", "v" }, "<A-S-k>", ":m .-2<CR>==", { noremap = true, silent = true, desc = "Move line up" })
 
 -- toggle terminal
 set({ "n", "t" }, "<C-`>", function()
