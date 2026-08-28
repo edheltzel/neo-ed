@@ -21,7 +21,6 @@ Environment) of choice.
 ## Features
 
 - **LazyVim Foundation**: Built on LazyVim for a solid, well-maintained base
-- **AI Integration**: Claude Code, Pi, and OMP
 - **Multi-Language**: JavaScript/TypeScript, Go, Python, PHP/WordPress, Rust, and more
 - **Vite+ Formatting & Linting**: `vp fmt` (Oxfmt) on save, live Oxlint LSP diagnostics
 - **Custom Theme**: [Eldritch](https://github.com/eldritch-theme) colorscheme with custom lualine statusline
@@ -129,11 +128,6 @@ lua/
 └── plugins/             # Plugin configurations
     ├── disabled.lua    # Disabled plugins (neo-tree)
     │
-    ├── ai/             # AI assistants
-    │   ├── claudecode.lua
-    │   ├── omp-agent.lua
-    │   └── pi-agent.lua
-    │
     ├── coding/         # Code editing
     │   ├── emmet.lua
     │   └── surround.lua
@@ -196,24 +190,6 @@ lua/
 
 ## Plugin Categories
 
-### AI Assistants
-
-| Plugin          | Description             | Key Binding |
-| --------------- | ----------------------- | ----------- |
-| claudecode.nvim | Claude Code integration | `<D-C-c>`   |
-| pi.nvim         | Pi integration          | `<D-C-p>`   |
-| OMP             | OMP terminal agent      | `<D-C-o>`   |
-
-- Floating window (80% width/height)
-- Rounded border
-- Floating terminal is exposed through Snacks with rounded borders and editor keymaps
-
-**Claude Code Configuration** (`lua/plugins/ai/claudecode.lua`):
-
-- Floating window (80% width/height)
-- Rounded border
-- `--dangerously-skip-permissions` mode enabled
-
 ### Editor Enhancements
 
 | Plugin           | Description      | Key Bindings               |
@@ -256,12 +232,6 @@ See [CHEATSHEET.md](./CHEATSHEET.md) for the complete keybindings reference.
 ### Enabled LazyVim Extras
 
 From `lazyvim.json`:
-
-**AI**:
-
-- `ai.claudecode` - Claude Code integration
-- `ai.pi` - Pi integration
-- `omp-agent.lua` - OMP terminal integration
 
 **Coding**:
 
@@ -384,10 +354,6 @@ opt.undofile = true         -- Persistent undo
 
 -- Timing
 o.timeoutlen = 250          -- Key sequence timeout
-
--- Platform
-g.codeium_arch = "arm64"
-g.codeium_os = "Darwin"
 ```
 
 ### Custom Filetypes (`lua/config/filetypes.lua`)
@@ -461,13 +427,6 @@ The `snacks-projects` module works similarly to **VSCode's Project Manager exten
 1. Set breakpoints
 2. Start debug session with language-specific commands
 3. Use DAP UI for inspection
-
-### AI-Assisted Coding
-
-1. Toggle Claude Code: `<D-C-c>`
-2. Floating window appears (80% size)
-3. Ask questions or request code changes
-4. Claude Code can read/modify files directly
 
 ---
 
